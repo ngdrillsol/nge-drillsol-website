@@ -3,9 +3,10 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Filter, ArrowRight, MessageSquare } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef(null)
@@ -160,8 +161,8 @@ const DrillingRigs: DrillingRig[] = [
     applications: ['Geo-technical', 'Soil sampling', 'Core analysis', 'Survey'],
     tag: 'Geo-Tech',
     images: [
-  '/images/machine-ngcore100-premium.png'
-]
+      '/images/machine-ngcore100-premium.png'
+    ]
   },
   {
     id: 'ngcore100', model: 'NGCORE100', name: 'Core Drilling Rig', category: 'core',
@@ -171,8 +172,8 @@ const DrillingRigs: DrillingRig[] = [
     applications: ['Mineral exploration', 'Core sampling', 'Survey', 'Geo-tech'],
     tag: 'Exploration',
     images: [
-  '/images/machine-ngcore100-trolley-premium.png'
-]
+      '/images/machine-ngcore100-trolley-premium.png'
+    ]
   },
   {
     id: 'ngcore100tractor', model: 'NGCORE100', name: 'Core Drilling Rig', category: 'core',
@@ -182,8 +183,8 @@ const DrillingRigs: DrillingRig[] = [
     applications: ['Mineral exploration', 'Core sampling', 'Survey', 'Geo-tech'],
     tag: 'Exploration',
     images: ['/images/machine-ngcore50-premium.png']
-   },
-  
+  },
+
 ]
 
 const categoryTabs = [
@@ -195,16 +196,15 @@ const categoryTabs = [
   { id: 'workover', label: 'Workover' },
 ]
 
-export default function DrillingRigsPage() {
-  const searchParams = useSearchParams()
+function DrillingRigsContent() {  const searchParams = useSearchParams()
 
-const [activeTab, setActiveTab] = useState(
-  searchParams.get('category') || 'all'
-)
+  const [activeTab, setActiveTab] = useState(
+    searchParams.get('category') || 'all'
+  )
   const filtered =
-  activeTab === 'all'
-    ? DrillingRigs
-    : DrillingRigs.filter(rig =>
+    activeTab === 'all'
+      ? DrillingRigs
+      : DrillingRigs.filter(rig =>
         activeTab === 'tractor-mounted'
           ? rig.category === 'tractor' || rig.category === 'piling'
           : rig.category === activeTab
@@ -236,11 +236,10 @@ const [activeTab, setActiveTab] = useState(
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`text-xs font-heading font-500 px-4 py-2 border transition-all ${
-                  activeTab === tab.id
+                className={`text-xs font-heading font-500 px-4 py-2 border transition-all ${activeTab === tab.id
                     ? 'bg-yellow text-black border-yellow'
                     : 'border-[#2A2A2A] text-gray-450 hover:border-yellow/40 hover:text-white'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
@@ -314,10 +313,10 @@ const [activeTab, setActiveTab] = useState(
                       Inquire <ArrowRight size={10} />
                     </Link>
                     <Link
-                     href={`/machines/${machine.id}`}
-                     className="btn-outline text-[0.65rem] py-2 px-3 flex items-center justify-center relative z-50"
+                      href={`/machines/${machine.id}`}
+                      className="btn-outline text-[0.65rem] py-2 px-3 flex items-center justify-center relative z-50"
                     >
-                     SPECS
+                      SPECS
                     </Link>
                     <a
                       href={`https://wa.me/919106360907?text=I%20am%20interested%20in%20${machine.model}%20drilling%20rig`}
@@ -363,5 +362,12 @@ const [activeTab, setActiveTab] = useState(
         </FadeIn>
       </div>
     </div>
+  )
+}
+export default function DrillingRigsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DrillingRigsContent />
+    </Suspense>
   )
 }
