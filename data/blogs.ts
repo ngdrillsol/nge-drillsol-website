@@ -4,54 +4,44 @@ export const blogs = [
     slug: "best-borewell-rig-for-africa",
     title: "Best Borewell Drilling Rig For Africa",
     image: "/images/blogs/africa-rig.jpg",
-
     excerpt:
       "Choosing the correct drilling rig for African hard rock formations and deep water borewell applications.",
+    date: "2026-06-14",
 
     content: `
-Africa has highly varied geological formations ranging from soft clay to extremely hard rock formations. Selecting the correct drilling rig is extremely important for successful borewell drilling projects.
-
-Countries such as Ghana, Ethiopia, Kenya, Sudan, Tanzania and Mozambique often require heavy-duty drilling rigs capable of drilling in difficult hard rock conditions.
-
-Before choosing a drilling rig, contractors should evaluate drilling depth, ground formation, compressor availability, maintenance support and expected daily drilling performance.
-
-NGE Drillsol manufactures export-ready drilling rigs suitable for African terrains with strong pullback capacity, high torque and rugged construction for long-term operation.
-
-Applications include:
-• Waterwell drilling
-• Hard rock borewells
-• Deep drilling projects
-• Mining and exploration drilling
-• Infrastructure drilling
-`,
-
-    date: "2026-06-14",
-  },
-  content: `
 # Best Borewell Drilling Rig For Africa
 
 Africa has a growing demand for reliable borewell drilling rigs capable of working in hard rock formations and deep groundwater conditions.
 
-At NGE Drillsol Pvt. Ltd., we manufacture drilling rigs specially designed for African conditions including Ghana, Kenya, Ethiopia, Tanzania, Sudan and Mozambique.
+At NGE Drillsol Pvt. Ltd., we manufacture export-ready borewell drilling rigs designed for Africa’s toughest drilling conditions.
 
-## Key Factors to Consider
+## Key Requirements For African Borewell Drilling
 
-- Drilling depth required
-- Formation type (hard rock / mixed formation)
-- Compressor requirement
-- Mud rotary or DTH drilling
-- Availability of spare parts
+- Deep drilling capacity
+- Hard rock drilling performance
+- Easy spare parts availability
+- Fuel-efficient operation
+- Easy maintenance
 
-## Recommended Rig
+## Recommended Machines
 
-For 250–400 meter borewells in hard rock areas, the NGDTH300R is one of the most suitable options because of its high pulling capacity, reliable rotary system and strong hydraulic performance.
+### NGDTH 300R
+Ideal for 300 meter to 500 meter borewell drilling.
+
+### NGDR 1500
+Suitable for rotary mud drilling applications.
+
+### NGDR 3000
+Heavy-duty deep borewell drilling rig for high depth applications.
 
 ## Why Choose NGE Drillsol?
 
-- 40+ Years Legacy
-- Export Ready Machines
-- Technical Support
-- Spare Parts Availability
-- Africa-Focused Rig Design
+- 40+ years of legacy
+- Export-ready machines
+- Strong after-sales support
+- Spare parts availability
+
+Contact NGE Drillsol for customized drilling solutions for your country.
 `,
+  },
 ]
