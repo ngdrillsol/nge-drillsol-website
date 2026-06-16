@@ -154,7 +154,7 @@ function HeroSection() {
       </div>
 
       {/* Bottom marquee */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1E1E1E] bg-[#0D0D0D]/80 backdrop-blur-sm overflow-hidden py-3">
+      <div className="hidden md:block absolute bottom-0 left-0 right-0 border-t border-[#1E1E1E] bg-[#0D0D0D]/80 backdrop-blur-sm overflow-hidden py-3">
         <div className="cert-track text-[0.65rem] font-body text-gray-550 tracking-[0.2em] uppercase">
           {Array(2).fill([
             'Rotary Drilling Rigs',
