@@ -343,26 +343,7 @@ body {
   font-family: var(--font-ibm-plex), system-ui, sans-serif;
 }
 
-/* Mobile nav */
-@media (max-width: 768px) {
-  .stat-number {
-    font-size: 3rem;
-  }
-}
 
-.marquee-wrapper {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 80px;
-  width: max-content;
-  animation: scrollMarquee 25s linear infinite;
-}
 
 /* CERTIFICATES SECTION */
 
