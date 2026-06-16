@@ -11,7 +11,7 @@ export default function BlogsPage() {
             Knowledge Center
           </p>
 
-          <h1 className="text-5xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight break-words">
             NGE Drillsol <span className="text-yellow-500">Blogs</span>
           </h1>
 
@@ -42,7 +42,7 @@ export default function BlogsPage() {
                   {blog.date}
                 </p>
 
-                <h3 className="text-xl font-semibold mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 leading-tight break-words">
                   {blog.title}
                 </h3>
 
