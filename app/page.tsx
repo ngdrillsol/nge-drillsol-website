@@ -995,12 +995,12 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="w-1/2 p-10 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 p-5 md:p-10 flex flex-col justify-center">
           <p className="text-yellow-500 mb-3">
             {latestBlog.date}
           </p>
 
-          <h3 className="text-3xl font-bold text-white mb-5">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
             {latestBlog.title}
           </h3>
 
