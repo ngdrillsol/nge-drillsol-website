@@ -24,9 +24,9 @@ export default function BlogsPage() {
         <div className="grid md:grid-cols-3 gap-6">
           {blogs.map((blog) => (
             <div
-              key={blog.id}
-              className="bg-[#141414] border border-[#1E1E1E] rounded-xl overflow-hidden hover:border-yellow-500 transition"
-            >
+  key={blog.id}
+  className="bg-[#141414] border border-[#1E1E1E] rounded-xl overflow-hidden hover:border-yellow-500 transition w-full"
+>
 
               <div className="relative h-[220px]">
                 <Image
@@ -37,14 +37,14 @@ export default function BlogsPage() {
                 />
               </div>
 
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <p className="text-yellow-500 text-sm mb-2">
                   {blog.date}
                 </p>
 
-                <h3 className="text-lg sm:text-xl font-semibold mb-3 leading-tight break-words">
-                  {blog.title}
-                </h3>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-3 leading-snug text-balance">
+  {blog.title}
+</h3>
 
                 <p className="text-gray-400 text-sm">
                   {blog.excerpt}
