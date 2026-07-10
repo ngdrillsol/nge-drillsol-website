@@ -39,7 +39,13 @@ const machineData: any = {
 
     ngdr2000: {
         name: 'NGDR2000',
-        images: ['/images/machine/ngdr2000/1.png'],
+        images: ['/images/machine/ngdr2000/1.png',
+                 '/images/machine/ngdr2000/2.png',
+                 '/images/machine/ngdr2000/3.png',
+                 '/images/machine/ngdr2000/4.png',
+                 '/images/machine/ngdr2000/5.png',
+                 '/images/machine/ngdr2000/6.png',
+        ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
             'Depth Capacity': '850m',
@@ -52,7 +58,15 @@ const machineData: any = {
 
     ngdr1500: {
         name: 'NGDR1500',
-        images: ['/images/machine/ngdr1500/1.png'],
+        images: ['/images/machine/ngdr1500/1.png',
+            '/images/machine/ngdr1500/2.png',
+            '/images/machine/ngdr1500/3.png',
+            '/images/machine/ngdr1500/4.png',
+            '/images/machine/ngdr1500/5.png',
+            '/images/machine/ngdr1500/6.png',
+            '/images/machine/ngdr1500/7.png',
+            '/images/machine/ngdr1500/8.png'
+        ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
             'Depth Capacity': '600m',
@@ -65,7 +79,15 @@ const machineData: any = {
 
     ngdr1000: {
         name: 'NGDR1000',
-        images: ['/images/machine/ngdr1000/1.png'],
+        images: ['/images/machine/ngdr1000/1.png',
+                 '/images/machine/ngdr1000/2.png',
+                    '/images/machine/ngdr1000/3.png',
+                    '/images/machine/ngdr1000/4.png',
+                    '/images/machine/ngdr1000/5.png',
+                    '/images/machine/ngdr1000/6.png',
+                    '/images/machine/ngdr1000/7.png',
+                    '/images/machine/ngdr1000/8.png',
+        ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
             'Depth Capacity': '500m',
@@ -78,7 +100,11 @@ const machineData: any = {
 
     ngdth200: {
         name: 'NGDTH200',
-        images: ['/images/machine/ngdth200/1.png'],
+        images: ['/images/machine/ngdth200/1.png',
+            '/images/machine/ngdth200/2.png',
+            '/images/machine/ngdth200/3.png',
+            '/images/machine/ngdth200/4.png',
+        ],
         specs: {
             'Rig Type': 'DTH Drilling Rig',
             'Depth Capacity': '200m',
@@ -90,10 +116,27 @@ const machineData: any = {
 
     ngdth300: {
         name: 'NGDTH300',
-        images: ['/images/machine/ngdth300/1.png'],
+        images: ['/images/machine/ngdth300/1.png',
+            '/images/machine/ngdth300/2.png',
+        ],
         specs: {
             'Rig Type': 'DTH Drilling Rig',
             'Depth Capacity': '300m',
+            'Mounting': 'Truck Mounted',
+            'Operation': 'DTH',
+            'Applications': 'Waterwell / Quarry',
+        },
+    },
+
+    ngdth600: {
+        name: 'NGDTH600',
+        images: ['/images/machine/ngdth600/1.png',
+            '/images/machine/ngdth600/2.png',
+            '/images/machine/ngdth600/3.png',
+        ],
+        specs: {
+            'Rig Type': 'DTH Drilling Rig',
+            'Depth Capacity': '600m',
             'Mounting': 'Truck Mounted',
             'Operation': 'DTH',
             'Applications': 'Waterwell / Quarry',
@@ -126,7 +169,13 @@ const machineData: any = {
 
     ngdp15: {
         name: 'NGDP15',
-        images: ['/images/machine/ngdp15/1.png'],
+        images: ['/images/machine/ngdp15/1.png',
+            '/images/machine/ngdp15/2.png',
+            '/images/machine/ngdp15/3.png',
+            '/images/machine/ngdp15/4.png',
+            '/images/machine/ngdp15/5.png',
+            '/images/machine/ngdp15/6.png',
+        ],
         specs: {
             'Rig Type': 'Hydraulic Piling Rig',
             'Depth Capacity': '15m',
@@ -139,7 +188,14 @@ const machineData: any = {
 
     ngdp30: {
         name: 'NGDP30',
-        images: ['/images/machine/ngdp30/1.png'],
+        images: ['/images/machine/ngdp30/1.png',
+            '/images/machine/ngdp30/2.png',
+            '/images/machine/ngdp30/3.png',
+            '/images/machine/ngdp30/4.png',
+            '/images/machine/ngdp30/5.png',
+            '/images/machine/ngdp30/6.png',
+            '/images/machine/ngdp30/7.png',
+        ],
         specs: {
             'Rig Type': 'Hydraulic Piling Rig',
             'Depth Capacity': '30m',
@@ -152,7 +208,16 @@ const machineData: any = {
 
     ngdp60: {
         name: 'NGDP60',
-        images: ['/images/machine/ngdp60/1.png'],
+        images: ['/images/machine/ngdp60/1.png',
+            '/images/machine/ngdp60/2.png',
+            '/images/machine/ngdp60/3.png',
+            '/images/machine/ngdp60/4.png',
+            '/images/machine/ngdp60/5.png',
+            '/images/machine/ngdp60/6.png',
+            '/images/machine/ngdp60/7.png',
+            '/images/machine/ngdp60/8.png',
+            '/images/machine/ngdp60/9.png',
+        ],
         specs: {
             'Rig Type': 'Hydraulic Piling Rig',
             'Depth Capacity': '60m',
@@ -167,6 +232,12 @@ const machineData: any = {
         name: 'NGCORE100 Trolley Mounted Rig',
         images: [
             '/images/machine/ngcore100/1.png',
+            '/images/machine/ngcore100/2.png',
+            '/images/machine/ngcore100/3.png',
+            '/images/machine/ngcore100/4.png',
+            '/images/machine/ngcore100/5.png',
+            '/images/machine/ngcore100/6.png',
+            '/images/machine/ngcore100/7.png',
         ],
         specs: {
             'Rig Type': 'Core Drilling Rig',
@@ -182,6 +253,16 @@ const machineData: any = {
         name: 'NGCORE100 Tractor Mounted Rig',
         images: [
             '/images/machine/ngcore100-tractor/1.png',
+            '/images/machine/ngcore100-tractor/2.png',
+            '/images/machine/ngcore100-tractor/3.png',
+            '/images/machine/ngcore100-tractor/4.png',
+            '/images/machine/ngcore100-tractor/5.png',
+            '/images/machine/ngcore100-tractor/6.png',
+            '/images/machine/ngcore100-tractor/7.png',
+            '/images/machine/ngcore100-tractor/8.png',
+            '/images/machine/ngcore100-tractor/9.png',
+            '/images/machine/ngcore100-tractor/10.png',
+
         ],
         specs: {
             'Rig Type': 'Core Drilling Rig',

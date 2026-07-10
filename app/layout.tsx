@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-// ignore missing type declarations for CSS side-effect import
-// @ts-ignore
 import './globals.css'
 import { Space_Grotesk, IBM_Plex_Sans } from 'next/font/google'
 import Navbar from '@/components/Navbar'
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import Footer from '@/components/Footer'
 import FloatingButtons from '@/components/FloatingButtons'
 
