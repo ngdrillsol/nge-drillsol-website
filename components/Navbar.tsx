@@ -9,8 +9,8 @@ import { Menu, X, ChevronDown, Phone } from 'lucide-react'
 const navLinks = [
   { label: 'Home', href: '/' },
   {
-    label: 'Drilling Rigs',
-   href: '/drilling rigs',
+    label: 'Machines',
+   href: '/machines',
     sub: [
   { label: 'Rotary Drilling Rigs', href: '/machines?category=rotary' },
   { label: 'DTH Drilling Rigs', href: '/machines?category=dth' },
