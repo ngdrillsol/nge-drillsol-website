@@ -321,15 +321,13 @@ export default function MachineDetailPage() {
 
                 {/* Machine Images Carousel */}
                 <div className="mb-10">
-                    <div className="relative bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden h-[70vh] min-h-[500px] max-h-[850px] md:h-[75vh] lg:h-[80vh]">
+                    <div className="relative bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden aspect-[16/10]">
                         <Image
-                         src={machine.images[currentImage]}
-                         alt={machine.name}
-                         fill
-                         sizes="(max-width: 768px) 100vw, 1200px"
-                         className="object-contain"
-                         priority
-                         />
+                            src={machine.images[currentImage]}
+                            alt={machine.name}
+                            fill
+                            className="object-contain p-0 hover:scale-105 transition duration-500"
+                        />
                     </div>
 
                     <div className="flex gap-4 mt-4 overflow-x-auto">
