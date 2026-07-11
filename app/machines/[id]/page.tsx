@@ -1,12 +1,10 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const machineData: any = {
-
     ngwr3100: {
         name: 'NGWR3100',
         images: [
@@ -68,14 +66,15 @@ const machineData: any = {
 
     ngdr1500: {
         name: 'NGDR1500',
-        images: ['/images/machine/ngdr1500/1.png',
+        images: [
+            '/images/machine/ngdr1500/1.png',
             '/images/machine/ngdr1500/2.png',
             '/images/machine/ngdr1500/3.png',
             '/images/machine/ngdr1500/4.png',
             '/images/machine/ngdr1500/5.png',
             '/images/machine/ngdr1500/6.png',
             '/images/machine/ngdr1500/7.png',
-            '/images/machine/ngdr1500/8.png'
+            '/images/machine/ngdr1500/8.png',
         ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
@@ -89,14 +88,15 @@ const machineData: any = {
 
     ngdr1000: {
         name: 'NGDR1000',
-        images: ['/images/machine/ngdr1000/1.png',
-                 '/images/machine/ngdr1000/2.png',
-                    '/images/machine/ngdr1000/3.png',
-                    '/images/machine/ngdr1000/4.png',
-                    '/images/machine/ngdr1000/5.png',
-                    '/images/machine/ngdr1000/6.png',
-                    '/images/machine/ngdr1000/7.png',
-                    '/images/machine/ngdr1000/8.png',
+        images: [
+            '/images/machine/ngdr1000/1.png',
+            '/images/machine/ngdr1000/2.png',
+            '/images/machine/ngdr1000/3.png',
+            '/images/machine/ngdr1000/4.png',
+            '/images/machine/ngdr1000/5.png',
+            '/images/machine/ngdr1000/6.png',
+            '/images/machine/ngdr1000/7.png',
+            '/images/machine/ngdr1000/8.png',
         ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
@@ -110,7 +110,8 @@ const machineData: any = {
 
     ngdth200: {
         name: 'NGDTH200',
-        images: ['/images/machine/ngdth200/1.png',
+        images: [
+            '/images/machine/ngdth200/1.png',
             '/images/machine/ngdth200/2.png',
             '/images/machine/ngdth200/3.png',
             '/images/machine/ngdth200/4.png',
@@ -126,7 +127,8 @@ const machineData: any = {
 
     ngdth300: {
         name: 'NGDTH300',
-        images: ['/images/machine/ngdth300/1.png',
+        images: [
+            '/images/machine/ngdth300/1.png',
             '/images/machine/ngdth300/2.png',
         ],
         specs: {
@@ -140,7 +142,8 @@ const machineData: any = {
 
     ngdth600: {
         name: 'NGDTH600',
-        images: ['/images/machine/ngdth600/1.png',
+        images: [
+            '/images/machine/ngdth600/1.png',
             '/images/machine/ngdth600/2.png',
             '/images/machine/ngdth600/3.png',
         ],
@@ -179,7 +182,8 @@ const machineData: any = {
 
     ngdp15: {
         name: 'NGDP15',
-        images: ['/images/machine/ngdp15/1.png',
+        images: [
+            '/images/machine/ngdp15/1.png',
             '/images/machine/ngdp15/2.png',
             '/images/machine/ngdp15/3.png',
             '/images/machine/ngdp15/4.png',
@@ -198,7 +202,8 @@ const machineData: any = {
 
     ngdp30: {
         name: 'NGDP30',
-        images: ['/images/machine/ngdp30/1.png',
+        images: [
+            '/images/machine/ngdp30/1.png',
             '/images/machine/ngdp30/2.png',
             '/images/machine/ngdp30/3.png',
             '/images/machine/ngdp30/4.png',
@@ -218,7 +223,8 @@ const machineData: any = {
 
     ngdp60: {
         name: 'NGDP60',
-        images: ['/images/machine/ngdp60/1.png',
+        images: [
+            '/images/machine/ngdp60/1.png',
             '/images/machine/ngdp60/2.png',
             '/images/machine/ngdp60/3.png',
             '/images/machine/ngdp60/4.png',
@@ -235,7 +241,7 @@ const machineData: any = {
             'Mounting': 'Crawler Mounted',
             'Operation': 'Rotary Piling',
             'Applications': 'Bridge / High-rise Foundation',
-        }
+        },
     },
 
     ngcore100: {
@@ -272,7 +278,6 @@ const machineData: any = {
             '/images/machine/ngcore100-tractor/8.png',
             '/images/machine/ngcore100-tractor/9.png',
             '/images/machine/ngcore100-tractor/10.png',
-
         ],
         specs: {
             'Rig Type': 'Core Drilling Rig',
@@ -286,9 +291,7 @@ const machineData: any = {
 
     ngcore50: {
         name: 'NGCORE50 Rig',
-        images: [
-            '/images/machine/ngcore50/1.png',
-        ],
+        images: ['/images/machine/ngcore50/1.png'],
         specs: {
             'Rig Type': 'Core Drilling Rig',
             'Depth Capacity': '150m',
@@ -301,11 +304,19 @@ const machineData: any = {
 }
 
 export default function MachineDetailPage() {
-    const params = useParams()
-    const machine = machineData[params.id as string]
-    console.log(params.id)
+   const params = useParams()
+
+const machineId = Array.isArray(params.id)
+    ? params.id[0]
+    : params.id
+
+const machine = machineData[machineId as string]
 
     const [currentImage, setCurrentImage] = useState(0)
+
+    // Used for mobile swipe gestures
+    const touchStartX = useRef<number | null>(null)
+    const touchEndX = useRef<number | null>(null)
 
     if (!machine) {
         return (
@@ -315,38 +326,126 @@ export default function MachineDetailPage() {
         )
     }
 
+    const showNextImage = () => {
+        setCurrentImage((current) =>
+            current === machine.images.length - 1 ? 0 : current + 1
+        )
+    }
+
+    const showPreviousImage = () => {
+        setCurrentImage((current) =>
+            current === 0 ? machine.images.length - 1 : current - 1
+        )
+    }
+
+    const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+        touchEndX.current = null
+        touchStartX.current = event.targetTouches[0].clientX
+    }
+
+    const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+        touchEndX.current = event.targetTouches[0].clientX
+    }
+
+    const handleTouchEnd = () => {
+        if (touchStartX.current === null || touchEndX.current === null) return
+
+        const swipeDistance = touchStartX.current - touchEndX.current
+        const minimumSwipeDistance = 50
+
+        if (swipeDistance > minimumSwipeDistance) {
+            showNextImage()
+        }
+
+        if (swipeDistance < -minimumSwipeDistance) {
+            showPreviousImage()
+        }
+
+        touchStartX.current = null
+        touchEndX.current = null
+    }
+
     return (
         <div className="min-h-screen bg-black text-white py-16 px-5">
             <div className="max-w-6xl mx-auto">
 
                 {/* Machine Images Carousel */}
                 <div className="mb-10">
-                    <div className="relative bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden aspect-[16/10]">
+
+                    {/* Main Image */}
+                    <div
+                        className="relative w-full bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10] touch-pan-y"
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
                         <Image
+                            key={machine.images[currentImage]}
                             src={machine.images[currentImage]}
-                            alt={machine.name}
+                            alt={`${machine.name} - Image ${currentImage + 1}`}
                             fill
-                            className="object-contain p-0 hover:scale-105 transition duration-500"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                            className="object-contain p-2 sm:p-4 lg:p-6"
+                            priority={currentImage === 0}
                         />
+
+                        {/* Previous and Next Buttons */}
+                        {machine.images.length > 1 && (
+                            <>
+                                <button
+                                    type="button"
+                                    onClick={showPreviousImage}
+                                    aria-label="Previous image"
+                                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white text-2xl backdrop-blur-sm hover:bg-yellow-500 hover:text-black transition-all"
+                                >
+                                    ‹
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={showNextImage}
+                                    aria-label="Next image"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white text-2xl backdrop-blur-sm hover:bg-yellow-500 hover:text-black transition-all"
+                                >
+                                    ›
+                                </button>
+                            </>
+                        )}
+
+                        {/* Image Counter */}
+                        {machine.images.length > 1 && (
+                            <div className="absolute bottom-3 right-3 z-10 rounded-full bg-black/70 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                                {currentImage + 1} / {machine.images.length}
+                            </div>
+                        )}
                     </div>
 
-                    <div className="flex gap-4 mt-4 overflow-x-auto">
-                        {machine.images.map((img: string, index: number) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentImage(index)}
-                                className={`border-2 rounded-lg overflow-hidden min-w-[120px] h-[80px]
-                ${currentImage === index ? 'border-yellow-500' : 'border-gray-700'}`}
-                            >
-                               <Image
-  src={machine.images[currentImage]}
-  alt={machine.name}
-  fill
-  className="object-cover hover:scale-105 transition duration-500"
-/>
-                            </button>
-                        ))}
-                    </div>
+                    {/* Thumbnails */}
+                    {machine.images.length > 1 && (
+                        <div className="flex gap-3 sm:gap-4 mt-4 overflow-x-auto pb-2">
+                            {machine.images.map((img: string, index: number) => (
+                                <button
+                                    type="button"
+                                    key={img}
+                                    onClick={() => setCurrentImage(index)}
+                                    aria-label={`View image ${index + 1}`}
+                                    className={`relative flex-none w-[90px] h-[70px] sm:w-[120px] sm:h-[80px] border-2 rounded-lg overflow-hidden bg-[#111] transition-all ${
+                                        currentImage === index
+                                            ? 'border-yellow-500'
+                                            : 'border-gray-700 hover:border-gray-500'
+                                    }`}
+                                >
+                                    <Image
+                                        src={img}
+                                        alt={`${machine.name} thumbnail ${index + 1}`}
+                                        fill
+                                        sizes="120px"
+                                        className="object-contain p-1"
+                                    />
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Specs Table */}
