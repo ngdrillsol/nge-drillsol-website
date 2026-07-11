@@ -9,8 +9,8 @@ import { Menu, X, ChevronDown, Phone } from 'lucide-react'
 const navLinks = [
   { label: 'Home', href: '/' },
   {
-    label: 'Drilling Rigs',
-    href: '/Drilling Rigs',
+    label: 'Machines',
+   href: '/machines',
     sub: [
   { label: 'Rotary Drilling Rigs', href: '/machines?category=rotary' },
   { label: 'DTH Drilling Rigs', href: '/machines?category=dth' },
@@ -195,27 +195,35 @@ export default function Navbar() {
             <div className="flex flex-col gap-1 mt-4">
               {navLinks.map((link) => (
                 <div key={link.label}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block py-3.5 text-lg font-heading font-600 text-white border-b border-[#1E1E1E]"
-                  >
-                    {link.label}
-                  </Link>
-                  {link.sub && (
-                    <div className="pl-4 mt-1 mb-2 flex flex-col gap-1">
-                      {link.sub.map((s) => (
-                        <Link
-                          key={s.label}
-                          href={s.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="py-2 text-sm text-gray-450 hover:text-yellow transition-colors font-body"
-                        >
-                          {s.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div className="border-b border-[#1E1E1E]">
+
+  <Link
+  href={link.href || '#'}
+  onClick={() => {
+    setMobileOpen(false)
+    setOpenSub(null)
+  }}
+  className="block py-3.5 text-lg font-heading font-600 text-white"
+>
+  {link.label}
+</Link>
+
+  {link.sub && (
+    <div className="pl-4 pb-3 flex flex-col gap-1">
+      {link.sub.map((s) => (
+        <Link
+          key={s.label}
+          href={s.href}
+          onClick={() => setMobileOpen(false)}
+          className="py-2 text-sm text-gray-400 hover:text-yellow-500 transition-colors"
+        >
+          {s.label}
+        </Link>
+      ))}
+    </div>
+  )}
+
+</div>
                 </div>
               ))}
             </div>
