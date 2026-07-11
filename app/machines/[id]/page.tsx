@@ -6,9 +6,18 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 const machineData: any = {
+
     ngwr3100: {
         name: 'NGWR3100',
-        images: ['/images/machine/ngwr3100/1.png'],
+        images: [
+            '/images/machine/ngwr3100/1.png',
+            '/images/machine/ngwr3100/2.png',
+            '/images/machine/ngwr3100/3.png',
+            '/images/machine/ngwr3100/4.png',
+            '/images/machine/ngwr3100/5.png',
+            '/images/machine/ngwr3100/6.png',
+            '/images/machine/ngwr3100/7.png',
+        ],
         specs: {
             'Rig Type': 'Workover Drilling Rig',
             'Depth Capacity': '1500m – 2000m',
@@ -39,12 +48,13 @@ const machineData: any = {
 
     ngdr2000: {
         name: 'NGDR2000',
-        images: ['/images/machine/ngdr2000/1.png',
-                 '/images/machine/ngdr2000/2.png',
-                 '/images/machine/ngdr2000/3.png',
-                 '/images/machine/ngdr2000/4.png',
-                 '/images/machine/ngdr2000/5.png',
-                 '/images/machine/ngdr2000/6.png',
+        images: [
+            '/images/machine/ngdr2000/1.png',
+            '/images/machine/ngdr2000/2.png',
+            '/images/machine/ngdr2000/3.png',
+            '/images/machine/ngdr2000/4.png',
+            '/images/machine/ngdr2000/5.png',
+            '/images/machine/ngdr2000/6.png',
         ],
         specs: {
             'Rig Type': 'Rotary Drilling Rig',
@@ -311,13 +321,15 @@ export default function MachineDetailPage() {
 
                 {/* Machine Images Carousel */}
                 <div className="mb-10">
-                    <div className="relative bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden h-[700px]">
+                    <div className="relative bg-[#111] border border-yellow-500 rounded-2xl overflow-hidden h-[70vh] min-h-[500px] max-h-[850px] md:h-[75vh] lg:h-[80vh]">
                         <Image
-                            src={machine.images[currentImage]}
-                            alt={machine.name}
-                            fill
-                            className="object-contain p-10 hover:scale-105 transition duration-500"
-                        />
+                         src={machine.images[currentImage]}
+                         alt={machine.name}
+                         fill
+                         sizes="(max-width: 768px) 100vw, 1200px"
+                         className="object-contain"
+                         priority
+                         />
                     </div>
 
                     <div className="flex gap-4 mt-4 overflow-x-auto">
@@ -328,13 +340,12 @@ export default function MachineDetailPage() {
                                 className={`border-2 rounded-lg overflow-hidden min-w-[120px] h-[80px]
                 ${currentImage === index ? 'border-yellow-500' : 'border-gray-700'}`}
                             >
-                                <Image
-                                    src={img}
-                                    alt=""
-                                    width={120}
-                                    height={80}
-                                    className="object-cover w-full h-full"
-                                />
+                               <Image
+  src={machine.images[currentImage]}
+  alt={machine.name}
+  fill
+  className="object-cover hover:scale-105 transition duration-500"
+/>
                             </button>
                         ))}
                     </div>
