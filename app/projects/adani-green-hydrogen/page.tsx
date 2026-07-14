@@ -3,9 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 
 import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 
 const projectImages = [
@@ -18,6 +20,12 @@ const projectImages = [
   '/images/adani/adani-7.png',
   '/images/adani/adani-8.png',
   '/images/adani/adani-9.png',
+  '/images/adani/adani-10.png',
+  '/images/adani/adani-11.png',
+  '/images/adani/adani-12.png',
+  '/images/adani/adani-13.png',
+  '/images/adani/adani-14.png',
+  '/images/adani/adani-15.png',
 ]
 
 export default function AdaniProjectPage() {
@@ -53,37 +61,47 @@ The drilling program was designed to support long-term industrial water requirem
         </div>
       </section>
 
-      {/* Image Gallery */}
-      <section className="py-16">
-  <div className="max-w-7xl mx-auto px-6">
+     {/* Image Gallery */}
+<section className="py-10 md:py-16">
+  <div className="max-w-7xl mx-auto px-4 md:px-6">
 
     <Swiper
-      modules={[Autoplay]}
-
-spaceBetween={30}
-slidesPerView={1}
-loop={true}
-
-autoplay={{
-  delay: 2500,
-  disableOnInteraction: false,
-}}
-
-speed={1000}
+      modules={[Autoplay, Navigation, Pagination]}
+      spaceBetween={20}
+      slidesPerView={1}
+      loop={projectImages.length > 1}
+      navigation={true}
+      pagination={{
+        clickable: true,
+        dynamicBullets: true,
+      }}
+      autoplay={{
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
+      speed={800}
+      className="adani-project-swiper"
     >
       {projectImages.map((img, i) => (
-        <SwiperSlide key={i}>
-          <div className="relative w-full h-[85vh] bg-black">
+        <SwiperSlide key={img}>
+          <div className="relative w-full h-[50vh] min-h-[350px] md:h-[70vh] md:min-h-[500px] lg:h-[80vh] lg:max-h-[850px] bg-black overflow-hidden rounded-2xl">
             <Image
               src={img}
-              alt={`Adani Portfolio ${i + 1}`}
+              alt={`Adani Green Hydrogen Project - Photo ${i + 1}`}
               fill
+              sizes="(max-width: 768px) 100vw, 1280px"
               className="object-contain"
+              priority={i === 0}
             />
           </div>
         </SwiperSlide>
       ))}
     </Swiper>
+
+    <p className="text-center text-gray-500 text-sm mt-5">
+      Swipe or use the arrows to explore all {projectImages.length} project photos
+    </p>
 
   </div>
 </section>
