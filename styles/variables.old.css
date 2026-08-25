@@ -1,0 +1,73 @@
+:root {
+  /* ========= BRAND COLORS ========= */
+
+  --background: #0d1117;
+  --surface: #111827;
+  --surface-light: #1f2937;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --success: #10b981;
+  --error: #ef4444;
+
+  /* ========= GLASS ========= */
+
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+
+  /* ========= SHADOWS ========= */
+
+  --shadow-sm: 0 4px 10px rgba(0,0,0,.18);
+
+  --shadow-md: 0 12px 30px rgba(0,0,0,.28);
+
+  --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
+
+  /* ========= GLOW ========= */
+
+  --blue-glow: rgba(37,99,235,.35);
+  --orange-glow: rgba(249,115,22,.35);
+
+  /* ========= BORDER RADIUS ========= */
+
+  --radius-sm: 10px;
+
+  --radius-md: 16px;
+
+  --radius-lg: 24px;
+
+  --radius-xl: 32px;
+
+  /* ========= SPACING ========= */
+
+  --space-xs: .5rem;
+
+  --space-sm: .75rem;
+
+  --space-md: 1rem;
+
+  --space-lg: 1.5rem;
+
+  --space-xl: 2rem;
+
+  --space-2xl: 3rem;
+
+  --space-3xl: 5rem;
+
+  --space-4xl: 8rem;
+
+  /* ========= TRANSITIONS ========= */
+
+  --transition-fast: .2s ease;
+
+  --transition-normal: .35s ease;
+
+  --transition-slow: .6s ease;
+}
