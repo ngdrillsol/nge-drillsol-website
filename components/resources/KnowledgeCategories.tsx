@@ -20,7 +20,7 @@ export default function KnowledgeCategories() {
           Knowledge Categories
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Explore Engineering
           <span className="block text-yellow-400">
             Knowledge by Category

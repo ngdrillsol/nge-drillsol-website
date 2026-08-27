@@ -72,7 +72,7 @@ const solutions = [
 
 export default function FeaturedSolutions() {
   return (
-    <section className="space-y-14">
+    <section className="space-y-10 sm:space-y-12 lg:space-y-14">
 
       {/* Heading */}
 
@@ -82,7 +82,7 @@ export default function FeaturedSolutions() {
           Featured Engineering Solutions
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Every Industry Has
           <span className="block text-yellow-400">
             The Right Solution
@@ -99,7 +99,7 @@ export default function FeaturedSolutions() {
 
       {/* Solution Cards */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:pb-0 xl:grid-cols-3">
 
         {solutions.map((solution, index) => {
           const Icon = solution.icon;
@@ -112,21 +112,21 @@ export default function FeaturedSolutions() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               whileHover={{ y: -6 }}
-              className="group rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+              className="group w-[86vw] max-w-[360px] shrink-0 snap-start rounded-[24px] border border-white/10 bg-[#090909] p-5 transition-all duration-300 hover:border-yellow-500/30 sm:p-6 lg:w-auto lg:max-w-none lg:rounded-[30px] lg:p-8"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400 lg:h-16 lg:w-16">
                 <Icon size={30} />
               </div>
 
-              <h3 className="mt-6 text-3xl font-bold text-white">
+              <h3 className="mt-5 text-2xl font-bold text-white lg:mt-6 lg:text-3xl">
                 {solution.title}
               </h3>
 
-              <p className="mt-5 leading-8 text-slate-400">
+              <p className="mt-4 text-sm leading-6 text-slate-400 sm:text-base sm:leading-7 lg:mt-5 lg:leading-8">
                 {solution.description}
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-5 space-y-3 lg:mt-8 lg:space-y-4">
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-[0.25em] text-yellow-400">
@@ -152,7 +152,7 @@ export default function FeaturedSolutions() {
 
               <Link
                 href={solution.href}
-                className="mt-8 inline-flex items-center gap-3 font-semibold text-yellow-400 transition hover:text-yellow-300"
+                className="mt-6 inline-flex items-center gap-3 font-semibold text-yellow-400 transition hover:text-yellow-300 lg:mt-8"
               >
                 Explore Solution
 

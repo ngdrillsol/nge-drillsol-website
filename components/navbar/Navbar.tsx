@@ -227,7 +227,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className="mx-auto flex h-[78px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-10 xl:px-12"
+        className="mx-auto flex h-[78px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-8 lg:px-10 xl:px-12"
         aria-label="Main navigation"
       >
         {/* LOGO */}
@@ -240,16 +240,16 @@ export default function Navbar() {
         >
           <div className="leading-none">
             <div className="flex items-baseline">
-              <span className="text-[26px] font-black tracking-[-0.06em] text-white">
+              <span className="text-[23px] font-black tracking-[-0.06em] text-white sm:text-[26px]">
                 NGE
               </span>
 
-              <span className="ml-1.5 text-[19px] font-bold tracking-[0.08em] text-yellow-400">
+              <span className="ml-1 text-[16px] font-bold tracking-[0.06em] text-yellow-400 sm:ml-1.5 sm:text-[19px] sm:tracking-[0.08em]">
                 DRILLSOL
               </span>
             </div>
 
-            <div className="mt-1 text-[7px] font-medium uppercase tracking-[0.3em] text-slate-500">
+            <div className="mt-1 hidden text-[7px] font-medium uppercase tracking-[0.3em] text-slate-500 min-[360px]:block">
               Drilling • Engineering • Solutions
             </div>
           </div>
@@ -373,7 +373,7 @@ export default function Navbar() {
       {/* MOBILE MENU */}
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-[78px] bottom-0 overflow-y-auto bg-[#05070b] xl:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[78px] overflow-y-auto overscroll-contain bg-[#05070b] xl:hidden">
           <div className="mx-auto max-w-2xl px-5 py-5 sm:px-8">
 
             {/* HOME */}

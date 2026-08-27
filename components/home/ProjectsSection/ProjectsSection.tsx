@@ -17,7 +17,7 @@ export default function ProjectsSection() {
   return (
     <Section
       id="projects"
-      className="relative overflow-hidden bg-[#05070B]"
+      className="relative overflow-hidden bg-[#05070B] py-12 sm:py-16 lg:py-32"
     >
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0">

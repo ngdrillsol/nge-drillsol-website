@@ -12,7 +12,7 @@ import {
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden rounded-[40px] border border-yellow-500/20 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-8 py-20 lg:px-16">
+    <section className="relative overflow-hidden rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-4 py-12 sm:rounded-[32px] sm:px-6 sm:py-16 lg:rounded-[40px] lg:px-16 lg:py-20">
 
       {/* Background Glow */}
 
@@ -38,7 +38,7 @@ export default function CTASection() {
           Engineering Consultation
         </span>
 
-        <h2 className="mt-8 text-5xl font-bold leading-tight text-white xl:text-6xl">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:mt-8 sm:text-4xl lg:text-5xl xl:text-6xl">
           Ready To Discuss
           <span className="block text-yellow-400">
             Your Drilling Project?
@@ -58,7 +58,7 @@ export default function CTASection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-14 flex flex-wrap justify-center gap-5"
+          className="mt-10 flex flex-col justify-center gap-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:gap-5"
         >
 
           <Link

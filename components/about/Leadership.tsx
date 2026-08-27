@@ -22,7 +22,7 @@ export default function Leadership() {
           Leadership
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Leadership Guided By
           <span className="block text-yellow-400">
             Engineering Excellence
@@ -49,7 +49,7 @@ export default function Leadership() {
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid gap-10 overflow-hidden rounded-[36px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] via-[#090909] to-[#05070B] p-10 lg:grid-cols-[340px_1fr]"
+            className="grid gap-8 overflow-hidden rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] via-[#090909] to-[#05070B] p-5 sm:rounded-[30px] sm:p-8 lg:grid-cols-[340px_1fr] lg:gap-10 lg:rounded-[36px] lg:p-10"
           >
 
             {/* Left */}
@@ -83,7 +83,7 @@ export default function Leadership() {
                 {member.designation}
               </span>
 
-              <h3 className="mt-6 text-5xl font-bold text-white">
+              <h3 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                 {member.name}
               </h3>
 

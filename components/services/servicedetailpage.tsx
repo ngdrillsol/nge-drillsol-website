@@ -24,7 +24,7 @@ export default function ServiceDetailPage({
           <div className="absolute bottom-[-200px] right-[-150px] h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[160px]" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-28">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:px-8 lg:py-28">
           {/* LEFT */}
 
           <div>
@@ -98,7 +98,7 @@ export default function ServiceDetailPage({
           SERVICE OVERVIEW
       ========================================================= */}
 
-      <section className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           {/* SECTION LABEL */}
 
@@ -140,7 +140,7 @@ export default function ServiceDetailPage({
       ========================================================= */}
 
       <section className="border-y border-white/10 bg-[#080D15]">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">
               RELATED SOLUTIONS
@@ -179,7 +179,7 @@ export default function ServiceDetailPage({
           WHY NGE / SERVICE APPROACH
       ========================================================= */}
 
-      <section className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0B1420] to-[#080C13] p-8 md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>

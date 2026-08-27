@@ -8,20 +8,20 @@ export default function EngineeringSolution() {
   const whatsappUrl = `https://wa.me/919106360907?text=${whatsappMessage}`;
 
   return (
-    <section className="relative overflow-hidden -mt-24 bg-[#05070B] pt-12 pb-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative mt-0 overflow-hidden bg-[#05070B] pb-12 pt-12 sm:pb-16 lg:-mt-24 lg:pb-28 lg:pt-12">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:static lg:z-auto lg:px-8">
         {/* Transition Blend */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#05070B] via-[#05070B]/95 to-transparent" />
         </div>
 
         {/* Header */}
-        <div className="mx-auto mb-20 max-w-4xl text-center">
+        <div className="relative z-10 mx-auto mb-10 max-w-4xl text-center sm:mb-14 lg:static lg:z-auto lg:mb-20">
           <div className="text-xs font-semibold uppercase tracking-[0.35em] text-yellow-500">
             ENGINEERING EXPERTISE
           </div>
 
-          <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-white md:text-6xl">
+          <h2 className="relative z-10 mt-5 px-1 text-3xl font-black leading-[1.15] tracking-tight text-white opacity-100 sm:text-4xl md:text-5xl lg:static lg:z-auto lg:text-6xl">
             Engineering Solutions
             <br />
             for Every Drilling Challenge
@@ -35,10 +35,10 @@ export default function EngineeringSolution() {
         </div>
 
         {/* Vertical Layout */}
-        <div className="space-y-10">
+        <div className="space-y-6 sm:space-y-8 lg:space-y-10">
 
           {/* Engineering Philosophy */}
-          <div className="mx-auto max-w-6xl rounded-[32px] bg-gradient-to-br from-slate-900 via-[#111827] to-slate-900 p-10 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-16">
+          <div className="mx-auto max-w-6xl rounded-[24px] bg-gradient-to-br from-slate-900 via-[#111827] to-slate-900 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:rounded-[28px] sm:p-8 md:p-12 lg:rounded-[32px] lg:p-16">
             <div className="mx-auto max-w-4xl text-center">
               <div className="text-xs font-semibold uppercase tracking-[0.35em] text-yellow-500">
                 HOW WE ENGINEER
@@ -50,7 +50,7 @@ export default function EngineeringSolution() {
                 We begin with your project.
               </h3>
 
-              <p className="mt-8 text-lg leading-8 text-slate-300">
+              <p className="mt-6 text-base leading-7 text-slate-300 sm:mt-8 sm:text-lg sm:leading-8">
                 Every drilling project starts with understanding the geology,
                 drilling objectives, operating conditions and long-term project
                 requirements.
@@ -60,8 +60,8 @@ export default function EngineeringSolution() {
                 drilling challenge—not to fit a standard catalogue.
               </p>
 
-              <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+              <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <p className="text-sm font-semibold uppercase tracking-wider text-yellow-500">
                     01
                   </p>
@@ -70,7 +70,7 @@ export default function EngineeringSolution() {
                   </h4>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <p className="text-sm font-semibold uppercase tracking-wider text-yellow-500">
                     02
                   </p>
@@ -79,7 +79,7 @@ export default function EngineeringSolution() {
                   </h4>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <p className="text-sm font-semibold uppercase tracking-wider text-yellow-500">
                     03
                   </p>
@@ -88,7 +88,7 @@ export default function EngineeringSolution() {
                   </h4>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <p className="text-sm font-semibold uppercase tracking-wider text-yellow-500">
                     04
                   </p>
@@ -98,7 +98,7 @@ export default function EngineeringSolution() {
                 </div>
               </div>
 
-              <div className="mt-12 text-center">
+              <div className="mt-8 text-center sm:mt-12">
                 <p className="text-2xl font-semibold italic text-white">
                   Engineering before Equipment.
                 </p>

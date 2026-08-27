@@ -31,7 +31,7 @@ export default function RegionSelector() {
           Global Regions
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Choose Your Market
         </h2>
 

@@ -21,7 +21,7 @@ const icons = [
 
 export default function ContactCards() {
   return (
-    <section className="space-y-14">
+    <section className="space-y-10 md:space-y-14">
 
       {/* Heading */}
 
@@ -31,7 +31,7 @@ export default function ContactCards() {
           Quick Contact
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Reach Our
           <span className="block text-yellow-400">
             Engineering Team
@@ -48,7 +48,7 @@ export default function ContactCards() {
 
       {/* Cards */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-1 pr-16 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-8 md:grid-cols-2 md:overflow-visible md:pr-0 xl:grid-cols-4">
 
         {contactCards.map((card, index) => {
 
@@ -58,6 +58,7 @@ export default function ContactCards() {
 
             <motion.div
               key={card.title}
+              className="w-[84vw] max-w-[330px] shrink-0 snap-start md:w-auto md:max-w-none"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -72,7 +73,7 @@ export default function ContactCards() {
                     ? "_blank"
                     : undefined
                 }
-                className="group flex h-full flex-col rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+                className="group flex h-full flex-col rounded-[30px] border border-white/10 bg-[#090909] p-6 transition-all duration-300 hover:border-yellow-500/30 md:p-8"
               >
 
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">

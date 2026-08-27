@@ -11,7 +11,7 @@ export default function IndustriesSection() {
   return (
     <Section
       id="industries"
-      className="relative overflow-hidden bg-[#05070B]"
+      className="relative overflow-hidden bg-[#05070B] py-12 sm:py-16 lg:py-32"
     >
       {/* Background Glow */}
 
@@ -29,7 +29,7 @@ export default function IndustriesSection() {
 
         {/* Industries Grid */}
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:pb-0 xl:grid-cols-3">
 
           {industries.map((industry) => (
 

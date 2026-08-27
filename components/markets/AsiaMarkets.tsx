@@ -27,7 +27,7 @@ export default function AsiaMarkets() {
           Asia
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Engineering Solutions for Asia
         </h2>
 

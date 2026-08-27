@@ -27,7 +27,7 @@ export default function GlobalOffice() {
           Head Office
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Visit Our
           <span className="block text-yellow-400">
             Engineering Facility
@@ -47,7 +47,7 @@ export default function GlobalOffice() {
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="grid gap-10 overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#111827] via-[#090909] to-[#05070B] p-10 lg:grid-cols-[1.2fr_1fr]"
+        className="grid gap-8 overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#111827] via-[#090909] to-[#05070B] p-5 sm:rounded-[30px] sm:p-8 lg:grid-cols-[1.2fr_1fr] lg:gap-10 lg:rounded-[36px] lg:p-10"
       >
 
         {/* Left */}
@@ -106,7 +106,7 @@ export default function GlobalOffice() {
                 className="text-yellow-400"
               />
 
-              <span className="text-white break-all">
+              <span className="break-words text-white">
                 {office.email}
               </span>
 

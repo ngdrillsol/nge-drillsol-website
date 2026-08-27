@@ -30,7 +30,7 @@ export default function BusinessHours() {
 
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
 
           We're Ready
 
@@ -68,7 +68,7 @@ export default function BusinessHours() {
 
           viewport={{ once: true }}
 
-          className="rounded-[36px] border border-white/10 bg-[#090909] p-10"
+          className="rounded-[24px] border border-white/10 bg-[#090909] p-5 sm:rounded-[30px] sm:p-8 lg:rounded-[36px] lg:p-10"
 
         >
 

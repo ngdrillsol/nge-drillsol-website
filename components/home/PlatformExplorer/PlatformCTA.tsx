@@ -17,7 +17,7 @@ export default function PlatformCTA({
       transition={{ duration: 0.4 }}
       className="overflow-hidden rounded-3xl border border-yellow-500/20 bg-gradient-to-br from-yellow-500/10 via-white/5 to-transparent"
     >
-      <div className="flex flex-col gap-8 p-8 lg:flex-row lg:items-center lg:justify-between lg:p-10">
+      <div className="flex flex-col gap-6 p-5 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-10">
         {/* Left Side */}
         <div className="max-w-3xl">
           <span className="inline-flex rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">

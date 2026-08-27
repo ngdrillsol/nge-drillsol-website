@@ -23,7 +23,7 @@ export default function PlatformShowcase({
         <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-yellow-500/10 blur-3xl" />
         <div className="absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
 
-        <div className="relative grid gap-12 p-8 lg:grid-cols-2 lg:p-12">
+        <div className="relative grid gap-8 p-5 sm:p-8 lg:grid-cols-2 lg:gap-12 lg:p-12">
 
 
           {/* Platform Details */}

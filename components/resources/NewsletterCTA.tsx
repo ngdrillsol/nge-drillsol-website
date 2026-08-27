@@ -12,7 +12,7 @@ import {
 
 export default function NewsletterCTA() {
   return (
-    <section className="relative overflow-hidden rounded-[36px] border border-yellow-500/20 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-8 py-20 lg:px-16">
+    <section className="relative overflow-hidden rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-4 py-12 sm:rounded-[30px] sm:px-6 sm:py-16 lg:rounded-[36px] lg:px-16 lg:py-20">
 
       {/* Background Glow */}
 
@@ -28,7 +28,7 @@ export default function NewsletterCTA() {
             Engineering Knowledge Network
           </span>
 
-          <h2 className="mt-8 text-5xl font-bold text-white xl:text-6xl">
+          <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:mt-8 sm:text-4xl lg:text-5xl xl:text-6xl">
             Never Miss
             <span className="block text-yellow-400">
               New Engineering Insights

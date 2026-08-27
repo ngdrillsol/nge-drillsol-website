@@ -1,15 +1,54 @@
 import OperationModule from "./OperationModule";
 
+const operations = [
+  {
+    title: "BUY A DRILLING RIG",
+    applications: ["Water Well", "DTH", "Rotary", "Core", "Piling"],
+    metric: "124",
+    metricLabel: "AVAILABLE CONFIGURATIONS",
+  },
+  {
+    title: "SELECT BY GEOLOGY",
+    applications: ["Hard Rock", "Soft Formation", "Sand", "Clay", "Mixed Geology"],
+    metric: "06",
+    metricLabel: "GEOLOGY CATEGORIES",
+  },
+  {
+    title: "SPARE PARTS",
+    applications: ["Drill Pipes", "Drag Bits", "DTH Hammers", "Mud Pumps", "Hydraulics"],
+    metric: "500+",
+    metricLabel: "PRODUCTS",
+  },
+  {
+    title: "RIG CUSTOMIZATION",
+    applications: ["Hydraulics", "Mast Design", "Rotary Head", "Controls", "Carrier Integration"],
+    metric: "100+",
+    metricLabel: "CUSTOM OPTIONS",
+  },
+  {
+    title: "TECHNICAL CONSULTANCY",
+    applications: ["Rig Selection", "Drilling Method", "Formation Analysis", "Project Planning", "Tender Support"],
+    metric: "25+",
+    metricLabel: "YEARS OF EXPERIENCE",
+  },
+  {
+    title: "GOVERNMENT & EPC",
+    applications: ["Water Supply", "Solar Projects", "Infrastructure", "Mining", "Rural Development"],
+    metric: "40+",
+    metricLabel: "COUNTRIES SERVED",
+  },
+];
+
 export default function CommandPanel() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#050B14] py-32">
+    <section className="relative w-full overflow-hidden bg-[#050B14] py-12 sm:py-16 lg:py-32">
       {/* Ambient Background Glow */}
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[180px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-[#0B1420] shadow-[0_0_60px_rgba(37,99,235,0.08)]">
           {/* Corner Bolts */}
 
@@ -23,7 +62,7 @@ export default function CommandPanel() {
 
           {/* Header */}
 
-          <div className="px-8 py-16 text-center md:px-16">
+          <div className="px-5 py-10 text-center sm:px-8 sm:py-12 md:px-16 md:py-16">
             <p className="text-xs font-semibold uppercase tracking-[0.45em] text-blue-400">
               NGE DRILLSOL
             </p>
@@ -40,113 +79,41 @@ export default function CommandPanel() {
 
             {/* Divider */}
 
-            <div className="mx-auto mt-12 h-px w-full max-w-4xl bg-gradient-to-r from-transparent via-blue-500/70 to-transparent" />
+            <div className="mx-auto mt-8 h-px w-full max-w-4xl bg-gradient-to-r from-transparent via-blue-500/70 to-transparent sm:mt-12" />
           </div>
 
           {/* Operation Layout */}
 
-          <div className="px-8 pb-16 md:px-16">
-            {/* ==================================================
-                BUY A DRILLING RIG
-            ================================================== */}
-
-            <div className="mb-6">
-              <OperationModule
-                title="BUY A DRILLING RIG"
-                applications={[
-                  "Water Well",
-                  "DTH",
-                  "Rotary",
-                  "Core",
-                  "Piling",
-                ]}
-                metric="124"
-                metricLabel="AVAILABLE CONFIGURATIONS"
-                variant="primary"
-              />
+          <div className="pb-8 lg:px-16 lg:pb-16">
+            {/* Mobile operation rail */}
+            <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-8 lg:hidden">
+              {operations.map((operation) => (
+                <div
+                  key={operation.title}
+                  className="w-[86vw] max-w-[360px] shrink-0 snap-start"
+                >
+                  <OperationModule {...operation} />
+                </div>
+              ))}
             </div>
 
-            {/* ==================================================
-                SELECT BY GEOLOGY + SPARE PARTS
-            ================================================== */}
+            {/* Existing desktop operation layout */}
+            <div className="hidden lg:block">
+              <div className="mb-6">
+                <OperationModule {...operations[0]} />
+              </div>
 
-            <div className="mb-6 grid gap-6 lg:grid-cols-2">
-              <OperationModule
-                title="SELECT BY GEOLOGY"
-                applications={[
-                  "Hard Rock",
-                  "Soft Formation",
-                  "Sand",
-                  "Clay",
-                  "Mixed Geology",
-                ]}
-                metric="06"
-                metricLabel="GEOLOGY CATEGORIES"
-              />
+              <div className="mb-6 grid grid-cols-2 gap-6">
+                <OperationModule {...operations[1]} />
+                <OperationModule {...operations[2]} />
+              </div>
 
-              <OperationModule
-                title="SPARE PARTS"
-                applications={[
-                  "Drill Pipes",
-                  "Drag Bits",
-                  "DTH Hammers",
-                  "Mud Pumps",
-                  "Hydraulics",
-                ]}
-                metric="500+"
-                metricLabel="PRODUCTS"
-              />
-            </div>
+              <div className="mb-6 grid grid-cols-2 gap-6">
+                <OperationModule {...operations[3]} />
+                <OperationModule {...operations[4]} />
+              </div>
 
-            {/* ==================================================
-                CUSTOMIZATION + CONSULTANCY
-            ================================================== */}
-
-            <div className="mb-6 grid gap-6 lg:grid-cols-2">
-              <OperationModule
-                title="RIG CUSTOMIZATION"
-                applications={[
-                  "Hydraulics",
-                  "Mast Design",
-                  "Rotary Head",
-                  "Controls",
-                  "Carrier Integration",
-                ]}
-                metric="100+"
-                metricLabel="CUSTOM OPTIONS"
-              />
-
-              <OperationModule
-                title="TECHNICAL CONSULTANCY"
-                applications={[
-                  "Rig Selection",
-                  "Drilling Method",
-                  "Formation Analysis",
-                  "Project Planning",
-                  "Tender Support",
-                ]}
-                metric="25+"
-                metricLabel="YEARS OF EXPERIENCE"
-              />
-            </div>
-
-            {/* ==================================================
-                GOVERNMENT & EPC
-            ================================================== */}
-
-            <div>
-              <OperationModule
-                title="GOVERNMENT & EPC"
-                applications={[
-                  "Water Supply",
-                  "Solar Projects",
-                  "Infrastructure",
-                  "Mining",
-                  "Rural Development",
-                ]}
-                metric="40+"
-                metricLabel="COUNTRIES SERVED"
-              />
+              <OperationModule {...operations[5]} />
             </div>
           </div>
         </div>

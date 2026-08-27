@@ -45,7 +45,7 @@ export default function RigGallery({
   };
 
   return (
-    <section className="space-y-12">
+    <section className="min-w-0 space-y-8 sm:space-y-12">
 
       {/* =====================================================
           SECTION HEADING
@@ -88,7 +88,7 @@ export default function RigGallery({
 
         <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#090C11]">
 
-          <div className="relative aspect-[16/10]">
+          <div className="relative aspect-[4/3] sm:aspect-[16/10]">
 
             <AnimatePresence mode="wait">
 
@@ -127,7 +127,7 @@ export default function RigGallery({
                 type="button"
                 onClick={previousImage}
                 aria-label="Previous image"
-                className="absolute left-5 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:bg-black/80 hover:text-yellow-400"
+                className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:bg-black/80 hover:text-yellow-400 sm:left-5 sm:h-12 sm:w-12"
               >
                 <ChevronLeft size={22} />
               </button>
@@ -140,7 +140,7 @@ export default function RigGallery({
                 type="button"
                 onClick={nextImage}
                 aria-label="Next image"
-                className="absolute right-5 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:bg-black/80 hover:text-yellow-400"
+                className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:bg-black/80 hover:text-yellow-400 sm:right-5 sm:h-12 sm:w-12"
               >
                 <ChevronRight size={22} />
               </button>
@@ -152,7 +152,7 @@ export default function RigGallery({
               type="button"
               onClick={() => setIsFullscreen(true)}
               aria-label="Open image fullscreen"
-              className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:text-yellow-400"
+              className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition hover:border-yellow-500/40 hover:text-yellow-400 sm:right-5 sm:top-5 sm:h-11 sm:w-11"
             >
               <Maximize2 size={18} />
             </button>
@@ -165,7 +165,7 @@ export default function RigGallery({
             THUMBNAILS
         =================================================== */}
 
-        <div className="flex gap-3 overflow-x-auto lg:flex-col lg:overflow-y-auto">
+        <div className="flex max-w-full gap-3 overflow-x-auto pb-2 lg:flex-col lg:overflow-y-auto lg:pb-0">
 
           {images.map((image, index) => {
 
@@ -219,7 +219,7 @@ export default function RigGallery({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-5 backdrop-blur-xl"
+            className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-2 backdrop-blur-xl sm:p-5"
             onClick={() => setIsFullscreen(false)}
           >
 

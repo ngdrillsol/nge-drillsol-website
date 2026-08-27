@@ -10,18 +10,18 @@ const africanCountries = countryMarkets.filter(
 
 export default function AfricaMarkets() {
   return (
-    <section className="px-6 py-20 lg:px-8">
+    <section className="py-10 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
 
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center lg:mb-12">
 
           <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400">
             Africa
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold text-white lg:text-5xl">
+          <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
             Engineering Solutions for Africa
           </h2>
 
@@ -34,14 +34,14 @@ export default function AfricaMarkets() {
 
         {/* Country Cards */}
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-6 md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
 
           {africanCountries.map((country) => (
 
             <Link
               key={country.id}
               href={country.href}
-              className="group flex min-h-[430px] flex-col rounded-[28px] border border-white/10 bg-[#090909] p-7 transition-all duration-300 hover:border-yellow-500/40 hover:bg-[#0d0d0d]"
+              className="group flex min-h-0 w-[84vw] max-w-[340px] shrink-0 snap-start flex-col rounded-[28px] border border-white/10 bg-[#090909] p-6 transition-all duration-300 hover:border-yellow-500/40 hover:bg-[#0d0d0d] md:min-h-[430px] md:w-auto md:max-w-none md:p-7"
             >
 
               {/* Country Header */}

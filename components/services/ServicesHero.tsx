@@ -11,7 +11,7 @@ import {
 
 export default function ServicesHero() {
   return (
-    <section className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-8 py-20 lg:px-16">
+    <section className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#07111F] via-[#090909] to-[#05070B] px-4 py-12 sm:rounded-[30px] sm:px-6 sm:py-16 lg:rounded-[36px] lg:px-16 lg:py-20">
 
       {/* Background Glow */}
 
@@ -19,7 +19,7 @@ export default function ServicesHero() {
 
       <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[180px]" />
 
-      <div className="relative z-10 grid items-center gap-16 lg:grid-cols-2">
+      <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
 
         {/* Left */}
 
@@ -33,7 +33,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mt-8 text-5xl font-bold leading-tight text-white xl:text-7xl"
+            className="mt-6 text-4xl font-bold leading-tight text-white sm:mt-8 sm:text-5xl xl:text-7xl"
           >
             Beyond Manufacturing.
             <span className="block text-yellow-400">

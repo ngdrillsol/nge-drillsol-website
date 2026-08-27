@@ -25,7 +25,7 @@ export default function FeaturedProjects() {
           Featured Projects
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Engineering Excellence in Action
         </h2>
 
@@ -56,7 +56,7 @@ export default function FeaturedProjects() {
 
               {/* Content */}
 
-              <div className="p-10 lg:p-12">
+              <div className="p-5 sm:p-8 lg:p-12">
 
                 {/* Application */}
 

@@ -12,7 +12,7 @@ import { certifications } from "./about.data";
 
 export default function Certifications() {
   return (
-    <section className="space-y-16">
+    <section className="space-y-10 sm:space-y-16">
 
       {/* Heading */}
 
@@ -37,7 +37,7 @@ export default function Certifications() {
 
       {/* CERTIFICATES */}
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:gap-6 sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3 xl:grid-cols-5">
 
         {certifications.map((certificate, index) => (
           <motion.div
@@ -52,16 +52,25 @@ export default function Certifications() {
             whileHover={{ y: -6 }}
             className="
               group
+              flex
+              w-[76vw]
+              max-w-[300px]
+              shrink-0
+              snap-start
+              flex-col
               rounded-[28px]
               border
               border-white/10
               bg-[#090909]
-              p-6
+              p-4
               text-center
               transition-all
               duration-300
               hover:border-yellow-500/40
               hover:shadow-[0_20px_60px_rgba(234,179,8,0.08)]
+              sm:w-auto
+              sm:max-w-none
+              sm:p-6
             "
           >
 
@@ -71,7 +80,7 @@ export default function Certifications() {
               className="
                 relative
                 flex
-                h-[150px]
+                h-[120px]
                 w-full
                 items-center
                 justify-center
@@ -80,7 +89,9 @@ export default function Certifications() {
                 border
                 border-white/10
                 bg-white/[0.04]
-                p-5
+                p-4
+                sm:h-[150px]
+                sm:p-5
               "
             >
               <div className="relative h-full w-full">
@@ -101,7 +112,7 @@ export default function Certifications() {
 
             {/* Certificate Name */}
 
-            <h3 className="mt-6 text-lg font-bold text-white">
+            <h3 className="mt-4 text-lg font-bold text-white sm:mt-6">
               {certificate.title}
             </h3>
 

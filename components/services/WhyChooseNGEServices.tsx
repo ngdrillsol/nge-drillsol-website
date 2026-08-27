@@ -51,7 +51,7 @@ const reasons = [
 
 export default function WhyChooseNGEServices() {
   return (
-    <section className="space-y-16">
+    <section className="space-y-10 md:space-y-16">
 
       {/* Heading */}
 
@@ -61,7 +61,7 @@ export default function WhyChooseNGEServices() {
           Why Choose NGE Services
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           More Than Equipment.
           <span className="block text-yellow-400">
             Complete Engineering Partnership.
@@ -78,7 +78,7 @@ export default function WhyChooseNGEServices() {
 
       {/* Cards */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-8 md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
 
         {reasons.map((item, index) => {
           const Icon = item.icon;
@@ -91,7 +91,7 @@ export default function WhyChooseNGEServices() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               whileHover={{ y: -6 }}
-              className="rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+              className="w-[84vw] max-w-[340px] shrink-0 snap-start rounded-[30px] border border-white/10 bg-[#090909] p-6 transition-all duration-300 hover:border-yellow-500/30 md:w-auto md:max-w-none md:p-8"
             >
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400">
                 <Icon size={30} />
@@ -112,7 +112,7 @@ export default function WhyChooseNGEServices() {
 
       {/* Bottom Banner */}
 
-      <div className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-10">
+      <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
         <h3 className="text-center text-3xl font-bold text-white">
           Engineering Support That Continues After Delivery

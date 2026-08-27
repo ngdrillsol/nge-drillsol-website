@@ -39,7 +39,7 @@ const customizationPoints = [
 
 export default function CustomEngineering() {
   return (
-    <section className="space-y-16">
+    <section className="space-y-10 md:space-y-16">
 
       {/* Heading */}
 
@@ -49,7 +49,7 @@ export default function CustomEngineering() {
           Custom Engineering
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Every Project
           <span className="block text-yellow-400">
             Deserves Its Own Engineering Solution
@@ -67,7 +67,7 @@ export default function CustomEngineering() {
 
       {/* Two Column Layout */}
 
-      <div className="grid items-center gap-14 lg:grid-cols-2">
+      <div className="flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-14 md:overflow-visible lg:grid-cols-2 lg:items-center">
 
         {/* Left */}
 
@@ -75,7 +75,7 @@ export default function CustomEngineering() {
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] to-[#090909] p-10"
+          className="w-[84vw] max-w-[340px] shrink-0 snap-start rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] to-[#090909] p-5 sm:rounded-[28px] sm:p-8 md:w-auto md:max-w-none lg:rounded-[32px] lg:p-10"
         >
 
           <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-yellow-500/10">
@@ -131,7 +131,7 @@ export default function CustomEngineering() {
 
         {/* Right */}
 
-        <div className="grid gap-6">
+        <div className="contents md:grid md:gap-6">
 
           {customizationPoints.map((point, index) => {
             const Icon = point.icon;
@@ -144,7 +144,7 @@ export default function CustomEngineering() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-white/10 bg-[#090909] p-8 transition hover:border-yellow-500/30"
+                className="w-[84vw] max-w-[340px] shrink-0 snap-start rounded-[28px] border border-white/10 bg-[#090909] p-6 transition hover:border-yellow-500/30 md:w-auto md:max-w-none md:p-8"
               >
 
                 <div className="flex items-start gap-5">

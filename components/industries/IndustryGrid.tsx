@@ -10,7 +10,7 @@ export default function IndustryGrid() {
   return (
     <section
       id="industries-grid"
-      className="space-y-14"
+      className="space-y-10 sm:space-y-12 lg:space-y-14"
     >
       {/* Heading */}
 
@@ -20,7 +20,7 @@ export default function IndustryGrid() {
           Industries
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Choose Your Industry
         </h2>
 
@@ -34,7 +34,7 @@ export default function IndustryGrid() {
 
       {/* Cards */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:pb-0 xl:grid-cols-3">
 
         {industries.map((industry, index) => (
 
@@ -45,34 +45,35 @@ export default function IndustryGrid() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.08 }}
             whileHover={{ y: -6 }}
+            className="w-[86vw] max-w-[360px] shrink-0 snap-start lg:w-auto lg:max-w-none"
           >
 
             <Link
               href={industry.href}
-              className="group block rounded-[32px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+              className="group block h-full rounded-[24px] border border-white/10 bg-[#090909] p-5 transition-all duration-300 hover:border-yellow-500/30 sm:p-6 lg:rounded-[32px] lg:p-8"
             >
 
               {/* Emoji */}
 
-              <div className="text-5xl">
+              <div className="text-4xl lg:text-5xl">
                 {industry.icon}
               </div>
 
               {/* Title */}
 
-              <h3 className="mt-6 text-3xl font-bold text-white">
+              <h3 className="mt-5 text-2xl font-bold text-white lg:mt-6 lg:text-3xl">
                 {industry.title}
               </h3>
 
               {/* Description */}
 
-              <p className="mt-5 leading-8 text-slate-400">
+              <p className="mt-4 text-sm leading-6 text-slate-400 sm:text-base sm:leading-7 lg:mt-5 lg:leading-8">
                 {industry.description}
               </p>
 
               {/* Applications */}
 
-              <div className="mt-8">
+              <div className="mt-5 lg:mt-8">
 
                 <p className="mb-3 text-xs uppercase tracking-[0.25em] text-yellow-400">
                   Applications
@@ -97,7 +98,7 @@ export default function IndustryGrid() {
 
               {/* Recommended Rigs */}
 
-              <div className="mt-8">
+              <div className="mt-5 lg:mt-8">
 
                 <p className="mb-3 text-xs uppercase tracking-[0.25em] text-yellow-400">
                   Recommended Rigs
@@ -122,7 +123,7 @@ export default function IndustryGrid() {
 
               {/* CTA */}
 
-              <div className="mt-10 flex items-center justify-between">
+              <div className="mt-6 flex items-center justify-between lg:mt-10">
 
                 <span className="font-semibold text-yellow-400">
                   Explore Industry

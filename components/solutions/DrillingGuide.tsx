@@ -51,7 +51,7 @@ const drillingMethods = [
 
 export default function DrillingGuide() {
   return (
-    <section className="space-y-14">
+    <section className="space-y-10 sm:space-y-12 lg:space-y-14">
 
       {/* Section Header */}
       <div className="text-center">
@@ -60,7 +60,7 @@ export default function DrillingGuide() {
           Drilling Methods
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Understand Before You Drill
         </h2>
 
@@ -73,7 +73,7 @@ export default function DrillingGuide() {
       </div>
 
       {/* Drilling Method Cards */}
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:pb-0">
 
         {drillingMethods.map((method, index) => {
           const Icon = method.icon;
@@ -86,31 +86,32 @@ export default function DrillingGuide() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               whileHover={{ y: -6 }}
+              className="w-[86vw] max-w-[360px] shrink-0 snap-start lg:w-auto lg:max-w-none"
             >
 
               {/* Entire Card Is Clickable */}
               <Link
                 href={method.href}
-                className="group block rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+                className="group block h-full rounded-[24px] border border-white/10 bg-[#090909] p-5 transition-all duration-300 hover:border-yellow-500/30 sm:p-6 lg:rounded-[30px] lg:p-8"
               >
 
                 {/* Icon */}
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400 sm:mb-5 lg:mb-6 lg:h-16 lg:w-16">
                   <Icon size={30} />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-3xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-white lg:text-3xl">
                   {method.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-5 leading-8 text-slate-400">
+                <p className="mt-4 text-sm leading-6 text-slate-400 sm:text-base sm:leading-7 lg:mt-5 lg:leading-8">
                   {method.description}
                 </p>
 
                 {/* Information */}
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:mt-8 lg:gap-4">
 
                   <div className="rounded-xl border border-white/10 bg-white/5 p-4">
 
@@ -139,7 +140,7 @@ export default function DrillingGuide() {
                 </div>
 
                 {/* Navigation */}
-                <div className="mt-8 inline-flex items-center gap-3 font-semibold text-yellow-400 transition group-hover:text-yellow-300">
+                <div className="mt-6 inline-flex items-center gap-3 font-semibold text-yellow-400 transition group-hover:text-yellow-300 lg:mt-8">
 
                   Learn More
 

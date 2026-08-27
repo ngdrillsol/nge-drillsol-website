@@ -84,7 +84,7 @@ export default function EngineeringPhilosophy() {
 
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
 
           We Don't Sell Machines.
 
@@ -170,7 +170,7 @@ export default function EngineeringPhilosophy() {
 
       {/* Bottom Statement */}
 
-      <div className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-10">
+      <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
         <div className="flex flex-col items-center text-center">
 

@@ -13,7 +13,7 @@ export default function OperationModule({
   metricLabel,
 }: OperationModuleProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-slate-700/80 bg-[#1B202B] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+    <div className="relative h-full overflow-hidden rounded-3xl border border-slate-700/80 bg-[#1B202B] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6">
       <div className="pointer-events-none absolute inset-0 rounded-3xl border border-white/5" />
 
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
@@ -31,7 +31,7 @@ export default function OperationModule({
       {/* Module Title */}
 
       <div className="mb-5">
-        <h3 className="text-[1.8rem] font-black uppercase tracking-tight text-white">
+        <h3 className="text-2xl font-black uppercase leading-tight tracking-tight text-white sm:text-[1.8rem]">
           {title}
         </h3>
 
@@ -59,7 +59,7 @@ export default function OperationModule({
 
       {/* Bottom Information Area */}
 
-      <div className="mt-6 border-t border-white/10 pt-6">
+      <div className="mt-5 border-t border-white/10 pt-5 sm:mt-6 sm:pt-6">
         <div className="grid gap-6 md:grid-cols-5">
           {/* Left Spacer */}
 
@@ -72,7 +72,7 @@ export default function OperationModule({
               {metricLabel}
             </p>
 
-            <p className="mt-1 text-5xl font-black tracking-tight text-white">
+            <p className="mt-1 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
               {metric}
             </p>
           </div>

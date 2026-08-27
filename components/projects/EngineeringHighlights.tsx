@@ -57,7 +57,7 @@ const highlights = [
 
 export default function EngineeringHighlights() {
   return (
-    <section className="space-y-14">
+    <section className="space-y-10 md:space-y-14">
 
       {/* Header */}
 
@@ -67,7 +67,7 @@ export default function EngineeringHighlights() {
           Engineering Highlights
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Built on Experience.
           <span className="block text-yellow-400">
             Proven in the Field.
@@ -84,7 +84,7 @@ export default function EngineeringHighlights() {
 
       {/* Cards */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-8 md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
 
         {highlights.map((item, index) => {
           const Icon = item.icon;
@@ -97,13 +97,13 @@ export default function EngineeringHighlights() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               whileHover={{ y: -6 }}
-              className="rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+              className="w-[82vw] max-w-[330px] shrink-0 snap-start rounded-[30px] border border-white/10 bg-[#090909] p-6 transition-all duration-300 hover:border-yellow-500/30 md:w-auto md:max-w-none md:p-8"
             >
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-400">
                 <Icon size={30} />
               </div>
 
-              <div className="text-5xl font-bold text-yellow-400">
+              <div className="text-3xl font-bold text-yellow-400 sm:text-4xl lg:text-5xl">
                 {item.value}
               </div>
 

@@ -24,7 +24,7 @@ export default function PlatformDetails({
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
-        className="mt-5 text-4xl font-bold leading-tight text-white xl:text-5xl"
+        className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl xl:text-5xl"
       >
         {platform.title}
       </motion.h2>
@@ -44,13 +44,13 @@ export default function PlatformDetails({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.15 }}
-        className="mt-7 max-w-2xl leading-8 text-slate-300"
+        className="mt-5 max-w-2xl leading-7 text-slate-300 sm:mt-7 sm:leading-8"
       >
         {platform.description}
       </motion.p>
 
       {/* Drilling Methods */}
-      <div className="mt-10">
+      <div className="mt-7 sm:mt-10">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-500">
           Drilling Methods
         </h3>
@@ -68,7 +68,7 @@ export default function PlatformDetails({
       </div>
 
       {/* Supported Models */}
-      <div className="mt-10">
+      <div className="mt-7 sm:mt-10">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-500">
           Supported Models
         </h3>
@@ -86,7 +86,7 @@ export default function PlatformDetails({
       </div>
 
       {/* Highlights */}
-      <div className="mt-10">
+      <div className="mt-7 sm:mt-10">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-500">
           Engineering Highlights
         </h3>

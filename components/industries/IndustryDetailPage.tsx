@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Drill, Mountain } from "lucide-react";
 
 import type { Industry } from "./industries.types";
+import { industryRigRoutes } from "./industry-rig-routes";
 
 interface IndustryDetailPageProps {
   industry: Industry;
@@ -276,24 +277,39 @@ export default function IndustryDetailPage({
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            {industry.recommendedRigs.map((rig) => (
-              <Link
-                key={rig}
-                href={`/drilling-rigs?search=${encodeURIComponent(rig)}`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-5 transition hover:border-yellow-500/40 hover:bg-black/30"
-              >
+            {industry.recommendedRigs.map((rig) => {
+              const href = industryRigRoutes[rig];
 
-                <span className="font-bold text-white">
-                  {rig}
-                </span>
+              if (!href) {
+                return (
+                  <div
+                    key={rig}
+                    className="flex min-h-14 items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"
+                  >
+                    <span className="font-bold text-white">{rig}</span>
+                  </div>
+                );
+              }
 
-                <ArrowRight
-                  size={18}
-                  className="text-yellow-400 transition-transform group-hover:translate-x-1"
-                />
+              return (
+                <Link
+                  key={rig}
+                  href={href}
+                  className="group flex min-h-14 items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4 transition hover:border-yellow-500/40 hover:bg-black/30 active:bg-black/40"
+                >
 
-              </Link>
-            ))}
+                  <span className="font-bold text-white">
+                    {rig}
+                  </span>
+
+                  <ArrowRight
+                    size={18}
+                    className="text-yellow-400 transition-transform group-hover:translate-x-1"
+                  />
+
+                </Link>
+              );
+            })}
 
           </div>
 

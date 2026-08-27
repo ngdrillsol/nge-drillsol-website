@@ -1,0 +1,15 @@
+export const industryRigRoutes: Record<string, string> = {
+  NGDR3000: "/drilling-rigs/ngdr3000",
+  NGDR2000: "/drilling-rigs/ngdr2000",
+  NGDR1500: "/drilling-rigs/ngdr1500",
+  NGDR1000: "/drilling-rigs/ngdr1000",
+  NGDTH600R: "/drilling-rigs/ngdth600",
+  NGDTH450R: "/drilling-rigs/ngdth450r",
+  NGDTH300R: "/drilling-rigs/ngdth300",
+  NGCORE100: "/drilling-rigs/ngcore100",
+  NGCORE50: "/drilling-rigs/ngcore50",
+  NGDP60: "/drilling-rigs/ngdp60",
+  NGDP30: "/drilling-rigs/ngdp30",
+  NGDP15: "/drilling-rigs/ngdp15",
+  NGWR3100: "/drilling-rigs/ngwr3100",
+};

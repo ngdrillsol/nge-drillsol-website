@@ -20,7 +20,7 @@ export default function CompanyStory() {
           Our Story
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Built By Engineers.
           <span className="block text-yellow-400">
             Driven By Innovation.
@@ -46,7 +46,7 @@ export default function CompanyStory() {
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] to-[#090909] p-10"
+          className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] to-[#090909] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10"
         >
 
           <h3 className="text-4xl font-bold text-white">
@@ -150,7 +150,7 @@ export default function CompanyStory() {
 
       {/* Quote */}
 
-      <div className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-10">
+      <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
         <blockquote className="mx-auto max-w-4xl text-center text-2xl font-medium leading-10 text-white italic">
           "Our mission is not simply to manufacture drilling rigs.

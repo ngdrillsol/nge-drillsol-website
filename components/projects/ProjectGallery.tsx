@@ -10,42 +10,42 @@ import {
 
 const gallery = [
   {
-    image: "/images/projects/gallery/adani-01.jpg",
+    image: "/images/projects/adani/adani-2.png",
     title: "Adani Green Hydrogen Project",
     location: "Suigam, Gujarat",
     machine: "NGDR1500",
     application: "Groundwater Investigation",
   },
   {
-    image: "/images/projects/gallery/adani-02.jpg",
+    image: "/images/projects/adani/adani-3.png",
     title: "Khavda Renewable Energy Park",
     location: "Khavda, Gujarat",
     machine: "NGDP Series",
     application: "Solar Foundation",
   },
   {
-    image: "/images/projects/gallery/adani-03.jpg",
+    image: "/images/projects/adani/adani-4.png",
     title: "Deep Water Well Project",
     location: "India",
     machine: "NGDR2000",
     application: "Water Supply",
   },
   {
-    image: "/images/projects/gallery/adani-04.jpg",
+    image: "/images/projects/adani/adani-5.png",
     title: "Hard Rock Drilling",
     location: "Project Site",
     machine: "NGDTH600R",
     application: "Hard Rock Drilling",
   },
   {
-    image: "/images/projects/gallery/adani-05.jpg",
+    image: "/images/projects/adani/adani-6.png",
     title: "Infrastructure Project",
     location: "Construction Site",
     machine: "NGDP30",
     application: "Foundation Drilling",
   },
   {
-    image: "/images/projects/gallery/adani-06.jpg",
+    image: "/images/projects/adani/adani-7.png",
     title: "Exploration Project",
     location: "Field Location",
     machine: "NGCORE100",
@@ -55,7 +55,7 @@ const gallery = [
 
 export default function ProjectGallery() {
   return (
-    <section className="space-y-14">
+    <section className="space-y-10 md:space-y-14">
 
       {/* Heading */}
 
@@ -65,7 +65,7 @@ export default function ProjectGallery() {
           Project Gallery
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Engineering In The Field
         </h2>
 
@@ -78,7 +78,7 @@ export default function ProjectGallery() {
 
       {/* Gallery */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-8 md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
 
         {gallery.map((item, index) => (
 
@@ -89,12 +89,12 @@ export default function ProjectGallery() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.08 }}
             whileHover={{ y: -8 }}
-            className="group overflow-hidden rounded-[30px] border border-white/10 bg-[#090909]"
+            className="group w-[84vw] max-w-[340px] shrink-0 snap-start overflow-hidden rounded-[30px] border border-white/10 bg-[#090909] md:w-auto md:max-w-none"
           >
 
             {/* Image */}
 
-            <div className="relative h-72 overflow-hidden">
+            <div className="relative h-60 overflow-hidden md:h-72">
 
               <Image
                 src={item.image}
@@ -109,7 +109,7 @@ export default function ProjectGallery() {
 
             {/* Content */}
 
-            <div className="space-y-5 p-7">
+            <div className="space-y-5 p-6 md:p-7">
 
               <h3 className="text-2xl font-bold text-white">
                 {item.title}

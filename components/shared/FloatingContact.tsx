@@ -4,7 +4,7 @@ import { MessageCircle, Phone } from "lucide-react";
 
 export default function FloatingContact() {
   return (
-    <div className="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-3">
+    <div className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] z-[90] flex flex-col items-end gap-2 sm:bottom-6 sm:right-5 sm:gap-3">
 
       {/* WhatsApp */}
 
@@ -16,7 +16,7 @@ export default function FloatingContact() {
         className="
           group
           flex
-          h-14
+          h-12
           items-center
           overflow-hidden
           rounded-full
@@ -28,8 +28,9 @@ export default function FloatingContact() {
           backdrop-blur-md
           transition-all
           duration-300
-          hover:border-green-400/60
-          hover:bg-[#162219]
+          sm:h-14
+          sm:hover:border-green-400/60
+          sm:hover:bg-[#162219]
         "
       >
         <span
@@ -43,15 +44,15 @@ export default function FloatingContact() {
             opacity-0
             transition-all
             duration-300
-            group-hover:max-w-[140px]
-            group-hover:pl-5
-            group-hover:opacity-100
+            sm:group-hover:max-w-[140px]
+            sm:group-hover:pl-5
+            sm:group-hover:opacity-100
           "
         >
           WhatsApp
         </span>
 
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center sm:h-14 sm:w-14">
           <MessageCircle
             size={23}
             className="text-green-400"
@@ -67,7 +68,7 @@ export default function FloatingContact() {
         className="
           group
           flex
-          h-14
+          h-12
           items-center
           overflow-hidden
           rounded-full
@@ -79,8 +80,9 @@ export default function FloatingContact() {
           backdrop-blur-md
           transition-all
           duration-300
-          hover:border-yellow-400/60
-          hover:bg-[#211d10]
+          sm:h-14
+          sm:hover:border-yellow-400/60
+          sm:hover:bg-[#211d10]
         "
       >
         <span
@@ -94,15 +96,15 @@ export default function FloatingContact() {
             opacity-0
             transition-all
             duration-300
-            group-hover:max-w-[120px]
-            group-hover:pl-5
-            group-hover:opacity-100
+            sm:group-hover:max-w-[120px]
+            sm:group-hover:pl-5
+            sm:group-hover:opacity-100
           "
         >
           Call Us
         </span>
 
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center sm:h-14 sm:w-14">
           <Phone
             size={22}
             className="text-yellow-400"

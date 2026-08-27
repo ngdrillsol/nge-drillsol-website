@@ -14,9 +14,9 @@ export default function FeaturedCaseStudy({
   project,
 }: FeaturedCaseStudyProps) {
   return (
-    <section className="relative mt-20 overflow-hidden rounded-[28px] border border-white/10 bg-[#060606] shadow-2xl shadow-black/40">
+    <section className="relative mt-10 overflow-hidden rounded-[24px] border border-white/10 bg-[#060606] shadow-2xl shadow-black/40 sm:mt-14 lg:mt-20 lg:rounded-[28px]">
       {/* Hero Banner */}
-      <div className="relative h-[520px] overflow-hidden lg:h-[680px]">
+      <div className="relative h-[360px] overflow-hidden sm:h-[520px] lg:h-[680px]">
         <motion.div
           initial={{ scale: 1.08 }}
           whileInView={{ scale: 1 }}

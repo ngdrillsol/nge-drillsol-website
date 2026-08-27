@@ -6,7 +6,7 @@ import { ArrowRight, Drill } from "lucide-react";
 
 export default function DrillingRigsHero() {
   return (
-    <section className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0A1220] via-[#080B12] to-[#111111] px-8 py-20 lg:px-16">
+    <section className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#0A1220] via-[#080B12] to-[#111111] px-4 py-12 sm:rounded-[30px] sm:px-6 sm:py-16 lg:rounded-[36px] lg:px-16 lg:py-20">
 
       {/* Background Glow */}
 
@@ -33,7 +33,7 @@ export default function DrillingRigsHero() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08 }}
           viewport={{ once: true }}
-          className="mx-auto mt-8 max-w-4xl text-5xl font-bold leading-tight text-white xl:text-6xl"
+          className="mx-auto mt-6 max-w-4xl text-4xl font-bold leading-tight text-white sm:mt-8 sm:text-5xl xl:text-6xl"
         >
           Engineered Drilling Rigs
 

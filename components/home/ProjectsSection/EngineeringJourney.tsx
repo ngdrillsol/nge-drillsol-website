@@ -36,7 +36,7 @@ export default function EngineeringJourney({
   project,
 }: EngineeringJourneyProps) {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24">
 
       {/* Background Glow */}
 
@@ -74,7 +74,7 @@ export default function EngineeringJourney({
 
         {/* Timeline */}
 
-        <div className="relative mx-auto mt-24 max-w-6xl">
+        <div className="relative mx-auto mt-12 max-w-6xl sm:mt-16 lg:mt-24">
 
           {/* Center Line */}
 

@@ -61,7 +61,7 @@ export default function WhyChooseNGE() {
           Why Choose NGE DRILLSOL
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           More Than A Manufacturer.
           <span className="block text-yellow-400">
             Your Engineering Partner.
@@ -119,7 +119,7 @@ export default function WhyChooseNGE() {
 
       {/* Bottom Banner */}
 
-      <div className="rounded-[36px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-12">
+      <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[30px] sm:p-8 lg:rounded-[36px] lg:p-12">
 
         <div className="mx-auto max-w-5xl text-center">
 

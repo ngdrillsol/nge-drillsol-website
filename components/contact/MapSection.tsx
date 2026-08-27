@@ -21,7 +21,7 @@ export default function MapSection() {
           Find Us
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Visit Our
           <span className="block text-yellow-400">
             Headquarters
@@ -47,7 +47,7 @@ export default function MapSection() {
 
         {/* Placeholder */}
 
-        <div className="flex h-[520px] flex-col items-center justify-center bg-gradient-to-br from-[#111827] via-[#0F172A] to-[#05070B] px-8 text-center">
+        <div className="flex min-h-[430px] flex-col items-center justify-center bg-gradient-to-br from-[#111827] via-[#0F172A] to-[#05070B] px-8 py-12 text-center sm:h-[520px] sm:py-0">
 
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-yellow-500/10">
 
@@ -66,7 +66,7 @@ export default function MapSection() {
             Mehsana, Gujarat, India
           </p>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-5">
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-5">
 
             <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-4 text-white">
 

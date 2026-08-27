@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function IndustriesHeader() {
   return (
-    <div className="mx-auto mb-20 max-w-4xl text-center">
+    <div className="mx-auto mb-10 max-w-4xl text-center sm:mb-14 lg:mb-20">
       {/* Badge */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

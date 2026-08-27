@@ -6,7 +6,7 @@ import { footerSections } from "./footer.data";
 
 export default function FooterLinks() {
   return (
-    <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-8 min-[360px]:grid-cols-2 sm:gap-10 lg:grid-cols-4">
       {footerSections.map((section) => (
         <div key={section.title}>
           {/* Section Title */}

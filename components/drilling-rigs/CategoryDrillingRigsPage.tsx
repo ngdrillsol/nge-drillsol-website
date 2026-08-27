@@ -87,7 +87,7 @@ export default function CategoryDrillingRigsPage({
 
         <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[130px]" />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-32">
 
           {/* Breadcrumb */}
 
@@ -242,7 +242,7 @@ export default function CategoryDrillingRigsPage({
           MAIN CONTENT
       ====================================================== */}
 
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
 
         {/* ====================================================
             CAPABILITIES

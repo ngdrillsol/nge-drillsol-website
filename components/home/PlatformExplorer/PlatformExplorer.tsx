@@ -7,7 +7,7 @@ import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import { platformData } from "@/data/platformData";
 
-import PlatformTabs from "./PlatformTabs";
+import PlatformTabs, { platformSectionIds } from "./PlatformTabs";
 import PlatformShowcase from "./PlatformShowcase";
 import PlatformStats from "./PlatformStats";
 import PlatformCTA from "./PlatformCTA";
@@ -18,7 +18,7 @@ export default function PlatformExplorer() {
   return (
     <Section
       id="platforms"
-      className="relative overflow-hidden bg-[#05070B] py-24"
+      className="relative overflow-hidden bg-[#05070B] py-12 sm:py-16 lg:py-24"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
@@ -41,7 +41,7 @@ export default function PlatformExplorer() {
         </>
 
         {/* Platform Navigation */}
-        <div className="mt-16">
+        <div className="mt-10 sm:mt-12 lg:mt-16">
           <PlatformTabs
             platforms={platformData}
             selectedPlatform={selectedPlatform}
@@ -50,14 +50,17 @@ export default function PlatformExplorer() {
         </div>
 
         {/* Main Content */}
-        <div className="mt-12 grid gap-8 xl:grid-cols-[2fr_1fr]">
+        <div
+          id={platformSectionIds[selectedPlatform.id] ?? "platform-details"}
+          className="mt-8 grid scroll-mt-24 gap-6 sm:mt-10 sm:gap-8 lg:mt-12 xl:grid-cols-[2fr_1fr]"
+        >
           <PlatformShowcase platform={selectedPlatform} />
 
           <PlatformStats platform={selectedPlatform} />
         </div>
 
         {/* CTA */}
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-10 lg:mt-12">
           <PlatformCTA platform={selectedPlatform} />
         </div>
       </Container>

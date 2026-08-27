@@ -10,7 +10,7 @@ export default function ServiceGrid() {
   return (
     <section
       id="services-grid"
-      className="space-y-14"
+      className="space-y-10 md:space-y-14"
     >
       {/* Heading */}
 
@@ -20,7 +20,7 @@ export default function ServiceGrid() {
           Our Services
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Complete Engineering
           <span className="block text-yellow-400">
             Support Services
@@ -38,13 +38,13 @@ export default function ServiceGrid() {
 
       {/* Cards */}
 
-      <div className="grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-8 md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
 
         {services.map((service, index) => (
 
           <motion.div
             key={service.id}
-            className="h-full"
+            className="h-auto w-[84vw] max-w-[340px] shrink-0 snap-start md:h-full md:w-auto md:max-w-none"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -54,7 +54,7 @@ export default function ServiceGrid() {
 
             <Link
               href="/contact"
-              className="group flex h-full min-h-[620px] flex-col rounded-[32px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+              className="group flex h-full min-h-0 flex-col rounded-[32px] border border-white/10 bg-[#090909] p-6 transition-all duration-300 hover:border-yellow-500/30 md:min-h-[620px] md:p-8"
             >
 
               {/* Emoji */}

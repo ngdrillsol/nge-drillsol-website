@@ -34,7 +34,7 @@ export default function AdaniGreenHydrogenPage() {
 
       <section className="relative overflow-hidden">
 
-        <div className="relative h-[520px]">
+        <div className="relative h-[340px] sm:h-[520px]">
 
           <Image
             src={project.image}

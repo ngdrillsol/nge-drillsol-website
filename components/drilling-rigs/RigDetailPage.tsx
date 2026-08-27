@@ -34,7 +34,7 @@ export default function RigDetailPage({
 
       <RigHero rig={rig} />
 
-      <div className="mx-auto flex max-w-7xl flex-col gap-28 px-6 py-12 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-4 py-10 sm:gap-20 sm:px-6 sm:py-12 lg:gap-28 lg:px-8">
 
         {/* =====================================================
             GALLERY

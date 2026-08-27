@@ -32,7 +32,7 @@ export default function DepartmentContacts() {
           Departments
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Connect With The
           <span className="block text-yellow-400">
             Right Team
@@ -122,7 +122,7 @@ export default function DepartmentContacts() {
                     className="text-yellow-400"
                   />
 
-                  <span className="text-white break-all">
+                  <span className="break-words text-white">
                     {department.email}
                   </span>
 

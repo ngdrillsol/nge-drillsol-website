@@ -65,7 +65,7 @@ const geology = [
 
 export default function GeologySelector() {
   return (
-    <section className="space-y-12">
+    <section className="space-y-10 lg:space-y-12">
 
       {/* =====================================================
           HEADER
@@ -77,7 +77,7 @@ export default function GeologySelector() {
           By Geology
         </span>
 
-        <h2 className="mt-6 text-5xl font-bold text-white">
+        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           Select According to Ground Formation
         </h2>
 
@@ -93,7 +93,7 @@ export default function GeologySelector() {
           GEOLOGY CARDS
       ===================================================== */}
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:pb-0 xl:grid-cols-3">
 
         {geology.map((item, index) => {
           const Icon = item.icon;
@@ -118,16 +118,17 @@ export default function GeologySelector() {
               whileHover={{
                 y: -5,
               }}
+              className="w-[86vw] max-w-[360px] shrink-0 snap-start lg:w-auto lg:max-w-none"
             >
 
               <Link
                 href={item.href}
-                className="group block rounded-[28px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
+                className="group block h-full rounded-[24px] border border-white/10 bg-[#090909] p-5 transition-all duration-300 hover:border-yellow-500/30 sm:p-6 lg:rounded-[28px] lg:p-8"
               >
 
                 {/* Icon */}
 
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-500/10 sm:mb-5 lg:mb-6 lg:h-16 lg:w-16">
 
                   <Icon
                     size={30}
@@ -138,19 +139,19 @@ export default function GeologySelector() {
 
                 {/* Title */}
 
-                <h3 className="text-3xl font-bold text-white transition-colors duration-300 group-hover:text-yellow-400">
+                <h3 className="text-2xl font-bold text-white transition-colors duration-300 group-hover:text-yellow-400 lg:text-3xl">
                   {item.title}
                 </h3>
 
                 {/* Description */}
 
-                <p className="mt-5 leading-8 text-slate-400">
+                <p className="mt-4 text-sm leading-6 text-slate-400 sm:text-base sm:leading-7 lg:mt-5 lg:leading-8">
                   {item.description}
                 </p>
 
                 {/* Recommended Rig */}
 
-                <div className="mt-8 rounded-xl border border-yellow-500/20 bg-yellow-500/10 p-4">
+                <div className="mt-5 rounded-xl border border-yellow-500/20 bg-yellow-500/10 p-4 lg:mt-8">
 
                   <p className="text-xs uppercase tracking-[0.25em] text-yellow-400">
                     Recommended Rig
@@ -164,7 +165,7 @@ export default function GeologySelector() {
 
                 {/* CTA */}
 
-                <div className="mt-8 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-between lg:mt-8">
 
                   <span className="font-semibold text-yellow-400">
                     Explore Geology
