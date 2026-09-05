@@ -3,15 +3,23 @@
 import { MessageCircle, Phone } from "lucide-react";
 
 export default function FloatingContact() {
+    const trackWhatsAppConversion = () => {
+    if (typeof window !== "undefined") {
+      (window as any).gtag?.("event", "conversion", {
+        send_to: "AW-16962622922/f5vZCK-o8-4cEMqrtJg_",
+      });
+    }
+  };
   return (
     <div className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] z-[90] flex flex-col items-end gap-2 sm:bottom-6 sm:right-5 sm:gap-3">
 
       {/* WhatsApp */}
 
-      <a
-        href="https://wa.me/919106360907"
-        target="_blank"
-        rel="noopener noreferrer"
+     <a
+  href="https://wa.me/919106360907"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={trackWhatsAppConversion}
         aria-label="Chat with NGE Drillsol on WhatsApp"
         className="
           group
