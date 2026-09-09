@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
+
 import Navbar from "@/components/navbar/Navbar";
 import FloatingContact from "@/components/shared/FloatingContact";
 
@@ -45,21 +46,29 @@ export default function RootLayout({
         {/* Website Content */}
         {children}
 
-        {/* Global WhatsApp + Call */}
+        {/* Global WhatsApp and Call Buttons */}
         <FloatingContact />
-        <Script
-  src="https://www.googletagmanager.com/gtag/js?id=AW-16962622922"
-  strategy="afterInteractive"
-/>
 
-<Script id="google-ads-tag" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-16962622922');
-  `}
-</Script>
+        {/* Google Ads and Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16962622922"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'AW-16962622922');
+            gtag('config', 'G-0R3VLNNSW6');
+          `}
+        </Script>
       </body>
     </html>
   );
