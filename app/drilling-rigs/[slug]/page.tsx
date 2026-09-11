@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import RigDetailPage from "@/components/drilling-rigs/RigDetailPage";
 
 import {
-  RigDetailPage,
   getRigBySlug,
   getAllRigs,
-} from "@/components/drilling-rigs";
+} from "@/components/drilling-rigs/rig.data";
 
 import CategoryDrillingRigsPage from "@/components/drilling-rigs/CategoryDrillingRigsPage";
 
@@ -39,10 +41,81 @@ export async function generateStaticParams() {
     slug: category.href.split("/").filter(Boolean).pop()!,
   }));
 
-  return [
-    ...rigParams,
-    ...categoryParams,
-  ];
+  return [...rigParams, ...categoryParams];
+}
+
+/* ============================================================
+   SEO HELPERS
+   ============================================================ */
+
+function getCategorySeoTitle(slug: string, fallbackTitle: string) {
+  const titles: Record<string, string> = {
+    "water-well-drilling-rigs":
+      "Water Well Drilling Rigs Manufacturer",
+
+    "dth-drilling-rigs":
+      "DTH Drilling Rigs Manufacturer",
+
+    "rotary-drilling-rigs":
+      "Rotary Drilling Rigs Manufacturer",
+
+    "tractor-mounted-drilling-rigs":
+      "Tractor Mounted Drilling Rigs Manufacturer",
+
+    "piling-rigs":
+      "Piling Rigs Manufacturer",
+
+    "core-drilling-rigs":
+      "Core Drilling Rigs Manufacturer",
+
+    "workover-rigs":
+      "Workover Rigs Manufacturer",
+  };
+
+  return titles[slug] ?? fallbackTitle;
+}
+
+function getRigSeoTitle(
+  slug: string,
+  model: string,
+  name: string
+) {
+  const titles: Record<string, string> = {
+    ngdr3000:
+      "NGDR3000 Deep Water Well Drilling Rig",
+
+    ngdr2000:
+      "NGDR2000 Water Well Drilling Rig",
+
+    ngdr1500:
+      "NGDR1500 Water Well Drilling Rig",
+
+    ngdr1000:
+      "NGDR1000 Water Well Drilling Rig",
+
+    ngdr500:
+      "NGDR500 Water Well Drilling Rig",
+
+    ngdth600r:
+      "NGDTH600R Truck Mounted DTH Drilling Rig",
+
+    ngdth300r:
+      "NGDTH300R Truck Mounted DTH Drilling Rig",
+
+    ngdth50:
+      "NGDTH50 Tractor Mounted DTH Drilling Rig",
+
+    ngdp15:
+      "NGDP15 Micro Piling Rig",
+
+    ngdp30:
+      "NGDP30 Micro Piling Rig",
+
+    ngdp60:
+      "NGDP60 Micro Piling Rig",
+  };
+
+  return titles[slug] ?? `${model} ${name}`;
 }
 
 /* ============================================================
@@ -54,8 +127,10 @@ export async function generateMetadata({
 }: RigPageProps): Promise<Metadata> {
   const { slug } = await params;
 
+  const canonicalUrl = `/drilling-rigs/${slug}`;
+
   /* ----------------------------------------------------------
-     CHECK CATEGORY FIRST
+     1. CHECK CATEGORY FIRST
      ---------------------------------------------------------- */
 
   const category = rigCategories.find(
@@ -64,52 +139,115 @@ export async function generateMetadata({
   );
 
   if (category) {
+    const seoTitle = getCategorySeoTitle(
+      slug,
+      category.title
+    );
+
+    const description =
+      category.description ||
+      `Explore ${category.title} engineered by NGE Drillsol for professional water well, DTH, rotary, piling and drilling applications worldwide.`;
+
     return {
-      title: `${category.title} | NGE DRILLSOL`,
+      /*
+       * IMPORTANT:
+       * Do NOT add "| NGE Drillsol" here.
+       * app/layout.tsx already adds it automatically.
+       */
+      title: seoTitle,
 
-      description: category.description,
+      description,
 
-      keywords: [
-        category.title,
-        "drilling rigs",
-        "NGE DRILLSOL",
-        ...category.methods,
-        ...category.applications,
-      ],
+      alternates: {
+        canonical: canonicalUrl,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        type: "website",
+        title: `${seoTitle} | NGE Drillsol`,
+        description,
+        url: canonicalUrl,
+        siteName: "NGE Drillsol",
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: `${seoTitle} | NGE Drillsol`,
+        description,
+      },
     };
   }
 
   /* ----------------------------------------------------------
-     CHECK INDIVIDUAL RIG
+     2. CHECK INDIVIDUAL RIG
      ---------------------------------------------------------- */
 
   const rig = getRigBySlug(slug);
 
   if (rig) {
+    const seoTitle = getRigSeoTitle(
+      slug,
+      rig.model,
+      rig.name
+    );
+
+    const description =
+      rig.tagline ||
+      `${rig.model} ${rig.name} engineered by NGE Drillsol for professional drilling applications and global water well projects.`;
+
     return {
-      title: `${rig.model} | ${rig.name} | NGE DRILLSOL`,
+      /*
+       * Root layout automatically adds:
+       * "| NGE Drillsol"
+       */
+      title: seoTitle,
 
-      description: rig.tagline,
+      description,
 
-      keywords: [
-        rig.model,
-        rig.name,
-        "drilling rig",
-        "NGE DRILLSOL",
-        ...(rig.category || []),
-      ],
+      alternates: {
+        canonical: canonicalUrl,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        type: "website",
+        title: `${seoTitle} | NGE Drillsol`,
+        description,
+        url: canonicalUrl,
+        siteName: "NGE Drillsol",
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: `${seoTitle} | NGE Drillsol`,
+        description,
+      },
     };
   }
 
   /* ----------------------------------------------------------
-     FALLBACK
+     3. INVALID URL
      ---------------------------------------------------------- */
 
   return {
-    title: "Drilling Rigs | NGE DRILLSOL",
+    title: "Drilling Rig Not Found",
 
     description:
-      "Explore drilling rigs engineered by NGE DRILLSOL for water well, DTH, rotary, piling, core drilling and other applications.",
+      "The requested drilling rig or drilling rig category could not be found.",
+
+    robots: {
+      index: false,
+      follow: false,
+    },
   };
 }
 
@@ -155,35 +293,11 @@ export default async function RigPage({
 
   /* ==========================================================
      3. INVALID SLUG
+
+     IMPORTANT FOR SEO:
+     Return a real HTTP 404 instead of showing a "not found"
+     page with HTTP 200.
      ========================================================== */
 
-  return (
-    <main className="flex min-h-[70vh] items-center justify-center bg-[#05070B] px-6 text-white">
-
-      <div className="max-w-xl text-center">
-
-        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-400">
-          Page Not Found
-        </p>
-
-        <h1 className="mt-5 text-4xl font-bold">
-          This drilling rig page could not be found.
-        </h1>
-
-        <p className="mt-5 text-slate-400">
-          The requested drilling rig or category does not exist
-          or the URL is incorrect.
-        </p>
-
-        <a
-          href="/drilling-rigs"
-          className="mt-8 inline-flex rounded-full bg-yellow-500 px-7 py-4 font-semibold text-black transition hover:bg-yellow-400"
-        >
-          View All Drilling Rigs
-        </a>
-
-      </div>
-
-    </main>
-  );
+  notFound();
 }

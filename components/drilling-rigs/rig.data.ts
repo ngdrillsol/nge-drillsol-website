@@ -3342,7 +3342,13 @@ export const rigs: Record<string, RigData> = {
    ================================================================ */
 
 export function getRigBySlug(slug: string): RigData | undefined {
-  return rigs[slug.toLowerCase()];
+  const normalizedSlug = slug.toLowerCase();
+
+  return (
+    Object.values(rigs).find(
+      (rig) => rig.slug.toLowerCase() === normalizedSlug
+    ) || rigs[normalizedSlug]
+  );
 }
 
 export function getAllRigs(): RigData[] {

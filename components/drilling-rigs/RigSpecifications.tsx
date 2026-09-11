@@ -26,33 +26,42 @@ export default function RigSpecifications({
     <section
       id="specifications"
       className="space-y-12"
+      aria-labelledby="technical-specifications-heading"
     >
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
+
+      {/* Header */}
 
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
 
         <div>
 
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">
-            <Settings2 size={14} />
+
+            <Settings2
+              size={14}
+              aria-hidden="true"
+            />
+
             Technical Data
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold text-white sm:text-5xl">
-            Technical
+          <h2
+            id="technical-specifications-heading"
+            className="mt-6 text-4xl font-bold text-white sm:text-5xl"
+          >
+            {rig.model} Technical
             <span className="text-yellow-400">
               {" "}Specifications
             </span>
           </h2>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-400">
-            Detailed technical information for the{" "}
+            Published technical parameters and machine
+            specifications for the{" "}
             <span className="font-semibold text-slate-200">
               {rig.model}
             </span>
-            .
+            {" "}drilling rig.
           </p>
 
         </div>
@@ -64,12 +73,13 @@ export default function RigSpecifications({
           <FileText
             size={20}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
           <div>
 
             <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
-              Model
+              Rig Model
             </p>
 
             <p className="mt-1 font-bold text-white">
@@ -82,11 +92,9 @@ export default function RigSpecifications({
 
       </div>
 
-      {/* =====================================================
-          SPECIFICATION TABLE
-      ===================================================== */}
+      {/* Specification List */}
 
-      <motion.div
+      <motion.dl
         initial={{
           opacity: 0,
           y: 25,
@@ -118,59 +126,46 @@ export default function RigSpecifications({
 
         {/* Rows */}
 
-        <div>
+        {specifications.map((spec, index) => (
 
-          {specifications.map((spec, index) => (
+          <div
+            key={`${spec.label}-${index}`}
+            className={`grid gap-3 px-6 py-6 transition hover:bg-white/[0.025] md:grid-cols-[1fr_1.5fr] md:px-8 ${
+              index !== specifications.length - 1
+                ? "border-b border-white/10"
+                : ""
+            }`}
+          >
 
-            <div
-              key={`${spec.label}-${index}`}
-              className={`grid gap-3 px-6 py-6 transition hover:bg-white/[0.025] md:grid-cols-[1fr_1.5fr] md:px-8 ${
-                index !== specifications.length - 1
-                  ? "border-b border-white/10"
-                  : ""
-              }`}
-            >
+            <dt className="flex items-center gap-3">
 
-              {/* Parameter */}
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-yellow-500/10">
 
-              <div className="flex items-center gap-3">
-
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-yellow-500/10">
-
-                  <ChevronRight
-                    size={15}
-                    className="text-yellow-400"
-                  />
-
-                </div>
-
-                <span className="text-sm font-semibold uppercase tracking-[0.05em] text-slate-400">
-                  {spec.label}
-                </span>
+                <ChevronRight
+                  size={15}
+                  className="text-yellow-400"
+                  aria-hidden="true"
+                />
 
               </div>
 
-              {/* Value */}
+              <span className="text-sm font-semibold uppercase tracking-[0.05em] text-slate-400">
+                {spec.label}
+              </span>
 
-              <div className="md:pl-2">
+            </dt>
 
-                <span className="text-base font-semibold leading-7 text-white">
-                  {spec.value}
-                </span>
+            <dd className="text-base font-semibold leading-7 text-white md:pl-2">
+              {spec.value}
+            </dd>
 
-              </div>
+          </div>
 
-            </div>
+        ))}
 
-          ))}
+      </motion.dl>
 
-        </div>
-
-      </motion.div>
-
-      {/* =====================================================
-          ENGINEERING DISCLAIMER
-      ===================================================== */}
+      {/* Technical Note */}
 
       <div className="rounded-[28px] border border-yellow-500/15 bg-yellow-500/[0.035] px-7 py-6 sm:px-9">
 
@@ -181,6 +176,7 @@ export default function RigSpecifications({
             <Settings2
               size={20}
               className="text-yellow-400"
+              aria-hidden="true"
             />
 
           </div>
@@ -188,15 +184,17 @@ export default function RigSpecifications({
           <div>
 
             <p className="font-semibold text-white">
-              Technical specification note
+              {rig.model} specification note
             </p>
 
             <p className="mt-2 text-sm leading-7 text-slate-400">
-              Specifications shown on this page represent the
-              published configuration for this model. Actual drilling
-              performance may vary according to formation conditions,
-              drilling method, tooling, bore diameter, operating
-              configuration and project requirements.
+              Specifications shown represent the published
+              configuration for this model. Actual performance,
+              drilling capacity and equipment configuration can vary
+              according to formation conditions, drilling method,
+              tooling, bore diameter and project requirements.
+              Confirm the final technical configuration with NGE
+              Drillsol before ordering.
             </p>
 
           </div>

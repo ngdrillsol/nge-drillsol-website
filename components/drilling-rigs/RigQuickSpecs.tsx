@@ -38,34 +38,37 @@ export default function RigQuickSpecs({
     <section
       id="quick-specifications"
       className="space-y-10"
+      aria-labelledby="quick-specifications-heading"
     >
-      {/* =====================================================
-          HEADING
-      ===================================================== */}
+
+      {/* Heading */}
 
       <div className="text-center">
 
         <span className="inline-flex rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">
-          At a Glance
+          {rig.model} at a Glance
         </span>
 
-        <h2 className="mt-5 text-4xl font-bold text-white sm:text-5xl">
-          Key
-          <span className="text-yellow-400"> Specifications</span>
+        <h2
+          id="quick-specifications-heading"
+          className="mt-5 text-4xl font-bold text-white sm:text-5xl"
+        >
+          {rig.model} Key
+          <span className="text-yellow-400">
+            {" "}Specifications
+          </span>
         </h2>
 
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-400">
-          A quick overview of the most important technical
-          characteristics of the {rig.model}.
+        <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-slate-400">
+          A summary of the published technical characteristics
+          available for the {rig.model} drilling rig.
         </p>
 
       </div>
 
-      {/* =====================================================
-          SPECIFICATION GRID
-      ===================================================== */}
+      {/* Specification Grid */}
 
-      <div
+      <motion.dl
         className={`grid overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] ${
           specs.length === 1
             ? "grid-cols-1"
@@ -107,43 +110,34 @@ export default function RigQuickSpecs({
               }`}
             >
 
-              {/* Hover Glow */}
-
               <div className="pointer-events-none absolute inset-0 bg-yellow-500/[0.03] opacity-0 transition duration-300 group-hover:opacity-100" />
-
-              {/* Icon */}
 
               <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-500/20 bg-yellow-500/10">
 
                 <Icon
                   size={22}
                   className="text-yellow-400"
+                  aria-hidden="true"
                 />
 
               </div>
 
-              {/* Label */}
-
-              <p className="relative mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              <dt className="relative mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {spec.label}
-              </p>
+              </dt>
 
-              {/* Value */}
-
-              <p className="relative mt-3 text-2xl font-bold leading-tight text-white">
+              <dd className="relative mt-3 text-2xl font-bold leading-tight text-white">
                 {spec.value}
-              </p>
+              </dd>
 
             </motion.div>
           );
 
         })}
 
-      </div>
+      </motion.dl>
 
-      {/* =====================================================
-          ENGINEERING NOTE
-      ===================================================== */}
+      {/* Engineering Note */}
 
       <div className="rounded-2xl border border-white/10 bg-[#090C11] px-6 py-5">
 
@@ -151,9 +145,11 @@ export default function RigQuickSpecs({
           <span className="font-semibold text-slate-300">
             Engineering note:
           </span>{" "}
-          Performance and drilling capacity can vary depending on
-          formation conditions, drilling method, tooling, bore
-          diameter, operating configuration and project conditions.
+          Actual drilling performance and capacity can vary with
+          geological formation, drilling method, tooling, bore
+          diameter, operating configuration and site conditions.
+          Final machine selection should be based on the complete
+          project requirement.
         </p>
 
       </div>

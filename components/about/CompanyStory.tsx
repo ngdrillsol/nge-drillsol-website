@@ -1,37 +1,72 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Factory,
   Mountain,
   Globe2,
   Lightbulb,
+  ArrowRight,
 } from "lucide-react";
 
 export default function CompanyStory() {
+  const principles = [
+    {
+      icon: Factory,
+      title: "Engineering & Manufacturing",
+      description:
+        "Our drilling equipment is developed around engineering requirements, machine configuration and real operating conditions.",
+    },
+    {
+      icon: Mountain,
+      title: "Ground Conditions Matter",
+      description:
+        "Drilling depth, bore diameter and geological formation are considered when selecting or configuring drilling equipment.",
+    },
+    {
+      icon: Globe2,
+      title: "International Requirements",
+      description:
+        "Machine configurations can be evaluated according to operating environment, project requirements and destination market.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Continuous Development",
+      description:
+        "Field experience, customer requirements and engineering development contribute to improvements in our drilling equipment.",
+    },
+  ];
+
   return (
-    <section className="space-y-16">
+    <section
+      className="space-y-16"
+      aria-labelledby="company-story-heading"
+    >
 
       {/* Heading */}
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-          Our Story
+          Our Company
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Built By Engineers.
+        <h2
+          id="company-story-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Engineering Drilling Equipment
           <span className="block text-yellow-400">
-            Driven By Innovation.
+            Around Real Project Requirements
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          Every drilling project presents unique geological and operational
-          challenges. Our journey has always been centered around solving
-          those challenges through practical engineering and dependable
-          drilling solutions.
+          Drilling projects differ in geology, depth, bore
+          diameter, operating environment and application.
+          NGE Drillsol approaches equipment selection and
+          manufacturing with those project conditions in mind.
         </p>
 
       </div>
@@ -40,9 +75,7 @@ export default function CompanyStory() {
 
       <div className="grid items-center gap-14 lg:grid-cols-2">
 
-        {/* Left */}
-
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -50,64 +83,52 @@ export default function CompanyStory() {
         >
 
           <h3 className="text-4xl font-bold text-white">
-            Our Journey
+            How NGE Drillsol Works
           </h3>
 
           <p className="mt-8 text-lg leading-9 text-slate-300">
-            NGE DRILLSOL was established with a clear objective:
-            to engineer reliable drilling equipment that performs in
-            demanding geological conditions.
+            NGE Drillsol develops drilling rigs for groundwater,
+            DTH, rotary, piling, exploration, core drilling and
+            workover applications.
           </p>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            Rather than manufacturing standard machines, we believe
-            every drilling project deserves an engineering solution
-            tailored to its geology, drilling depth, operational goals
-            and field conditions.
+            Instead of considering only a machine model, our
+            engineering approach evaluates factors such as required
+            drilling depth, hole diameter, formation, drilling
+            method, mounting configuration and supporting
+            equipment.
           </p>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            Today, our drilling rigs support water well, DTH,
-            rotary drilling, piling, core drilling and workover
-            applications across domestic and international markets.
+            This approach allows standard platforms to be selected
+            or configured according to the technical requirements
+            of a drilling project.
           </p>
 
-        </motion.div>
+          <Link
+            href="/drilling-rigs"
+            className="mt-8 inline-flex items-center gap-2 font-semibold text-yellow-400 transition hover:text-yellow-300"
+          >
+            Explore NGE Drilling Rigs
 
-        {/* Right */}
+            <ArrowRight
+              size={17}
+              aria-hidden="true"
+            />
+          </Link>
+
+        </motion.article>
+
+        {/* Principles */}
 
         <div className="grid gap-6">
 
-          {[
-            {
-              icon: Factory,
-              title: "Engineering Foundation",
-              description:
-                "Every machine begins with engineering, not production.",
-            },
-            {
-              icon: Mountain,
-              title: "Field Experience",
-              description:
-                "Solutions developed from real drilling conditions and customer feedback.",
-            },
-            {
-              icon: Globe2,
-              title: "Global Perspective",
-              description:
-                "Designed for challenging geological formations across international markets.",
-            },
-            {
-              icon: Lightbulb,
-              title: "Continuous Innovation",
-              description:
-                "We continuously improve our machines based on practical field experience and engineering research.",
-            },
-          ].map((item, index) => {
+          {principles.map((item, index) => {
             const Icon = item.icon;
 
             return (
-              <motion.div
+              <motion.article
                 key={item.title}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -115,22 +136,24 @@ export default function CompanyStory() {
                 transition={{ delay: index * 0.08 }}
                 className="rounded-[28px] border border-white/10 bg-[#090909] p-7 transition hover:border-yellow-500/30"
               >
+
                 <div className="flex gap-5">
 
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-yellow-500/10">
 
                     <Icon
                       size={30}
                       className="text-yellow-400"
+                      aria-hidden="true"
                     />
 
                   </div>
 
                   <div>
 
-                    <h4 className="text-2xl font-bold text-white">
+                    <h3 className="text-2xl font-bold text-white">
                       {item.title}
-                    </h4>
+                    </h3>
 
                     <p className="mt-4 leading-8 text-slate-400">
                       {item.description}
@@ -140,7 +163,7 @@ export default function CompanyStory() {
 
                 </div>
 
-              </motion.div>
+              </motion.article>
             );
           })}
 
@@ -148,16 +171,16 @@ export default function CompanyStory() {
 
       </div>
 
-      {/* Quote */}
+      {/* Statement */}
 
       <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
-        <blockquote className="mx-auto max-w-4xl text-center text-2xl font-medium leading-10 text-white italic">
-          "Our mission is not simply to manufacture drilling rigs.
-          It is to engineer dependable drilling solutions that help
-          customers succeed in some of the world's most demanding
-          drilling environments."
-        </blockquote>
+        <p className="mx-auto max-w-4xl text-center text-2xl font-medium leading-10 text-white">
+          Our objective is to combine drilling experience,
+          engineering and manufacturing to provide equipment suited
+          to the ground conditions and technical requirements of
+          each project.
+        </p>
 
       </div>
 

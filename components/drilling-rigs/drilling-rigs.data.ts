@@ -1,13 +1,17 @@
 import { RigCategory } from "./drilling-rigs.types";
 
 export const rigCategories: RigCategory[] = [
+  /* ============================================================
+     1. WATER WELL DRILLING RIGS
+     ============================================================ */
+
   {
     id: "water-well",
 
     title: "Water Well Drilling Rigs",
 
     description:
-      "Heavy-duty drilling rigs designed for deep water well construction, municipal water supply, irrigation, industrial borewells and large-diameter groundwater projects.",
+      "Water well drilling rigs engineered for deep borewell construction, municipal water supply, irrigation, industrial groundwater projects and large-diameter wells using mud rotary, DTH and foam drilling methods.",
 
     image: "/images/categories/water-well.jpg",
 
@@ -29,9 +33,9 @@ export const rigCategories: RigCategory[] = [
 
     applications: [
       "Water Supply",
-      "Agriculture",
-      "Industrial",
-      "Government",
+      "Irrigation",
+      "Industrial Wells",
+      "Government Projects",
     ],
 
     formations: [
@@ -56,97 +60,9 @@ export const rigCategories: RigCategory[] = [
     totalModels: 8,
   },
 
-  {
-    id: "workover",
-
-    title: "Workover Rigs",
-
-    description:
-      "Heavy-duty workover rigs developed for oil & gas well servicing, intervention, rehabilitation and production support operations.",
-
-    image: "/images/categories/workover.jpg",
-
-    href: "/drilling-rigs/workover-rigs",
-
-    badge: "Oil & Gas",
-
-    bestFor: "Well Servicing",
-
-    depth: "1500–2000 m",
-
-    holeDiameter: "Application Specific",
-
-    methods: [
-      "Workover",
-      "Well Intervention",
-    ],
-
-    applications: [
-      "Oil & Gas",
-      "Well Rehabilitation",
-      "Production Support",
-    ],
-
-    formations: [
-      "Oil Fields",
-      "Gas Fields",
-    ],
-
-    machines: [
-      "NGWR3100",
-    ],
-
-    totalModels: 1,
-  },
-
-  {
-    id: "rotary",
-
-    title: "Rotary Drilling Rigs",
-
-    description:
-      "Mechanical rotary drilling rigs for large-diameter deep borewell drilling with excellent torque, stability and field reliability.",
-
-    image: "/images/categories/rotary.jpg",
-
-    href: "/drilling-rigs/rotary-drilling-rigs",
-
-    badge: "Best Seller",
-
-    bestFor: "Large Diameter Boreholes",
-
-    depth: "200–1500 m",
-
-    holeDiameter: "150–1500 mm",
-
-    methods: [
-      "Mud Rotary",
-      "Direct Rotary",
-    ],
-
-    applications: [
-      "Water Wells",
-      "Municipal",
-      "Industrial",
-      "Infrastructure",
-    ],
-
-    formations: [
-      "Clay",
-      "Sand",
-      "Gravel",
-      "Mixed Formation",
-    ],
-
-    machines: [
-      "NGDR3000",
-      "NGDR2000",
-      "NGDR1500",
-      "NGDR1000",
-    ],
-
-    totalModels: 4,
-  },
+  /* ============================================================
+     2. DTH DRILLING RIGS
+     ============================================================ */
 
   {
     id: "dth",
@@ -154,7 +70,7 @@ export const rigCategories: RigCategory[] = [
     title: "DTH Drilling Rigs",
 
     description:
-      "High-performance Down-The-Hole drilling rigs engineered for fast penetration in hard rock formations and challenging terrains.",
+      "Down-The-Hole drilling rigs engineered for high penetration rates in hard rock formations for water wells, mining, exploration and infrastructure drilling projects.",
 
     image: "/images/categories/dth.jpg",
 
@@ -200,101 +116,62 @@ export const rigCategories: RigCategory[] = [
     totalModels: 6,
   },
 
-  {
-    id: "core",
+  /* ============================================================
+     3. ROTARY DRILLING RIGS
+     ============================================================ */
 
-    title: "Core Drilling Rigs",
+  {
+    id: "rotary",
+
+    title: "Rotary Drilling Rigs",
 
     description:
-      "Precision core drilling rigs for geological exploration, mineral investigation, geotechnical drilling and soil testing.",
+      "Heavy-duty rotary drilling rigs designed for deep and large-diameter boreholes, water well construction, municipal supply, industrial wells and infrastructure projects.",
 
-    image: "/images/categories/core.jpg",
+    image: "/images/categories/rotary.jpg",
 
-    href: "/drilling-rigs/core-drilling-rigs",
+    href: "/drilling-rigs/rotary-drilling-rigs",
 
-    badge: "Exploration",
+    badge: "Best Seller",
 
-    bestFor: "Mineral Exploration",
+    bestFor: "Large Diameter Boreholes",
 
-    depth: "50–200 m",
+    depth: "200–1500 m",
 
-    holeDiameter: "NQ / HQ / PQ",
+    holeDiameter: "150–1500 mm",
 
     methods: [
-      "Core Drilling",
-      "Diamond Core",
+      "Mud Rotary",
+      "Direct Rotary",
     ],
 
     applications: [
-      "Mining",
-      "Geology",
-      "Investigation",
-      "Soil Testing",
-    ],
-
-    formations: [
-      "Rock",
-      "Mineral Zones",
-      "Mixed Formation",
-    ],
-
-    machines: [
-      "NGCORE100 (Trolley)",
-      "NGCORE100 (Tractor)",
-      "NGCORE50 (Trolley)",
-    ],
-
-    totalModels: 3,
-  },
-
-  {
-    id: "piling",
-
-    title: "Piling Rigs",
-
-    description:
-      "Foundation drilling rigs for solar parks, transmission lines, bridges, highways and infrastructure development.",
-
-    image: "/images/categories/piling.jpg",
-
-    href: "/drilling-rigs/piling-rigs",
-
-    badge: "Infrastructure",
-
-    bestFor: "Solar Foundation",
-
-    depth: "5–18 m",
-
-    holeDiameter: "100–700 mm",
-
-    methods: [
-      "Dry Piling",
-      "Wet Piling",
-    ],
-
-    applications: [
-      "Solar",
+      "Water Wells",
+      "Municipal Water",
+      "Industrial Wells",
       "Infrastructure",
-      "Civil",
-      "Transmission",
     ],
 
     formations: [
       "Clay",
-      "Soil",
-      "Mixed Ground",
+      "Sand",
+      "Gravel",
+      "Mixed Formation",
     ],
 
     machines: [
-      "NGDP60",
-      "NGDP30",
-      "NGDP15",
-      "NGDTH50",
-      "NGDTH30",
+      "NGDR3000",
+      "NGDR2000",
+      "NGDR1500",
+      "NGDR1000",
     ],
 
-    totalModels: 5,
+    totalModels: 4,
   },
+
+  /* ============================================================
+     4. TRACTOR MOUNTED DRILLING RIGS
+     ============================================================ */
 
   {
     id: "tractor",
@@ -302,7 +179,7 @@ export const rigCategories: RigCategory[] = [
     title: "Tractor Mounted Drilling Rigs",
 
     description:
-      "Compact tractor-mounted drilling rigs offering economical drilling solutions for water wells, DTH drilling, piling and exploration.",
+      "Compact tractor-mounted drilling rigs developed for economical water well drilling, DTH drilling, piling and core drilling in rural, agricultural and remote project locations.",
 
     image: "/images/categories/tractor.jpg",
 
@@ -325,7 +202,7 @@ export const rigCategories: RigCategory[] = [
     applications: [
       "Agriculture",
       "Water Wells",
-      "Solar",
+      "Solar Projects",
       "Exploration",
     ],
 
@@ -345,5 +222,157 @@ export const rigCategories: RigCategory[] = [
     ],
 
     totalModels: 6,
+  },
+
+  /* ============================================================
+     5. PILING RIGS
+     ============================================================ */
+
+  {
+    id: "piling",
+
+    title: "Piling Rigs",
+
+    description:
+      "Foundation and micro-piling drilling rigs developed for solar parks, transmission lines, bridges, highways, civil foundations and infrastructure construction projects.",
+
+    image: "/images/categories/piling.jpg",
+
+    href: "/drilling-rigs/piling-rigs",
+
+    badge: "Infrastructure",
+
+    bestFor: "Solar & Foundation Drilling",
+
+    depth: "5–18 m",
+
+    holeDiameter: "100–700 mm",
+
+    methods: [
+      "Dry Piling",
+      "Wet Piling",
+    ],
+
+    applications: [
+      "Solar Projects",
+      "Infrastructure",
+      "Civil Foundations",
+      "Transmission Lines",
+    ],
+
+    formations: [
+      "Clay",
+      "Soil",
+      "Mixed Ground",
+    ],
+
+    machines: [
+      "NGDP60",
+      "NGDP30",
+      "NGDP15",
+      "NGDTH50",
+      "NGDTH30",
+    ],
+
+    totalModels: 5,
+  },
+
+  /* ============================================================
+     6. CORE DRILLING RIGS
+     ============================================================ */
+
+  {
+    id: "core",
+
+    title: "Core Drilling Rigs",
+
+    description:
+      "Core drilling rigs developed for geological exploration, mineral investigation, geotechnical drilling, rock sampling and subsurface investigation projects.",
+
+    image: "/images/categories/core.jpg",
+
+    href: "/drilling-rigs/core-drilling-rigs",
+
+    badge: "Exploration",
+
+    bestFor: "Geological & Mineral Exploration",
+
+    depth: "50–200 m",
+
+    holeDiameter: "NQ / HQ / PQ",
+
+    methods: [
+      "Core Drilling",
+      "Diamond Core",
+    ],
+
+    applications: [
+      "Mining",
+      "Geological Exploration",
+      "Site Investigation",
+      "Soil Testing",
+    ],
+
+    formations: [
+      "Rock",
+      "Mineral Zones",
+      "Mixed Formation",
+    ],
+
+    machines: [
+      "NGCORE100 (Trolley)",
+      "NGCORE100 (Tractor)",
+      "NGCORE50 (Trolley)",
+    ],
+
+    totalModels: 3,
+  },
+
+  /* ============================================================
+     7. WORKOVER RIGS
+     ============================================================ */
+
+  {
+    id: "workover",
+
+    title: "Workover Rigs",
+
+    description:
+      "Heavy-duty workover rigs developed for oil and gas well servicing, well intervention, rehabilitation, maintenance and production support operations.",
+
+    image: "/images/categories/workover.jpg",
+
+    href: "/drilling-rigs/workover-rigs",
+
+    badge: "Oil & Gas",
+
+    bestFor: "Oil & Gas Well Servicing",
+
+    depth: "1500–2000 m",
+
+    holeDiameter: "Application Specific",
+
+    methods: [
+      "Workover",
+      "Well Intervention",
+    ],
+
+    applications: [
+      "Oil & Gas",
+      "Well Rehabilitation",
+      "Well Maintenance",
+      "Production Support",
+    ],
+
+    formations: [
+      "Oil Fields",
+      "Gas Fields",
+    ],
+
+    machines: [
+      "NGWR3100",
+    ],
+
+    totalModels: 1,
   },
 ];

@@ -15,53 +15,80 @@ interface RigOverviewProps {
   rig: RigData;
 }
 
+function formatCategory(category: string) {
+  return category
+    .replace(/-drilling-rigs$/i, "")
+    .replace(/-rigs$/i, "")
+    .split("-")
+    .map((word) =>
+      word.toLowerCase() === "dth"
+        ? "DTH"
+        : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join(" ");
+}
+
 export default function RigOverview({
   rig,
 }: RigOverviewProps) {
   const categories = rig.category || [];
 
+  const categoryLabels =
+    categories.map(formatCategory);
+
+  const productName = rig.name
+    .toLowerCase()
+    .includes(rig.model.toLowerCase())
+    ? rig.name
+    : `${rig.model} ${rig.name}`;
+
   return (
     <section
       id="overview"
       className="space-y-12"
+      aria-labelledby="rig-overview-heading"
     >
-      {/* =====================================================
-          SECTION HEADER
-      ===================================================== */}
+
+      {/* Header */}
 
       <div className="max-w-4xl">
 
         <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">
-          <Drill size={14} />
-          Machine Overview
+
+          <Drill
+            size={14}
+            aria-hidden="true"
+          />
+
+          {rig.model} Overview
         </span>
 
-        <h2 className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl">
-          Built for
+        <h2
+          id="rig-overview-heading"
+          className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl"
+        >
+          What is the{" "}
           <span className="text-yellow-400">
-            {" "}Demanding Projects
-          </span>
-        </h2>
-
-        <p className="mt-5 text-lg leading-8 text-slate-400">
-          An engineering overview of the{" "}
-          <span className="font-semibold text-slate-200">
             {rig.model}
           </span>
-          {" "}drilling platform.
+          ?
+        </h2>
+
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+          The {productName} is part of NGE Drillsol&apos;s{" "}
+          {categoryLabels.length > 0
+            ? categoryLabels.join(", ")
+            : "drilling rig"}{" "}
+          range. {rig.tagline}
         </p>
 
       </div>
 
-      {/* =====================================================
-          MAIN CONTENT
-      ===================================================== */}
+      {/* Main Content */}
 
       <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
 
-        {/* ===================================================
-            DESCRIPTION
-        =================================================== */}
+        {/* Description */}
 
         <motion.div
           initial={{
@@ -86,6 +113,7 @@ export default function RigOverview({
               <Factory
                 size={23}
                 className="text-yellow-400"
+                aria-hidden="true"
               />
 
             </div>
@@ -97,7 +125,7 @@ export default function RigOverview({
               </p>
 
               <h3 className="mt-1 text-2xl font-bold text-white">
-                {rig.name}
+                {productName}
               </h3>
 
             </div>
@@ -122,16 +150,16 @@ export default function RigOverview({
 
           {/* Category Tags */}
 
-          {categories.length > 0 && (
+          {categoryLabels.length > 0 && (
             <div className="mt-8 flex flex-wrap gap-3">
 
-              {categories.map((category) => (
+              {categoryLabels.map((category) => (
 
                 <span
                   key={category}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm capitalize text-slate-300"
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
                 >
-                  {category.replace(/-/g, " ")}
+                  {category}
                 </span>
 
               ))}
@@ -141,9 +169,7 @@ export default function RigOverview({
 
         </motion.div>
 
-        {/* ===================================================
-            PROJECT SUITABILITY CARD
-        =================================================== */}
+        {/* Project Suitability */}
 
         <motion.div
           initial={{
@@ -164,8 +190,6 @@ export default function RigOverview({
           className="relative overflow-hidden rounded-[32px] border border-yellow-500/20 bg-gradient-to-br from-yellow-500/[0.10] via-[#090C11] to-[#090C11] p-8 sm:p-10"
         >
 
-          {/* Decorative Glow */}
-
           <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-yellow-500/10 blur-[80px]" />
 
           <div className="relative">
@@ -175,21 +199,20 @@ export default function RigOverview({
               <Globe2
                 size={23}
                 className="text-yellow-400"
+                aria-hidden="true"
               />
 
             </div>
 
             <h3 className="mt-7 text-2xl font-bold text-white">
-              Project Suitability
+              Is the {rig.model} Suitable for Your Project?
             </h3>
 
             <p className="mt-4 leading-8 text-slate-400">
-              The {rig.model} can be evaluated for projects based on
-              formation, drilling method, target depth, bore diameter,
-              tooling and required production conditions.
+              Final suitability should be evaluated against the
+              actual drilling conditions of your project, not by
+              model capacity alone.
             </p>
-
-            {/* Checklist */}
 
             <div className="mt-8 space-y-4">
 
@@ -198,7 +221,7 @@ export default function RigOverview({
                 "Required drilling depth",
                 "Target bore diameter",
                 "Selected drilling method",
-                "Project production requirements",
+                "Tooling and power requirements",
               ].map((item) => (
 
                 <div
@@ -209,6 +232,7 @@ export default function RigOverview({
                   <CheckCircle2
                     size={19}
                     className="mt-1 shrink-0 text-yellow-400"
+                    aria-hidden="true"
                   />
 
                   <span className="text-sm leading-6 text-slate-300">
@@ -221,15 +245,16 @@ export default function RigOverview({
 
             </div>
 
-            {/* CTA */}
-
             <a
               href="#inquiry"
               className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-yellow-400 transition hover:text-yellow-300"
             >
-              Discuss Your Project
+              Discuss the {rig.model}
 
-              <ArrowRight size={17} />
+              <ArrowRight
+                size={17}
+                aria-hidden="true"
+              />
 
             </a>
 

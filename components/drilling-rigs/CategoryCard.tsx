@@ -21,8 +21,11 @@ export default function CategoryCard({
   category,
   index,
 }: CategoryCardProps) {
+  const headingId = `rig-category-${category.id}`;
+
   return (
     <motion.article
+      aria-labelledby={headingId}
       initial={{ opacity: 0, y: 35 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -42,8 +45,18 @@ export default function CategoryCard({
 
       <div className="p-8">
 
-        <h3 className="text-3xl font-bold text-white">
-          {category.title}
+        {/* SEO-friendly category title link */}
+
+        <h3
+          id={headingId}
+          className="text-3xl font-bold text-white"
+        >
+          <Link
+            href={category.href}
+            className="transition hover:text-yellow-400"
+          >
+            {category.title}
+          </Link>
         </h3>
 
         <p className="mt-5 leading-8 text-slate-400">
@@ -54,7 +67,7 @@ export default function CategoryCard({
 
         <div className="mt-8 rounded-2xl border border-yellow-500/20 bg-yellow-500/10 p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">
-            BEST FOR
+            Best For
           </p>
 
           <p className="mt-2 text-lg font-semibold text-white">
@@ -64,37 +77,37 @@ export default function CategoryCard({
 
         {/* Specifications */}
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <dl className="mt-8 grid gap-4 sm:grid-cols-2">
 
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <div className="flex items-center gap-2 text-yellow-400">
+            <dt className="flex items-center gap-2 text-yellow-400">
               <Drill size={18} />
 
               <span className="text-sm font-semibold">
-                Depth
+                Drilling Depth
               </span>
-            </div>
+            </dt>
 
-            <p className="mt-3 text-white">
+            <dd className="mt-3 text-white">
               {category.depth}
-            </p>
+            </dd>
           </div>
 
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <div className="flex items-center gap-2 text-yellow-400">
+            <dt className="flex items-center gap-2 text-yellow-400">
               <Layers3 size={18} />
 
               <span className="text-sm font-semibold">
                 Hole Diameter
               </span>
-            </div>
+            </dt>
 
-            <p className="mt-3 text-white">
+            <dd className="mt-3 text-white">
               {category.holeDiameter}
-            </p>
+            </dd>
           </div>
 
-        </div>
+        </dl>
 
         {/* Methods */}
 
@@ -105,6 +118,7 @@ export default function CategoryCard({
           </h4>
 
           <div className="flex flex-wrap gap-3">
+
             {category.methods.map((method) => (
               <span
                 key={method}
@@ -113,6 +127,7 @@ export default function CategoryCard({
                 {method}
               </span>
             ))}
+
           </div>
 
         </div>
@@ -134,7 +149,8 @@ export default function CategoryCard({
               >
                 <BadgeCheck
                   size={18}
-                  className="text-yellow-400"
+                  className="shrink-0 text-yellow-400"
+                  aria-hidden="true"
                 />
 
                 <span>{item}</span>
@@ -150,9 +166,12 @@ export default function CategoryCard({
         <div className="mt-8">
 
           <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
-            <Mountain size={16} />
+            <Mountain
+              size={16}
+              aria-hidden="true"
+            />
 
-            Suitable Formations
+            Suitable Geological Formations
           </h4>
 
           <div className="flex flex-wrap gap-3">
@@ -172,7 +191,7 @@ export default function CategoryCard({
 
         {/* Footer */}
 
-        <div className="mt-10 flex items-center justify-between border-t border-white/10 pt-6">
+        <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
 
           <div>
             <p className="text-sm text-slate-500">
@@ -186,11 +205,15 @@ export default function CategoryCard({
 
           <Link
             href={category.href}
-            className="inline-flex items-center gap-3 rounded-full bg-yellow-500 px-6 py-3 font-semibold text-black transition hover:scale-105"
+            aria-label={`Explore ${category.title}`}
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-yellow-500 px-6 py-3 font-semibold text-black transition hover:scale-105"
           >
-            Explore Category
+            Explore {category.title}
 
-            <ArrowRight size={18} />
+            <ArrowRight
+              size={18}
+              aria-hidden="true"
+            />
           </Link>
 
         </div>

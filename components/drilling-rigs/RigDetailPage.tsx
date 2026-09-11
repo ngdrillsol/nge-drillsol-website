@@ -25,8 +25,95 @@ interface RigDetailPageProps {
 export default function RigDetailPage({
   rig,
 }: RigDetailPageProps) {
+  const rigUrl = `https://www.ngedrill.com/drilling-rigs/${rig.slug}`;
+
+  /* ==========================================================
+     PRODUCT STRUCTURED DATA
+     ========================================================== */
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+
+    name: `${rig.model} ${rig.name}`,
+
+    model: rig.model,
+
+    description: rig.tagline,
+
+    url: rigUrl,
+
+    image: rig.heroImage.startsWith("http")
+      ? rig.heroImage
+      : `https://www.ngedrill.com${rig.heroImage}`,
+
+    brand: {
+      "@type": "Brand",
+      name: "NGE Drillsol",
+    },
+
+    manufacturer: {
+      "@type": "Organization",
+      name: "NGE Drillsol Pvt. Ltd.",
+      url: "https://www.ngedrill.com",
+    },
+
+    category:
+      rig.category && rig.category.length > 0
+        ? rig.category.join(", ")
+        : "Drilling Rig",
+  };
+
+  /* ==========================================================
+     BREADCRUMB STRUCTURED DATA
+     ========================================================== */
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.ngedrill.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Drilling Rigs",
+        item: "https://www.ngedrill.com/drilling-rigs",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${rig.model} ${rig.name}`,
+        item: rigUrl,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#05070B] text-white">
+
+      {/* =====================================================
+          SEO / GEO STRUCTURED DATA
+      ===================================================== */}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
 
       {/* =====================================================
           HERO

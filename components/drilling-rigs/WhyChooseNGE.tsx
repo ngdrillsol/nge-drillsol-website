@@ -13,60 +13,67 @@ import {
 const strengths = [
   {
     icon: Factory,
-    title: "OEM Manufacturer",
+    title: "Drilling Rig Manufacturer",
     description:
-      "NGE DRILLSOL designs and manufactures drilling rigs in-house with complete engineering control over quality, performance and customization.",
+      "NGE Drillsol designs and manufactures drilling rigs with in-house engineering control over machine configuration, quality, performance and customization.",
   },
   {
     icon: Globe2,
-    title: "Global Export Experience",
+    title: "Global Export Capability",
     description:
-      "Trusted by contractors, governments and EPC companies across Africa, the Middle East and other international markets.",
+      "We supply drilling equipment for international projects across Africa, the Middle East and other global markets, with machines configured for local drilling conditions.",
   },
   {
     icon: Cog,
     title: "Complete Drilling Solutions",
     description:
-      "From drilling rigs to mud pumps, compressors, drill pipes, drill bits and accessories, everything is available from one source.",
+      "Drilling rigs can be supplied together with mud pumps, compressors, drill pipes, drill bits and other drilling accessories required for complete field operations.",
   },
   {
     icon: Wrench,
-    title: "Customized Engineering",
+    title: "Customized Rig Engineering",
     description:
-      "Every drilling project is different. Our engineering team customizes rigs according to geology, drilling depth, application and customer requirements.",
+      "Rig configurations can be selected according to geology, required drilling depth, hole diameter, drilling method, mounting preference and project application.",
   },
   {
     icon: ShieldCheck,
-    title: "Reliable Heavy-Duty Design",
+    title: "Heavy-Duty Field Design",
     description:
-      "Built using premium components and engineered for demanding field conditions with high productivity and long service life.",
+      "Our drilling machines are engineered for demanding field conditions with focus on productivity, reliability, serviceability and long operating life.",
   },
   {
     icon: Headset,
-    title: "Technical Support",
+    title: "Technical & After-Sales Support",
     description:
-      "Our team provides installation guidance, operator training, spare parts support and after-sales service for every machine supplied.",
+      "Our team supports customers with machine selection, installation guidance, operator training, spare parts and technical assistance after delivery.",
   },
 ];
 
 export default function WhyChooseNGE() {
   return (
-    <section className="space-y-14">
+    <section
+      className="space-y-14"
+      aria-labelledby="why-nge-drilling-rigs"
+    >
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400">
-          Why Choose NGE DRILLSOL
+          Why NGE Drillsol
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Engineering You Can Trust
+        <h2
+          id="why-nge-drilling-rigs"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Engineering Complete Drilling Solutions
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          We don't simply manufacture drilling rigs—we engineer complete
-          drilling solutions backed by experience, customization and long-term
-          customer support.
+        <p className="mx-auto mt-6 max-w-4xl text-lg leading-8 text-slate-400">
+          NGE Drillsol combines drilling rig manufacturing, application
+          engineering, equipment selection, customization and technical support
+          to help customers build a drilling system suited to their geology,
+          depth and field requirements.
         </p>
 
       </div>

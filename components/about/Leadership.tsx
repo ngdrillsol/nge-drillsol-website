@@ -12,9 +12,10 @@ import { leadership } from "./about.data";
 
 export default function Leadership() {
   return (
-    <section className="space-y-16">
-
-      {/* Heading */}
+    <section
+      className="space-y-16"
+      aria-labelledby="leadership-heading"
+    >
 
       <div className="text-center">
 
@@ -22,37 +23,36 @@ export default function Leadership() {
           Leadership
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Leadership Guided By
+        <h2
+          id="leadership-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Leadership Behind
           <span className="block text-yellow-400">
-            Engineering Excellence
+            NGE Drillsol
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          Behind every drilling rig is a team committed to engineering,
-          innovation and long-term customer success. Our leadership
-          focuses on solving real drilling challenges through practical
-          engineering solutions.
+          NGE Drillsol&apos;s leadership combines drilling
+          experience, engineering development, manufacturing and
+          customer requirements to guide the company&apos;s
+          equipment and project approach.
         </p>
 
       </div>
-
-      {/* Leader Card */}
 
       <div className="mx-auto max-w-6xl">
 
         {leadership.map((member) => (
 
-          <motion.div
+          <motion.article
             key={member.name}
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="grid gap-8 overflow-hidden rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] via-[#090909] to-[#05070B] p-5 sm:rounded-[30px] sm:p-8 lg:grid-cols-[340px_1fr] lg:gap-10 lg:rounded-[36px] lg:p-10"
           >
-
-            {/* Left */}
 
             <div>
 
@@ -61,21 +61,20 @@ export default function Leadership() {
                 {member.image ? (
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.designation} at NGE Drillsol`}
                     className="h-full w-full rounded-[28px] object-cover"
                   />
                 ) : (
                   <UserCircle2
                     size={140}
                     className="text-slate-500"
+                    aria-hidden="true"
                   />
                 )}
 
               </div>
 
             </div>
-
-            {/* Right */}
 
             <div>
 
@@ -98,15 +97,16 @@ export default function Leadership() {
                   <Compass
                     className="text-yellow-400"
                     size={30}
+                    aria-hidden="true"
                   />
 
                   <h4 className="mt-5 text-xl font-semibold text-white">
-                    Vision
+                    Direction
                   </h4>
 
                   <p className="mt-3 leading-7 text-slate-400">
-                    Building globally trusted drilling engineering
-                    solutions.
+                    Building a focused drilling engineering and
+                    manufacturing business.
                   </p>
 
                 </div>
@@ -116,15 +116,16 @@ export default function Leadership() {
                   <Lightbulb
                     className="text-yellow-400"
                     size={30}
+                    aria-hidden="true"
                   />
 
                   <h4 className="mt-5 text-xl font-semibold text-white">
-                    Innovation
+                    Engineering
                   </h4>
 
                   <p className="mt-3 leading-7 text-slate-400">
-                    Continuous product development driven by field
-                    experience.
+                    Developing drilling equipment around practical
+                    project and field requirements.
                   </p>
 
                 </div>
@@ -134,15 +135,16 @@ export default function Leadership() {
                   <Users
                     className="text-yellow-400"
                     size={30}
+                    aria-hidden="true"
                   />
 
                   <h4 className="mt-5 text-xl font-semibold text-white">
-                    Partnership
+                    Customers
                   </h4>
 
                   <p className="mt-3 leading-7 text-slate-400">
-                    Long-term customer relationships built on trust and
-                    engineering support.
+                    Building long-term relationships through
+                    equipment supply and technical support.
                   </p>
 
                 </div>
@@ -151,7 +153,7 @@ export default function Leadership() {
 
             </div>
 
-          </motion.div>
+          </motion.article>
 
         ))}
 

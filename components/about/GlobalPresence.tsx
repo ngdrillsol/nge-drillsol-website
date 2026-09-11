@@ -1,176 +1,157 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  Globe2,
+  MapPin,
   Factory,
-  Cog,
-  ClipboardCheck,
-  Wrench,
   ArrowRight,
 } from "lucide-react";
 
-const capabilities = [
+const locations = [
   {
-    icon: Cog,
-    title: "Engineering & Design",
+    title: "India",
+    subtitle: "Headquarters & Manufacturing",
     description:
-      "Every drilling rig is designed with attention to structural strength, hydraulic efficiency, operational reliability and ease of maintenance.",
+      "NGE Drillsol's engineering and manufacturing operations are based in Mehsana, Gujarat, India.",
   },
   {
-    icon: Factory,
-    title: "Precision Manufacturing",
+    title: "Senegal",
+    subtitle: "West Africa Support",
     description:
-      "Modern manufacturing practices and quality-focused processes ensure every machine is built to deliver dependable field performance.",
+      "Regional support for drilling opportunities, customer requirements and projects across West African markets.",
   },
   {
-    icon: ClipboardCheck,
-    title: "Quality Inspection",
+    title: "Australia",
+    subtitle: "Regional Business Support",
     description:
-      "Each machine undergoes inspection and functional verification before delivery to help ensure dependable operation in demanding environments.",
-  },
-  {
-    icon: Wrench,
-    title: "Continuous Improvement",
-    description:
-      "Customer feedback and field experience are continuously incorporated into our engineering and product development process.",
+      "International business and market support for drilling equipment opportunities in Australia and surrounding markets.",
   },
 ];
 
-export default function ManufacturingExcellence() {
+export default function GlobalPresence() {
   return (
-    <section className="space-y-16">
+    <section
+      className="space-y-16"
+      aria-labelledby="global-presence-heading"
+    >
 
       {/* Heading */}
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-          Manufacturing Excellence
+          Global Presence
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Designed With Precision.
+        <h2
+          id="global-presence-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Engineering in India.
           <span className="block text-yellow-400">
-            Built For Reliability.
+            Supporting Projects Worldwide.
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          From engineering and fabrication to inspection and testing,
-          every stage of our manufacturing process is focused on producing
-          dependable drilling equipment for demanding field conditions.
+          NGE Drillsol combines its Indian engineering and
+          manufacturing base with international market support for
+          drilling contractors, infrastructure projects and
+          equipment requirements across multiple regions.
         </p>
 
       </div>
 
-      {/* Main Layout */}
+      {/* Main */}
 
-      <div className="grid items-center gap-14 lg:grid-cols-2">
+      <div className="grid gap-8 lg:grid-cols-3">
 
-        {/* Left */}
+        {locations.map((location, index) => (
 
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-br from-[#111827] to-[#090909] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10"
-        >
+          <motion.article
+            key={location.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.45,
+              delay: index * 0.1,
+            }}
+            className="rounded-[30px] border border-white/10 bg-[#090909] p-8 transition hover:border-yellow-500/30"
+          >
 
-          <Factory
-            size={54}
-            className="text-yellow-400"
-          />
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
 
-          <h3 className="mt-8 text-4xl font-bold text-white">
-            Manufacturing Philosophy
-          </h3>
+              {index === 0 ? (
+                <Factory
+                  size={30}
+                  className="text-yellow-400"
+                  aria-hidden="true"
+                />
+              ) : (
+                <MapPin
+                  size={30}
+                  className="text-yellow-400"
+                  aria-hidden="true"
+                />
+              )}
 
-          <p className="mt-6 text-lg leading-9 text-slate-300">
-            Manufacturing is more than fabrication. It is the process of
-            transforming engineering concepts into dependable drilling
-            equipment capable of performing in real-world operating
-            conditions.
-          </p>
+            </div>
 
-          <p className="mt-6 text-lg leading-9 text-slate-300">
-            Our focus remains on build quality, engineering precision,
-            serviceability and long-term reliability rather than simply
-            increasing production volume.
-          </p>
+            <p className="mt-7 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
+              {location.subtitle}
+            </p>
 
-        </motion.div>
+            <h3 className="mt-3 text-3xl font-bold text-white">
+              {location.title}
+            </h3>
 
-        {/* Right */}
+            <p className="mt-5 leading-8 text-slate-400">
+              {location.description}
+            </p>
 
-        <div className="grid gap-6">
+          </motion.article>
 
-          {capabilities.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-white/10 bg-[#090909] p-7 transition hover:border-yellow-500/30"
-              >
-
-                <div className="flex gap-5">
-
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
-
-                    <Icon
-                      size={30}
-                      className="text-yellow-400"
-                    />
-
-                  </div>
-
-                  <div>
-
-                    <h4 className="text-2xl font-bold text-white">
-                      {item.title}
-                    </h4>
-
-                    <p className="mt-4 leading-8 text-slate-400">
-                      {item.description}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </motion.div>
-            );
-          })}
-
-        </div>
+        ))}
 
       </div>
 
-      {/* Bottom Statement */}
+      {/* Global market statement */}
 
-      <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
+      <div className="rounded-[30px] border border-yellow-500/20 bg-gradient-to-br from-yellow-500/[0.08] via-[#0F172A] to-[#090909] p-8 sm:p-10">
 
         <div className="flex flex-col items-center text-center">
 
-          <ArrowRight
-            size={42}
+          <Globe2
+            size={46}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
           <h3 className="mt-6 text-3xl font-bold text-white">
-            Engineering Quality Is Built Into Every Machine
+            Drilling Equipment for International Markets
           </h3>
 
-          <p className="mt-6 max-w-4xl text-lg leading-9 text-slate-300">
-            Every drilling rig reflects our commitment to engineering
-            precision, practical performance and dependable operation,
-            helping customers work confidently across a wide range of
-            drilling applications.
+          <p className="mt-5 max-w-4xl text-lg leading-9 text-slate-300">
+            NGE Drillsol works with project requirements across
+            Africa, the Middle East, Asia, Australia and other
+            international markets, with particular experience in
+            groundwater and drilling equipment applications.
           </p>
+
+          <Link
+            href="/markets"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow-500 px-7 py-4 font-semibold text-black transition hover:bg-yellow-400"
+          >
+            Explore Global Markets
+
+            <ArrowRight
+              size={17}
+              aria-hidden="true"
+            />
+          </Link>
 
         </div>
 

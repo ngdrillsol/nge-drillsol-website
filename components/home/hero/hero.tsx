@@ -18,34 +18,43 @@ export default function Hero() {
             {/* Eyebrow */}
 
             <div className="inline-flex max-w-full items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-400 sm:px-5 sm:text-sm sm:tracking-wider">
-              Premium OEM • Made in India • Exporting Worldwide
+              Drilling Rig Manufacturer • Made in India • Exporting Worldwide
             </div>
 
-            {/* Heading */}
+            {/* Main SEO H1 */}
 
             <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-5xl md:text-6xl xl:text-7xl">
-              Heavy Duty Water Well
+              Water Well Drilling Rig
               <br />
 
               <span className="text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.55)]">
-                Drilling Rigs
+                Manufacturer in India
               </span>
             </h1>
 
             {/* Description */}
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:mt-8 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9">
-              NGE DRILLSOL designs and manufactures premium water well drilling
-              rigs, DTH drilling rigs, piling rigs and drilling equipment
-              trusted by contractors, EPC companies, governments and industrial
-              clients across more than 35 countries.
+              NGE Drillsol designs and manufactures water well drilling rigs,
+              DTH drilling rigs, rotary drilling rigs, piling rigs, core
+              drilling rigs and workover rigs for contractors, EPC companies,
+              government projects and industrial drilling applications
+              worldwide.
+            </p>
+
+            {/* Direct-answer GEO paragraph */}
+
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+              Our drilling equipment is selected according to required drilling
+              depth, bore diameter, geological formation, drilling method and
+              site conditions. NGE Drillsol provides machines and engineering
+              support for both standard and project-specific drilling
+              requirements.
             </p>
 
             {/* BUTTONS */}
 
             <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-5">
-
-              {/* Explore Drilling Rigs */}
 
               <Link
                 href="/drilling-rigs"
@@ -54,38 +63,63 @@ export default function Hero() {
                 Explore Drilling Rigs
               </Link>
 
-              {/* Download Catalogue */}
-
               <a
                 href="/downloads/NGE-DRILLSOL-CATALOGUE.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-flex w-full sm:w-auto whitespace-nowrap
-                  items-center
-                  justify-center
-                  rounded-xl
-                  border
-                  border-white/20
-                  bg-white/5
-                  px-6 sm:px-8
-                  py-4
-                  text-sm sm:text-base
-                  font-semibold
-                  text-white
-                  shadow-[0_18px_40px_rgba(255,255,255,.05)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:scale-[1.02]
-                  hover:bg-white/10
-                  hover:border-blue-400/50
-                  hover:shadow-[0_20px_45px_rgba(59,130,246,.25)]
-                "
+                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-xl border border-white/20 bg-white/5 px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(255,255,255,.05)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-blue-400/50 hover:bg-white/10 hover:shadow-[0_20px_45px_rgba(59,130,246,.25)] sm:w-auto sm:px-8 sm:text-base"
               >
                 Download Catalogue
               </a>
 
+            </div>
+
+            {/* Important Internal Links */}
+
+            <nav
+              aria-label="Featured drilling equipment"
+              className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm"
+            >
+              <Link
+                href="/drilling-rigs/water-well-drilling-rigs"
+                className="text-slate-300 transition hover:text-blue-400"
+              >
+                Water Well Drilling Rigs
+              </Link>
+
+              <Link
+                href="/drilling-rigs/dth-drilling-rigs"
+                className="text-slate-300 transition hover:text-blue-400"
+              >
+                DTH Drilling Rigs
+              </Link>
+
+              <Link
+                href="/drilling-rigs/rotary-drilling-rigs"
+                className="text-slate-300 transition hover:text-blue-400"
+              >
+                Rotary Drilling Rigs
+              </Link>
+            </nav>
+
+            {/* Flagship Machines */}
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-slate-400">
+              <span>Flagship deep drilling rigs:</span>
+
+              <Link
+                href="/drilling-rigs/ngdr3000"
+                className="font-semibold text-blue-400 transition hover:text-blue-300"
+              >
+                NGDR3000
+              </Link>
+
+              <Link
+                href="/drilling-rigs/ngdr2000"
+                className="font-semibold text-blue-400 transition hover:text-blue-300"
+              >
+                NGDR2000
+              </Link>
             </div>
 
             {/* Trust Numbers */}
@@ -130,8 +164,6 @@ export default function Hero() {
 
           <div className="relative flex h-[360px] items-center justify-center overflow-visible sm:h-[500px] lg:h-[760px] lg:-translate-x-36">
 
-            {/* Main Blue Glow */}
-
             <div
               className="
                 hero-blue-glow
@@ -146,8 +178,6 @@ export default function Hero() {
               "
             />
 
-            {/* Secondary Cyan Glow */}
-
             <div
               className="
                 absolute
@@ -161,8 +191,6 @@ export default function Hero() {
               "
             />
 
-            {/* Machine */}
-
             <div
               className="
                 relative
@@ -173,8 +201,6 @@ export default function Hero() {
                 overflow-visible
               "
             >
-
-              {/* Metallic sweep */}
 
               <div
                 className="
@@ -192,8 +218,6 @@ export default function Hero() {
                   blur-md
                 "
               />
-
-              {/* Machine glow */}
 
               <div
                 className="
@@ -214,11 +238,9 @@ export default function Hero() {
                 "
               />
 
-              {/* Rig Image */}
-
               <Image
                 src="/images/ngdr3000-hero-v15.png"
-                alt="NGE DRILLSOL Heavy Duty Water Well Drilling Rig"
+                alt="NGDR3000 deep water well rotary drilling rig manufactured by NGE Drillsol"
                 fill
                 priority
                 sizes="(max-width: 639px) 100vw, (max-width: 1023px) 80vw, 50vw"

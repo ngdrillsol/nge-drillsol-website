@@ -13,70 +13,73 @@ import {
 const reasons = [
   {
     icon: Settings,
-    title: "Engineering-Driven Solutions",
+    title: "Project-Based Rig Selection",
     description:
-      "We recommend drilling solutions based on geology, drilling depth, bore diameter and project requirements—not just machine specifications.",
+      "Machine selection considers geology, required drilling depth, bore diameter, drilling method and operating requirements.",
   },
   {
     icon: Wrench,
-    title: "Customized Equipment",
+    title: "Configurable Drilling Equipment",
     description:
-      "Our drilling rigs can be configured to suit different applications, operational conditions and customer requirements.",
+      "Drilling platforms can be evaluated for different mounting, hydraulic, rotary, mast and supporting equipment requirements.",
   },
   {
     icon: Globe2,
-    title: "Export Experience",
+    title: "Domestic & International Supply",
     description:
-      "Supporting customers across international markets with documentation, logistics coordination and engineering assistance.",
+      "NGE Drillsol works with drilling equipment requirements for projects in India and international markets.",
   },
   {
     icon: ShieldCheck,
-    title: "Reliable Manufacturing",
+    title: "Engineering & Manufacturing",
     description:
-      "Every drilling rig is built with a focus on structural strength, dependable hydraulics and long-term field reliability.",
+      "Machine development combines structural, mechanical and hydraulic systems with fabrication, assembly and inspection.",
   },
   {
     icon: Headphones,
-    title: "Technical Support",
+    title: "Technical Communication",
     description:
-      "Our team assists customers from machine selection through commissioning, training and after-sales technical support.",
+      "Customers can discuss machine configuration, drilling requirements and equipment selection directly with the NGE Drillsol team.",
   },
   {
     icon: CheckCircle2,
-    title: "Long-Term Partnership",
+    title: "Long-Term Equipment Support",
     description:
-      "We aim to become an engineering partner for every customer by supporting projects throughout the equipment lifecycle.",
+      "Our objective is to support customers beyond machine selection through continued technical and equipment-related communication.",
   },
 ];
 
 export default function WhyChooseNGE() {
   return (
-    <section className="space-y-16">
-
-      {/* Heading */}
+    <section
+      className="space-y-16"
+      aria-labelledby="why-nge-heading"
+    >
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-          Why Choose NGE DRILLSOL
+          Why NGE Drillsol
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          More Than A Manufacturer.
+        <h2
+          id="why-nge-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Drilling Equipment
           <span className="block text-yellow-400">
-            Your Engineering Partner.
+            Backed by Engineering
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          We combine engineering expertise, dependable manufacturing
-          and customer-focused support to deliver drilling solutions
-          that perform reliably in demanding environments.
+          NGE Drillsol combines project evaluation, drilling rig
+          engineering, manufacturing and technical communication
+          to support customers selecting equipment for demanding
+          drilling applications.
         </p>
 
       </div>
-
-      {/* Cards */}
 
       <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
@@ -84,7 +87,7 @@ export default function WhyChooseNGE() {
           const Icon = reason.icon;
 
           return (
-            <motion.div
+            <motion.article
               key={reason.title}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,6 +102,7 @@ export default function WhyChooseNGE() {
                 <Icon
                   size={30}
                   className="text-yellow-400"
+                  aria-hidden="true"
                 />
 
               </div>
@@ -111,27 +115,24 @@ export default function WhyChooseNGE() {
                 {reason.description}
               </p>
 
-            </motion.div>
+            </motion.article>
           );
         })}
 
       </div>
-
-      {/* Bottom Banner */}
 
       <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[30px] sm:p-8 lg:rounded-[36px] lg:p-12">
 
         <div className="mx-auto max-w-5xl text-center">
 
           <h3 className="text-4xl font-bold text-white">
-            Engineering Confidence For Every Drilling Project
+            Start With the Drilling Requirement
           </h3>
 
           <p className="mt-8 text-lg leading-9 text-slate-300">
-            Our objective is simple—deliver dependable drilling
-            equipment backed by practical engineering, responsive
-            support and long-term customer relationships that help
-            every project succeed.
+            Share the required depth, bore diameter, geology,
+            drilling method and project location so the appropriate
+            NGE Drillsol equipment can be evaluated.
           </p>
 
         </div>

@@ -1,203 +1,132 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import {
-
   Lightbulb,
-
   Mountain,
-
   Settings,
-
   ShieldCheck,
-
   ArrowRight,
-
 } from "lucide-react";
 
 const philosophy = [
-
   {
-
     icon: Mountain,
-
-    title: "Engineering Starts With Geology",
-
+    title: "Start With Geology",
     description:
-
-      "Every drilling project begins with understanding geological formations, drilling depth, bore diameter and project objectives before recommending equipment.",
-
+      "Drilling equipment selection begins with geological formation, required depth, bore diameter, drilling method and project objectives.",
   },
-
   {
-
     icon: Settings,
-
-    title: "No Standard Machine Fits Every Project",
-
+    title: "Match the Rig to the Project",
     description:
-
-      "Instead of offering one-size-fits-all equipment, we configure drilling rigs to match each customer's operational requirements and drilling conditions.",
-
+      "Machine configuration should reflect the actual operating conditions instead of relying on a one-size-fits-all drilling platform.",
   },
-
   {
-
     icon: ShieldCheck,
-
-    title: "Reliability Before Complexity",
-
+    title: "Prioritize Serviceability",
     description:
-
-      "We believe equipment should be dependable, serviceable and capable of operating in demanding environments with confidence.",
-
+      "Drilling equipment should be practical to operate, maintain and support in the field, particularly in demanding or remote project locations.",
   },
-
   {
-
     icon: Lightbulb,
-
-    title: "Continuous Engineering Improvement",
-
+    title: "Improve Through Field Experience",
     description:
-
-      "Customer feedback, field experience and ongoing engineering development help us continuously improve our drilling solutions.",
-
+      "Customer requirements, operating experience and engineering feedback contribute to continued product development and machine improvement.",
   },
-
 ];
 
 export default function EngineeringPhilosophy() {
-
   return (
-
-    <section className="space-y-16">
-
-      {/* Heading */}
+    <section
+      className="space-y-16"
+      aria-labelledby="engineering-philosophy-heading"
+    >
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-
           Engineering Philosophy
-
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-
-          We Don't Sell Machines.
-
+        <h2
+          id="engineering-philosophy-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Select the Rig Around
           <span className="block text-yellow-400">
-
-            We Engineer Solutions.
-
+            the Drilling Requirement
           </span>
-
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-
-          Our engineering philosophy is based on solving drilling
-
-          challenges—not simply manufacturing equipment. Every project
-
-          deserves a solution designed around its technical requirements.
-
+          NGE Drillsol approaches drilling equipment as an
+          engineering problem. Geological formation, depth,
+          diameter, drilling method and operating conditions should
+          guide the final machine configuration.
         </p>
 
       </div>
 
-      {/* Philosophy Cards */}
-
       <div className="grid gap-8 md:grid-cols-2">
 
         {philosophy.map((item, index) => {
-
           const Icon = item.icon;
 
           return (
-
-            <motion.div
-
+            <motion.article
               key={item.title}
-
               initial={{ opacity: 0, y: 25 }}
-
               whileInView={{ opacity: 1, y: 0 }}
-
               viewport={{ once: true }}
-
               transition={{ delay: index * 0.08 }}
-
               whileHover={{ y: -6 }}
-
               className="rounded-[30px] border border-white/10 bg-[#090909] p-8 transition-all duration-300 hover:border-yellow-500/30"
-
             >
 
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
 
                 <Icon
-
                   size={30}
-
                   className="text-yellow-400"
-
+                  aria-hidden="true"
                 />
 
               </div>
 
               <h3 className="text-2xl font-bold text-white">
-
                 {item.title}
-
               </h3>
 
               <p className="mt-5 leading-8 text-slate-400">
-
                 {item.description}
-
               </p>
 
-            </motion.div>
-
+            </motion.article>
           );
-
         })}
 
       </div>
-
-      {/* Bottom Statement */}
 
       <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
         <div className="flex flex-col items-center text-center">
 
           <ArrowRight
-
             size={42}
-
             className="text-yellow-400"
-
+            aria-hidden="true"
           />
 
           <h3 className="mt-6 text-3xl font-bold text-white">
-
-            Every Project Is Different. Every Solution Should Be Too.
-
+            Different Ground Conditions Require Different Solutions
           </h3>
 
           <p className="mt-6 max-w-4xl text-lg leading-9 text-slate-300">
-
-            Whether the challenge is deep water well drilling, hard rock
-
-            formations, mining exploration, piling or workover operations,
-
-            our engineering team focuses on recommending the right solution
-
-            rather than simply supplying a machine.
-
+            Water well drilling, hard-rock DTH drilling, rotary
+            drilling, piling, core exploration and workover
+            operations involve different technical requirements.
+            Machine selection should reflect those differences.
           </p>
 
         </div>
@@ -205,7 +134,5 @@ export default function EngineeringPhilosophy() {
       </div>
 
     </section>
-
   );
-
 }

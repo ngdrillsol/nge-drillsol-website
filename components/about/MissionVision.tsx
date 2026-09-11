@@ -1,11 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Target, Eye, Compass } from "lucide-react";
+import {
+  Target,
+  Eye,
+  Compass,
+} from "lucide-react";
 
 export default function MissionVision() {
   return (
-    <section className="space-y-16">
+    <section
+      className="space-y-16"
+      aria-labelledby="mission-vision-heading"
+    >
 
       {/* Heading */}
 
@@ -15,18 +22,21 @@ export default function MissionVision() {
           Mission & Vision
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Engineering Today.
+        <h2
+          id="mission-vision-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          Engineering for Access.
           <span className="block text-yellow-400">
-            Building Tomorrow.
+            Building for the Future.
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          Our purpose extends beyond manufacturing machinery. We strive to
-          engineer reliable drilling solutions that help contractors,
-          industries and governments complete challenging drilling projects
-          safely, efficiently and successfully.
+          Our purpose connects drilling engineering with practical
+          infrastructure needs, particularly groundwater,
+          irrigation and projects that depend on reliable drilling
+          equipment.
         </p>
 
       </div>
@@ -35,7 +45,7 @@ export default function MissionVision() {
 
         {/* Mission */}
 
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -47,6 +57,7 @@ export default function MissionVision() {
             <Target
               size={40}
               className="text-yellow-400"
+              aria-hidden="true"
             />
 
           </div>
@@ -56,17 +67,22 @@ export default function MissionVision() {
           </h3>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            To design and manufacture dependable drilling rigs and
-            engineering solutions that perform reliably across diverse
-            geological formations while delivering long-term value to our
-            customers worldwide.
+            To provide groundwater and drilling solutions that help
+            make drinking and irrigation water accessible in areas
+            where reliable water resources are difficult to reach.
           </p>
 
-        </motion.div>
+          <p className="mt-5 text-base leading-8 text-slate-400">
+            We support that mission through drilling rig
+            engineering, equipment manufacturing and
+            project-specific machine selection.
+          </p>
+
+        </motion.article>
 
         {/* Vision */}
 
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -78,6 +94,7 @@ export default function MissionVision() {
             <Eye
               size={40}
               className="text-yellow-400"
+              aria-hidden="true"
             />
 
           </div>
@@ -87,17 +104,17 @@ export default function MissionVision() {
           </h3>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            To become one of the world's most respected drilling engineering
-            companies by delivering innovative equipment, customized
-            engineering solutions and trusted technical support across global
-            markets.
+            To build NGE Drillsol into a globally recognized
+            drilling engineering and manufacturing company known
+            for practical machine design, dependable equipment and
+            technical solutions for demanding drilling projects.
           </p>
 
-        </motion.div>
+        </motion.article>
 
       </div>
 
-      {/* Bottom Banner */}
+      {/* Bottom */}
 
       <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
@@ -106,17 +123,17 @@ export default function MissionVision() {
           <Compass
             size={46}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
           <h3 className="text-3xl font-bold text-white">
-            Guided by Engineering. Driven by Customer Success.
+            Engineering With a Practical Purpose
           </h3>
 
           <p className="max-w-4xl text-lg leading-9 text-slate-300">
-            Every machine we develop reflects our commitment to engineering
-            excellence, practical innovation and long-term partnerships that
-            help customers achieve dependable drilling performance in every
-            environment.
+            We measure drilling equipment by how effectively it
+            solves a real project requirement—not simply by the
+            number of specifications listed in a catalogue.
           </p>
 
         </div>

@@ -12,64 +12,69 @@ import {
 const capabilities = [
   {
     icon: Cog,
-    title: "Engineering & Design",
+    title: "Engineering & Machine Design",
     description:
-      "Every drilling rig is designed with attention to structural strength, hydraulic efficiency, operational reliability and ease of maintenance.",
+      "Drilling rig development considers structural design, mast configuration, hydraulic systems, rotary or top-drive requirements, lifting capacity and serviceability.",
   },
   {
     icon: Factory,
-    title: "Precision Manufacturing",
+    title: "Fabrication & Assembly",
     description:
-      "Modern manufacturing practices and quality-focused processes ensure every machine is built to deliver dependable field performance.",
+      "Engineering designs are converted into drilling equipment through fabrication, machining, mechanical assembly, hydraulic integration and final machine assembly.",
   },
   {
     icon: ClipboardCheck,
-    title: "Quality Inspection",
+    title: "Inspection & Functional Checks",
     description:
-      "Each machine undergoes inspection and functional verification before delivery to help ensure dependable operation in demanding environments.",
+      "Machines are inspected and functionally checked before dispatch to verify the intended operating configuration and equipment integration.",
   },
   {
     icon: Wrench,
-    title: "Continuous Improvement",
+    title: "Field-Based Improvement",
     description:
-      "Customer feedback and field experience are continuously incorporated into our engineering and product development process.",
+      "Project experience, operator feedback and service requirements contribute to continued engineering and product development.",
   },
 ];
 
 export default function ManufacturingExcellence() {
   return (
-    <section className="space-y-16">
+    <section
+      className="space-y-16"
+      aria-labelledby="manufacturing-heading"
+    >
 
       {/* Heading */}
 
       <div className="text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-          Manufacturing Excellence
+          Drilling Rig Manufacturing
         </span>
 
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          Designed With Precision.
+        <h2
+          id="manufacturing-heading"
+          className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          From Engineering Design
           <span className="block text-yellow-400">
-            Built For Reliability.
+            to Finished Drilling Rig
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          From engineering and fabrication to inspection and testing,
-          every stage of our manufacturing process is focused on producing
-          dependable drilling equipment for demanding field conditions.
+          NGE Drillsol combines engineering, fabrication,
+          mechanical assembly, hydraulic integration, inspection
+          and functional verification to manufacture drilling
+          equipment for field operation.
         </p>
 
       </div>
 
-      {/* Main Layout */}
+      {/* Main */}
 
       <div className="grid items-center gap-14 lg:grid-cols-2">
 
-        {/* Left */}
-
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -79,28 +84,29 @@ export default function ManufacturingExcellence() {
           <Factory
             size={54}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
           <h3 className="mt-8 text-4xl font-bold text-white">
-            Manufacturing Philosophy
+            Manufacturing Approach
           </h3>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            Manufacturing is more than fabrication. It is the process of
-            transforming engineering concepts into dependable drilling
-            equipment capable of performing in real-world operating
-            conditions.
+            A drilling rig is a combination of structural,
+            mechanical, hydraulic and operational systems. The
+            manufacturing process therefore begins with the
+            intended drilling application and machine
+            configuration.
           </p>
 
           <p className="mt-6 text-lg leading-9 text-slate-300">
-            Our focus remains on build quality, engineering precision,
-            serviceability and long-term reliability rather than simply
-            increasing production volume.
+            Our focus is on producing serviceable equipment with
+            appropriate structural strength, machine integration
+            and operating configuration for the intended drilling
+            environment.
           </p>
 
-        </motion.div>
-
-        {/* Right */}
+        </motion.article>
 
         <div className="grid gap-6">
 
@@ -108,7 +114,7 @@ export default function ManufacturingExcellence() {
             const Icon = item.icon;
 
             return (
-              <motion.div
+              <motion.article
                 key={item.title}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -119,20 +125,21 @@ export default function ManufacturingExcellence() {
 
                 <div className="flex gap-5">
 
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-yellow-500/10">
 
                     <Icon
                       size={30}
                       className="text-yellow-400"
+                      aria-hidden="true"
                     />
 
                   </div>
 
                   <div>
 
-                    <h4 className="text-2xl font-bold text-white">
+                    <h3 className="text-2xl font-bold text-white">
                       {item.title}
-                    </h4>
+                    </h3>
 
                     <p className="mt-4 leading-8 text-slate-400">
                       {item.description}
@@ -142,7 +149,7 @@ export default function ManufacturingExcellence() {
 
                 </div>
 
-              </motion.div>
+              </motion.article>
             );
           })}
 
@@ -150,7 +157,7 @@ export default function ManufacturingExcellence() {
 
       </div>
 
-      {/* Bottom Statement */}
+      {/* Bottom */}
 
       <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-[#111827] via-[#0F172A] to-[#111827] p-5 sm:rounded-[28px] sm:p-8 lg:rounded-[32px] lg:p-10">
 
@@ -159,17 +166,17 @@ export default function ManufacturingExcellence() {
           <ArrowRight
             size={42}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
           <h3 className="mt-6 text-3xl font-bold text-white">
-            Engineering Quality Is Built Into Every Machine
+            Engineering and Manufacturing Work Together
           </h3>
 
           <p className="mt-6 max-w-4xl text-lg leading-9 text-slate-300">
-            Every drilling rig reflects our commitment to engineering
-            precision, practical performance and dependable operation,
-            helping customers work confidently across a wide range of
-            drilling applications.
+            The final drilling rig configuration should reflect
+            both engineering requirements and the conditions in
+            which the machine will actually operate.
           </p>
 
         </div>

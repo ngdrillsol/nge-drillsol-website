@@ -5,81 +5,115 @@ import {
   LeadershipMember,
 } from "./about.types";
 
+/* ============================================================
+   COMPANY INFORMATION
+   ============================================================ */
+
 export const companyStats: CompanyStat[] = [
   {
-    label: "Years of Engineering Experience",
-    value: "15+",
+    label: "Drilling Rig Categories",
+    value: "7",
   },
   {
-    label: "Countries Served",
-    value: "25+",
+    label: "Manufacturing Base",
+    value: "India",
   },
   {
-    label: "Rig Models Developed",
-    value: "20+",
+    label: "Market Reach",
+    value: "Global",
   },
   {
-    label: "Engineering Focus",
-    value: "100%",
+    label: "Engineering Approach",
+    value: "Project-Based",
   },
 ];
 
+/* ============================================================
+   CORE VALUES
+   ============================================================ */
+
 export const coreValues: CoreValue[] = [
   {
-    title: "Engineering Excellence",
+    title: "Engineering Around the Project",
+
     description:
-      "Every drilling rig is engineered with a focus on performance, reliability and long-term productivity in demanding field conditions.",
+      "Drilling equipment selection and configuration should reflect geology, drilling depth, bore diameter, drilling method and operating requirements.",
+
     icon: "⚙️",
   },
+
   {
-    title: "Customer-Driven Innovation",
+    title: "Practical Product Development",
+
     description:
-      "We engineer solutions around the customer's geology, drilling objectives and operational requirements instead of offering standard machines.",
+      "Machine development is guided by field requirements, customer applications and the operating conditions in which drilling equipment will be used.",
+
     icon: "💡",
   },
+
   {
-    title: "Quality Without Compromise",
+    title: "Quality-Focused Manufacturing",
+
     description:
-      "From design to manufacturing and inspection, every stage follows a rigorous quality-driven engineering process.",
+      "Engineering, fabrication, mechanical assembly, hydraulic integration, inspection and functional checks form part of the drilling rig manufacturing process.",
+
     icon: "🏆",
   },
+
   {
-    title: "Long-Term Partnership",
+    title: "Long-Term Equipment Support",
+
     description:
-      "We believe in supporting customers beyond delivery through technical assistance, training and reliable after-sales support.",
+      "Our objective is to maintain technical communication with customers throughout machine selection, supply and continued equipment operation.",
+
     icon: "🤝",
   },
 ];
 
+/* ============================================================
+   CERTIFICATIONS, REGISTRATIONS & RECOGNITION
+   ============================================================ */
+
 export const certifications: Certification[] = [
   {
     title: "ISO 9001",
-    image: "/images/certifications/iso.png",
+    image: "/images/certificates/iso.png",
   },
+
   {
-    title: "CE Certification",
-    image: "/images/certifications/ce.png",
+    title: "CE Compliance",
+    image: "/images/certificates/ce.png",
   },
+
   {
-    title: "Startup India",
-    image: "/images/certifications/startup-india.png",
+    title: "Startup India Recognition",
+    image: "/images/certificates/startup-india.png",
   },
+
   {
-    title: "MSME",
-    image: "/images/certifications/msme.png",
+    title: "MSME Registration",
+    image: "/images/certificates/msme.png",
   },
+
   {
-    title: "Make in India",
-    image: "/images/certifications/make-in-india.png",
+    title: "Made in India Manufacturing",
+    image: "/images/certificates/make-in-india.png",
   },
 ];
+
+/* ============================================================
+   LEADERSHIP
+   ============================================================ */
 
 export const leadership: LeadershipMember[] = [
   {
     name: "Kuldeep Suthar",
+
     designation: "Director",
+
     image: "/images/team/kuldeep-suthar.jpg",
+
     description:
-      "Focused on developing world-class drilling rigs and engineering solutions that serve contractors, EPC companies and governments across global markets.",
+      "Kuldeep Suthar leads NGE Drillsol with a focus on drilling rig engineering, manufacturing and project-specific equipment solutions. His approach emphasizes understanding drilling requirements and developing practical equipment for water well, DTH, rotary, piling, core drilling and workover applications.",
   },
 ];

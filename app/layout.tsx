@@ -20,13 +20,56 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.ngedrill.com"),
+
   title: {
-    default: "NGE DRILLSOL | Premium Drilling Rigs",
-    template: "%s | NGE DRILLSOL",
+    default: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+    template: "%s | NGE Drillsol",
   },
 
   description:
-    "Manufacturer and exporter of premium water well drilling rigs, DTH drilling rigs, piling rigs, and drilling accessories for global markets.",
+    "NGE Drillsol is an Indian manufacturer and exporter of water well drilling rigs, DTH drilling rigs, rotary drilling rigs, piling rigs, workover rigs, core drilling rigs and drilling equipment for global markets.",
+
+  applicationName: "NGE Drillsol",
+
+  authors: [
+    {
+      name: "NGE Drillsol Pvt. Ltd.",
+      url: "https://www.ngedrill.com",
+    },
+  ],
+
+  creator: "NGE Drillsol Pvt. Ltd.",
+  publisher: "NGE Drillsol Pvt. Ltd.",
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.ngedrill.com",
+    siteName: "NGE Drillsol",
+    title: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+    description:
+      "Manufacturer and exporter of water well, DTH, rotary, piling, workover and core drilling rigs for global drilling projects.",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+    description:
+      "Manufacturer and exporter of water well, DTH, rotary, piling, workover and core drilling rigs for global drilling projects.",
+  },
 };
 
 export default function RootLayout({

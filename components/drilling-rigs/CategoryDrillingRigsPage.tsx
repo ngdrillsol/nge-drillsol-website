@@ -20,30 +20,63 @@ import {
 import type { RigCategory } from "./drilling-rigs.types";
 import type { RigData } from "./rig.types";
 import { getAllRigs } from "./rig.data";
+import { rigCategories } from "./drilling-rigs.data";
 
 interface CategoryDrillingRigsPageProps {
   category: RigCategory;
 }
 
+/* ============================================================
+   CATEGORY SEO / GEO HELPERS
+   ============================================================ */
+
+function getCategoryHeading(category: RigCategory) {
+  return `${category.title} Manufacturer`;
+}
+
+function getCategoryDirectAnswer(category: RigCategory) {
+  return `NGE Drillsol manufactures ${category.title.toLowerCase()} for projects requiring ${category.methods.join(
+    ", "
+  )}. This category is intended for applications including ${category.applications.join(
+    ", "
+  )}, with machine selection based on required drilling depth, hole diameter, geological formation and drilling method.`;
+}
+
+function getCategorySelectionPoints(category: RigCategory) {
+  return [
+    {
+      title: "Required Drilling Depth",
+      value: category.depth,
+      description:
+        "Select a machine with adequate working capacity for the planned drilling depth.",
+    },
+    {
+      title: "Required Hole Diameter",
+      value: category.holeDiameter,
+      description:
+        "Confirm the required bore diameter before finalizing the rig, tooling and drilling method.",
+    },
+    {
+      title: "Drilling Method",
+      value: category.methods.join(" • "),
+      description:
+        "The drilling method should match the formation, depth and required bore construction.",
+    },
+    {
+      title: "Geological Formation",
+      value: category.formations.join(" • "),
+      description:
+        "Formation conditions are a major factor in selecting the appropriate rig configuration.",
+    },
+  ];
+}
+
 export default function CategoryDrillingRigsPage({
   category,
 }: CategoryDrillingRigsPageProps) {
-  /*
-   * ----------------------------------------------------------
-   * Resolve the models listed in the category data against
-   * the individual-rig database.
-   *
-   * Example:
-   *
-   * category.machines = [
-   *   "NGDR3000",
-   *   "NGDR2000",
-   *   "NGDR1500"
-   * ]
-   *
-   * We find those actual RigData records here.
-   * ----------------------------------------------------------
-   */
+  /* ==========================================================
+     RESOLVE MACHINES
+     ========================================================== */
 
   const allRigs = getAllRigs();
 
@@ -55,6 +88,23 @@ export default function CategoryDrillingRigsPage({
       )
     )
     .filter((rig): rig is RigData => Boolean(rig));
+
+  const relatedCategories = rigCategories.filter(
+    (item) => item.id !== category.id
+  );
+
+  const categoryHeading = getCategoryHeading(category);
+
+  const categoryDirectAnswer =
+    getCategoryDirectAnswer(category);
+
+  const selectionPoints =
+    getCategorySelectionPoints(category);
+
+  const listedModels =
+    categoryRigs.length > 0
+      ? categoryRigs.map((rig) => rig.model)
+      : category.machines;
 
   return (
     <main className="min-h-screen bg-[#05070B] text-white">
@@ -71,7 +121,7 @@ export default function CategoryDrillingRigsPage({
 
           <img
             src={category.image}
-            alt={category.title}
+            alt={`${category.title} manufactured by NGE Drillsol`}
             className="h-full w-full object-cover opacity-25"
           />
 
@@ -103,7 +153,10 @@ export default function CategoryDrillingRigsPage({
               Home
             </Link>
 
-            <ChevronRight size={15} />
+            <ChevronRight
+              size={15}
+              aria-hidden="true"
+            />
 
             <Link
               href="/drilling-rigs"
@@ -112,7 +165,10 @@ export default function CategoryDrillingRigsPage({
               Drilling Rigs
             </Link>
 
-            <ChevronRight size={15} />
+            <ChevronRight
+              size={15}
+              aria-hidden="true"
+            />
 
             <span className="text-slate-300">
               {category.title}
@@ -120,7 +176,7 @@ export default function CategoryDrillingRigsPage({
 
           </nav>
 
-          <div className="max-w-4xl">
+          <div className="max-w-5xl">
 
             {/* Badge */}
 
@@ -140,7 +196,10 @@ export default function CategoryDrillingRigsPage({
 
               <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-yellow-400">
 
-                <Drill size={14} />
+                <Drill
+                  size={14}
+                  aria-hidden="true"
+                />
 
                 {category.badge}
 
@@ -148,7 +207,7 @@ export default function CategoryDrillingRigsPage({
 
             </motion.div>
 
-            {/* Heading */}
+            {/* H1 */}
 
             <motion.h1
               initial={{
@@ -165,7 +224,7 @@ export default function CategoryDrillingRigsPage({
               }}
               className="mt-7 text-4xl font-black leading-[1.05] sm:text-5xl lg:text-7xl"
             >
-              {category.title}
+              {categoryHeading}
             </motion.h1>
 
             {/* Description */}
@@ -183,7 +242,7 @@ export default function CategoryDrillingRigsPage({
                 duration: 0.6,
                 delay: 0.16,
               }}
-              className="mt-7 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl"
+              className="mt-7 max-w-4xl text-lg leading-8 text-slate-300 sm:text-xl"
             >
               {category.description}
             </motion.p>
@@ -245,6 +304,38 @@ export default function CategoryDrillingRigsPage({
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
 
         {/* ====================================================
+            DIRECT ANSWER / GEO SECTION
+        ==================================================== */}
+
+        <section className="border-b border-white/10 py-16 sm:py-20">
+
+          <div className="mx-auto max-w-5xl">
+
+            <SectionEyebrow>
+              NGE Drillsol {category.title}
+            </SectionEyebrow>
+
+            <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl">
+              What are {category.title.toLowerCase()} used for?
+            </h2>
+
+            <p className="mt-6 text-lg leading-9 text-slate-300">
+              {categoryDirectAnswer}
+            </p>
+
+            <p className="mt-5 text-base leading-8 text-slate-400">
+              The final machine configuration should be selected
+              according to the actual project requirements rather
+              than drilling depth alone. Bore diameter, formation,
+              drilling method, tooling, power requirements and site
+              conditions should all be considered.
+            </p>
+
+          </div>
+
+        </section>
+
+        {/* ====================================================
             CAPABILITIES
         ==================================================== */}
 
@@ -255,20 +346,20 @@ export default function CategoryDrillingRigsPage({
             <div>
 
               <SectionEyebrow>
-                Category Capabilities
+                {category.title} Capabilities
               </SectionEyebrow>
 
               <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl">
                 Engineered for demanding
                 <span className="text-yellow-400">
-                  {" "}field conditions
+                  {" "}drilling conditions
                 </span>
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-400">
-                Explore the drilling methods, applications and
-                formations this machine category is designed to
-                address.
+                Review the drilling methods, project applications
+                and geological formations associated with this
+                drilling rig category.
               </p>
 
             </div>
@@ -289,7 +380,7 @@ export default function CategoryDrillingRigsPage({
 
               <CapabilityCard
                 icon={Layers3}
-                title="Suitable Formations"
+                title="Suitable Geological Formations"
                 items={category.formations}
               />
 
@@ -311,6 +402,75 @@ export default function CategoryDrillingRigsPage({
         </section>
 
         {/* ====================================================
+            HOW TO SELECT
+        ==================================================== */}
+
+        <section className="border-b border-white/10 py-20">
+
+          <div className="mx-auto max-w-5xl text-center">
+
+            <SectionEyebrow>
+              Rig Selection Guide
+            </SectionEyebrow>
+
+            <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              How to Select the Right{" "}
+              <span className="text-yellow-400">
+                {category.title.replace("Rigs", "Rig")}
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-400">
+              Start with the technical requirements of the bore
+              rather than selecting a machine only by model name.
+              These four factors should be confirmed before final
+              machine selection.
+            </p>
+
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+
+            {selectionPoints.map((point, index) => (
+
+              <div
+                key={point.title}
+                className="rounded-[28px] border border-white/10 bg-[#090C11] p-7"
+              >
+
+                <div className="flex items-start gap-4">
+
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yellow-500/10 font-bold text-yellow-400">
+                    {index + 1}
+                  </span>
+
+                  <div>
+
+                    <h3 className="text-xl font-bold text-white">
+                      {point.title}
+                    </h3>
+
+                    <p className="mt-2 font-semibold text-yellow-400">
+                      {point.value}
+                    </p>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                      {point.description}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        {/* ====================================================
             AVAILABLE RIGS
         ==================================================== */}
 
@@ -324,20 +484,20 @@ export default function CategoryDrillingRigsPage({
             <div>
 
               <SectionEyebrow>
-                Available Machines
+                NGE Drillsol Models
               </SectionEyebrow>
 
               <h2 className="mt-5 text-3xl font-bold sm:text-4xl lg:text-5xl">
-                Choose the right
+                Available{" "}
                 <span className="text-yellow-400">
-                  {" "}rig
+                  {category.title}
                 </span>
               </h2>
 
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">
-                Compare the NGE DRILLSOL rigs available for this
-                drilling category and open an individual machine
-                page for detailed specifications.
+                Compare NGE Drillsol machines available for this
+                category and open each model page for specifications,
+                applications and machine information.
               </p>
 
             </div>
@@ -347,6 +507,7 @@ export default function CategoryDrillingRigsPage({
               <Drill
                 size={17}
                 className="text-yellow-400"
+                aria-hidden="true"
               />
 
               <span className="text-sm text-slate-300">
@@ -359,9 +520,7 @@ export default function CategoryDrillingRigsPage({
 
           </div>
 
-          {/* ==================================================
-              MACHINE GRID
-          ================================================== */}
+          {/* MACHINE GRID */}
 
           {categoryRigs.length > 0 ? (
 
@@ -418,30 +577,34 @@ export default function CategoryDrillingRigsPage({
               <div>
 
                 <SectionEyebrow>
-                  NGE DRILLSOL Engineering
+                  NGE Drillsol Engineering
                 </SectionEyebrow>
 
                 <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl">
                   More than a machine.
                   <span className="text-yellow-400">
-                    {" "}A drilling solution.
+                    {" "}A complete drilling solution.
                   </span>
                 </h2>
 
                 <p className="mt-5 text-base leading-8 text-slate-400">
                   Drilling requirements vary from project to
                   project. Machine selection should consider depth,
-                  bore diameter, formation, drilling method, tooling,
-                  power requirements and site conditions.
+                  bore diameter, geological formation, drilling
+                  method, tooling, power requirements and site
+                  conditions.
                 </p>
 
                 <Link
                   href="/contact"
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow-500 px-7 py-4 font-semibold text-black transition hover:scale-[1.02] hover:bg-yellow-400"
                 >
-                  Discuss Your Project
+                  Discuss Your Drilling Project
 
-                  <ArrowRight size={18} />
+                  <ArrowRight
+                    size={18}
+                    aria-hidden="true"
+                  />
 
                 </Link>
 
@@ -451,31 +614,155 @@ export default function CategoryDrillingRigsPage({
 
                 <EngineeringPoint
                   icon={Settings2}
-                  title="Configuration"
-                  description="Machine configuration can be matched to project requirements."
+                  title="Rig Configuration"
+                  description="Machine configuration can be matched to the drilling requirements of the project."
                 />
 
                 <EngineeringPoint
                   icon={Target}
-                  title="Application"
-                  description="Select equipment according to drilling method and intended use."
+                  title="Application Engineering"
+                  description="Select equipment according to the drilling method, geology and intended application."
                 />
 
                 <EngineeringPoint
                   icon={Globe2}
-                  title="Export Ready"
-                  description="Machines can be prepared for international project requirements."
+                  title="Export Projects"
+                  description="Machines can be prepared for international drilling and project requirements."
                 />
 
                 <EngineeringPoint
                   icon={MapPin}
-                  title="Field Support"
-                  description="Share your project conditions before final machine selection."
+                  title="Project Evaluation"
+                  description="Share drilling depth, formation, diameter and location before final machine selection."
                 />
 
               </div>
 
             </div>
+
+          </div>
+
+        </section>
+
+        {/* ====================================================
+            FAQ / GEO
+        ==================================================== */}
+
+        <section className="border-t border-white/10 py-20">
+
+          <div className="mx-auto max-w-4xl">
+
+            <div className="text-center">
+
+              <SectionEyebrow>
+                Technical Questions
+              </SectionEyebrow>
+
+              <h2 className="mt-5 text-3xl font-bold sm:text-4xl lg:text-5xl">
+                Frequently Asked Questions About{" "}
+                <span className="text-yellow-400">
+                  {category.title}
+                </span>
+              </h2>
+
+            </div>
+
+            <div className="mt-12 space-y-4">
+
+              <FaqItem
+                question={`What are ${category.title.toLowerCase()} used for?`}
+                answer={category.description}
+              />
+
+              <FaqItem
+                question={`What drilling depth is available in this ${category.title.toLowerCase()} category?`}
+                answer={`The category currently covers drilling depths of ${category.depth}. Actual machine suitability depends on the selected model, drilling method, geology, bore diameter and project conditions.`}
+              />
+
+              <FaqItem
+                question={`Which drilling methods are used with these ${category.title.toLowerCase()}?`}
+                answer={`Methods listed for this category include ${category.methods.join(
+                  ", "
+                )}. The appropriate method should be selected according to formation and bore requirements.`}
+              />
+
+              <FaqItem
+                question={`Which geological formations are suitable for these rigs?`}
+                answer={`This category is associated with formations including ${category.formations.join(
+                  ", "
+                )}. Final rig and tooling selection should be based on actual geological conditions.`}
+              />
+
+              <FaqItem
+                question={`Which NGE Drillsol models are available in this category?`}
+                answer={`Listed NGE Drillsol models include ${listedModels.join(
+                  ", "
+                )}. Open the individual rig pages to review machine-specific information.`}
+              />
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* ====================================================
+            RELATED CATEGORIES
+        ==================================================== */}
+
+        <section className="border-t border-white/10 py-20">
+
+          <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
+
+            <div>
+
+              <SectionEyebrow>
+                Related Equipment
+              </SectionEyebrow>
+
+              <h2 className="mt-5 text-3xl font-bold sm:text-4xl">
+                Explore Other Drilling Rig Categories
+              </h2>
+
+              <p className="mt-4 max-w-2xl leading-8 text-slate-400">
+                Compare other drilling methods and machine categories
+                available from NGE Drillsol.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+            {relatedCategories.map((item) => (
+
+              <Link
+                key={item.id}
+                href={item.href}
+                className="group rounded-[24px] border border-white/10 bg-[#090C11] p-6 transition hover:border-yellow-500/30"
+              >
+
+                <p className="text-lg font-bold text-white transition group-hover:text-yellow-400">
+                  {item.title}
+                </p>
+
+                <p className="mt-3 line-clamp-2 text-sm leading-7 text-slate-400">
+                  {item.description}
+                </p>
+
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-yellow-400">
+                  Explore {item.title}
+
+                  <ArrowRight
+                    size={16}
+                    aria-hidden="true"
+                  />
+                </span>
+
+              </Link>
+
+            ))}
 
           </div>
 
@@ -494,13 +781,17 @@ export default function CategoryDrillingRigsPage({
             </span>
 
             <h2 className="mx-auto mt-5 max-w-3xl text-3xl font-bold sm:text-4xl">
-              Not sure which rig is right for your project?
+              Need help selecting the right {category.title.replace(
+                "Rigs",
+                "Rig"
+              )}?
             </h2>
 
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-400">
-              Send us your required depth, bore diameter, formation,
-              drilling method and project location. Our team can
-              help identify the appropriate NGE DRILLSOL machine.
+              Send us your required drilling depth, bore diameter,
+              geological formation, drilling method and project
+              location. Our team can help identify an appropriate
+              NGE Drillsol machine configuration.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -509,9 +800,12 @@ export default function CategoryDrillingRigsPage({
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-7 py-4 font-semibold text-black transition hover:bg-yellow-400"
               >
-                Send an Enquiry
+                Request Rig Recommendation
 
-                <ArrowRight size={18} />
+                <ArrowRight
+                  size={18}
+                  aria-hidden="true"
+                />
 
               </Link>
 
@@ -519,9 +813,12 @@ export default function CategoryDrillingRigsPage({
                 href="/drilling-rigs"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-4 font-semibold text-white transition hover:border-yellow-500/30 hover:text-yellow-400"
               >
-                View All Rigs
+                View All Drilling Rigs
 
-                <ChevronRight size={18} />
+                <ChevronRight
+                  size={18}
+                  aria-hidden="true"
+                />
 
               </Link>
 
@@ -558,6 +855,7 @@ function HeroStat({
       <Icon
         size={19}
         className="text-yellow-400"
+        aria-hidden="true"
       />
 
       <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -613,6 +911,7 @@ function CapabilityCard({
           <Icon
             size={20}
             className="text-yellow-400"
+            aria-hidden="true"
           />
 
         </div>
@@ -635,6 +934,7 @@ function CapabilityCard({
             <CheckCircle2
               size={16}
               className="mt-1 shrink-0 text-yellow-400"
+              aria-hidden="true"
             />
 
             <span className="text-sm leading-6 text-slate-400">
@@ -664,6 +964,8 @@ function RigCard({
   rig,
   index,
 }: RigCardProps) {
+  const rigUrl = `/drilling-rigs/${rig.slug}`;
+
   return (
     <motion.article
       initial={{
@@ -685,12 +987,11 @@ function RigCard({
       className="group overflow-hidden rounded-[30px] border border-white/10 bg-[#090C11] transition duration-300 hover:-translate-y-1 hover:border-yellow-500/30"
     >
 
-      {/* ======================================================
-          IMAGE
-      ====================================================== */}
+      {/* IMAGE */}
 
       <Link
-        href={`/drilling-rigs/${rig.slug}`}
+        href={rigUrl}
+        aria-label={`View ${rig.model} ${rig.name}`}
         className="block"
       >
 
@@ -698,7 +999,7 @@ function RigCard({
 
           <img
             src={rig.heroImage}
-            alt={rig.model}
+            alt={`${rig.model} ${rig.name} by NGE Drillsol`}
             className="h-full w-full object-contain p-7 transition duration-700 group-hover:scale-105"
           />
 
@@ -712,9 +1013,7 @@ function RigCard({
 
       </Link>
 
-      {/* ======================================================
-          CONTENT
-      ====================================================== */}
+      {/* CONTENT */}
 
       <div className="p-7">
 
@@ -738,7 +1037,14 @@ function RigCard({
         )}
 
         <h3 className="mt-4 text-2xl font-bold text-white">
-          {rig.name}
+
+          <Link
+            href={rigUrl}
+            className="transition hover:text-yellow-400"
+          >
+            {rig.model} — {rig.name}
+          </Link>
+
         </h3>
 
         <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-400">
@@ -746,12 +1052,15 @@ function RigCard({
         </p>
 
         <Link
-          href={`/drilling-rigs/${rig.slug}`}
+          href={rigUrl}
           className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-yellow-400"
         >
-          View Technical Details
+          View {rig.model} Details
 
-          <ArrowRight size={17} />
+          <ArrowRight
+            size={17}
+            aria-hidden="true"
+          />
 
         </Link>
 
@@ -784,6 +1093,7 @@ function EngineeringPoint({
         <Icon
           size={20}
           className="text-yellow-400"
+          aria-hidden="true"
         />
 
       </div>
@@ -797,5 +1107,33 @@ function EngineeringPoint({
       </p>
 
     </div>
+  );
+}
+
+/* ============================================================
+   FAQ ITEM
+   ============================================================ */
+
+interface FaqItemProps {
+  question: string;
+  answer: string;
+}
+
+function FaqItem({
+  question,
+  answer,
+}: FaqItemProps) {
+  return (
+    <article className="rounded-[24px] border border-white/10 bg-[#090C11] p-6 sm:p-7">
+
+      <h3 className="text-lg font-bold leading-7 text-white">
+        {question}
+      </h3>
+
+      <p className="mt-4 leading-8 text-slate-400">
+        {answer}
+      </p>
+
+    </article>
   );
 }

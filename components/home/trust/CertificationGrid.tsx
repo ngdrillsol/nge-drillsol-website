@@ -7,9 +7,14 @@ import { certifications } from "./trust.data";
 
 export default function CertificationGrid() {
   return (
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+    <div
+      className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      aria-label="NGE Drillsol quality credentials and registrations"
+    >
+
       {certifications.map((item, index) => (
-        <motion.div
+
+        <motion.article
           key={item.id}
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,6 +26,7 @@ export default function CertificationGrid() {
           whileHover={{ y: -6 }}
           className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-yellow-500/20"
         >
+
           {/* Glow */}
 
           <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-yellow-500/10 opacity-0 blur-3xl transition-all duration-500 group-hover:opacity-100" />
@@ -29,14 +35,15 @@ export default function CertificationGrid() {
 
             {/* Logo */}
 
-            <div className="flex h-20 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+            <div className="flex h-24 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
 
               <Image
                 src={item.image}
-                alt={item.name}
-                width={80}
-                height={80}
-                className="max-h-14 w-auto object-contain"
+                alt={`${item.name} - NGE Drillsol`}
+                width={160}
+                height={100}
+                sizes="160px"
+                className="max-h-16 w-auto object-contain"
               />
 
             </div>
@@ -54,8 +61,11 @@ export default function CertificationGrid() {
             </p>
 
           </div>
-        </motion.div>
+
+        </motion.article>
+
       ))}
+
     </div>
   );
 }
