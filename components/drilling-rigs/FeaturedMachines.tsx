@@ -9,7 +9,7 @@ const featuredMachines = [
   {
     name: "NGDR3000",
     subtitle: "Ultra Heavy Duty Water Well Drilling Rig",
-    image: "/images/machines/ngdr3000.png",
+    image: "/images/rigs/ngdr3000/1.png",
     depth: "Up to 1500 m",
     diameter: "Up to 1500 mm",
     application: "Deep Water Wells",
@@ -18,7 +18,7 @@ const featuredMachines = [
   {
     name: "NGDR2000",
     subtitle: "Premium Rotary Water Well Rig",
-    image: "/images/machines/ngdr2000.png",
+    image: "/images/rigs/ngdr2000/1.png",
     depth: "Up to 1000 m",
     diameter: "Large Diameter",
     application: "Municipal Water Supply",
@@ -27,8 +27,8 @@ const featuredMachines = [
   {
     name: "NGWR3100",
     subtitle: "Heavy Duty Workover Rig",
-    image: "/images/machines/ngwr3100.png",
-    depth: "Oil & Gas Operations",
+    image: "/images/rigs/ngwr3100/1.png",
+    depth: "up to 2000m",
     diameter: "Well Servicing",
     application: "Workover",
     href: "/drilling-rigs/workover-rigs/ngwr3100",
@@ -36,7 +36,7 @@ const featuredMachines = [
   {
     name: "NGDTH600R",
     subtitle: "High Performance DTH Rig",
-    image: "/images/machines/ngdth600r.png",
+    image:"/images/rigs/ngdth600/1.png",
     depth: "Up to 600 m",
     diameter: "Hard Rock",
     application: "DTH Drilling",

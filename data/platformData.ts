@@ -43,7 +43,7 @@ export const platformData: PlatformData[] = [
       "Deep Water Well & Rotary Drilling Rigs",
 
     heroImage:
-      "/machines/ngdr/ngdr2000.png",
+      "/images/rigs/ngdr2000/1.png",
 
     description:
       "The NGDR Series is NGE Drillsol's heavy-duty water well and rotary drilling platform for deep boreholes and large-diameter groundwater projects. Available models support direct rotary, mud rotary, DTH and foam drilling according to machine configuration and project requirements.",
@@ -109,7 +109,7 @@ export const platformData: PlatformData[] = [
       "DTH & Hard Rock Drilling Rigs",
 
     heroImage:
-      "/machines/ngdth/ngdth600r.png",
+      "/images/rigs/ngdth600/1.png",
 
     description:
       "The NGDTH Series includes DTH and DTH-cum-rotary drilling rigs developed for water wells and hard-rock drilling applications. Machine selection depends on required depth, bore diameter, compressor capacity, geological formation and drilling method.",
@@ -175,7 +175,7 @@ export const platformData: PlatformData[] = [
       "Core & Exploration Drilling Rigs",
 
     heroImage:
-      "/machines/ngcore/ngcore100.png",
+      "/images/rigs/ngcore100/1.png",
 
     description:
       "The NGCORE Series includes compact core drilling rigs for geological exploration, mineral investigation, geotechnical work and subsurface investigation. Trolley-mounted and tractor-mounted configurations are available depending on the selected model.",
@@ -303,7 +303,7 @@ export const platformData: PlatformData[] = [
       "Workover & Well Servicing Rigs",
 
     heroImage:
-      "/machines/ngwr/ngwr3100.png",
+      "/images/rigs/ngwr3100/1.png",
 
     description:
       "The NGWR platform is developed for oil and gas well servicing, workover, rehabilitation and production-support operations. The NGWR3100 is the current heavy-duty workover model listed in the NGE Drillsol rig range.",
