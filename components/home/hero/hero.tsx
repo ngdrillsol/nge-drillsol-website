@@ -242,7 +242,8 @@ export default function Hero() {
                 src="/images/ngdr3000-hero-v15.png"
                 alt="NGDR3000 deep water well rotary drilling rig manufactured by NGE Drillsol"
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="(max-width: 639px) 100vw, (max-width: 1023px) 80vw, 50vw"
                 className="
                   relative

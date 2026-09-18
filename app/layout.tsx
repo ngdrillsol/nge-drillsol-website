@@ -92,13 +92,8 @@ export default function RootLayout({
         {/* Global WhatsApp and Call Buttons */}
         <FloatingContact />
 
-        {/* Google Ads and Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16962622922"
-          strategy="afterInteractive"
-        />
-
-        <Script id="google-tag" strategy="afterInteractive">
+        {/* Google Ads + Google Analytics queue */}
+        <Script id="google-tag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
 
@@ -106,12 +101,20 @@ export default function RootLayout({
               dataLayer.push(arguments);
             }
 
+            window.gtag = gtag;
+
             gtag('js', new Date());
 
-            gtag('config', 'AW-16962622922');
             gtag('config', 'G-0R3VLNNSW6');
+            gtag('config', 'AW-16962622922');
           `}
         </Script>
+
+        {/* Load Google tracking library after main page load */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0R3VLNNSW6"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
