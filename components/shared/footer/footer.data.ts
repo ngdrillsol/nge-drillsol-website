@@ -4,116 +4,269 @@ import {
   SocialLink,
 } from "./footer.types";
 
+/* ============================================================
+   FOOTER INTERNAL LINKS
+   ============================================================ */
+
 export const footerSections: FooterSection[] = [
   {
     title: "Drilling Rigs",
+
     links: [
       {
-        title: "Water Well Rigs",
-        href: "/drilling-rigs",
+        title:
+          "Water Well Drilling Rigs",
+
+        href:
+          "/drilling-rigs/water-well-drilling-rigs",
       },
+
       {
-        title: "DTH Drilling Rigs",
-        href: "/drilling-rigs",
+        title:
+          "DTH Drilling Rigs",
+
+        href:
+          "/drilling-rigs/dth-drilling-rigs",
       },
+
       {
-        title: "Core Drilling Rigs",
-        href: "/drilling-rigs",
+        title:
+          "Rotary Drilling Rigs",
+
+        href:
+          "/drilling-rigs/rotary-drilling-rigs",
       },
+
       {
-        title: "Piling Rigs",
-        href: "/drilling-rigs",
+        title:
+          "Piling Rigs",
+
+        href:
+          "/drilling-rigs/piling-rigs",
+      },
+
+      {
+        title:
+          "Core Drilling Rigs",
+
+        href:
+          "/drilling-rigs/core-drilling-rigs",
+      },
+
+      {
+        title:
+          "Tractor Mounted Drilling Rigs",
+
+        href:
+          "/drilling-rigs/tractor-mounted-drilling-rigs",
+      },
+
+      {
+        title:
+          "Workover Rigs",
+
+        href:
+          "/drilling-rigs/workover-rigs",
       },
     ],
   },
 
   {
-    title: "Solutions",
+    title: "Key Drilling Rigs",
+
     links: [
       {
-        title: "Engineering Solutions",
-        href: "/solutions",
+        title: "NGDR3000",
+
+        href:
+          "/drilling-rigs/ngdr3000",
       },
+
       {
-        title: "Industries",
-        href: "/industries",
+        title: "NGDR2000",
+
+        href:
+          "/drilling-rigs/ngdr2000",
       },
+
       {
-        title: "Projects",
-        href: "/projects",
+        title: "NGDTH600",
+
+        href:
+          "/drilling-rigs/ngdth600",
+      },
+
+      {
+        title: "NGDTH300",
+
+        href:
+          "/drilling-rigs/ngdth300",
+      },
+
+      {
+        title: "NGDP60",
+
+        href:
+          "/drilling-rigs/ngdp60",
+      },
+
+      {
+        title: "NGCORE100",
+
+        href:
+          "/drilling-rigs/ngcore100",
       },
     ],
   },
 
   {
-    title: "Resources",
+    title: "Explore",
+
     links: [
       {
-        title: "Knowledge Hub",
-        href: "/knowledge",
+        title:
+          "Drilling Solutions",
+
+        href:
+          "/solutions",
       },
+
       {
-        title: "Blogs",
-        href: "/blogs",
+        title:
+          "Industries",
+
+        href:
+          "/industries",
       },
+
       {
-        title: "Downloads",
-        href: "/downloads",
+        title:
+          "Services",
+
+        href:
+          "/services",
       },
+
       {
-        title: "Contact",
-        href: "/contact",
+        title:
+          "Projects",
+
+        href:
+          "/projects",
+      },
+
+      {
+        title:
+          "Global Markets",
+
+        href:
+          "/markets",
+      },
+
+      {
+        title:
+          "Resources",
+
+        href:
+          "/resources",
       },
     ],
   },
 
   {
     title: "Company",
+
     links: [
       {
-        title: "About Us",
-        href: "/about",
+        title:
+          "About NGE Drillsol",
+
+        href:
+          "/about",
       },
+
       {
-        title: "Privacy Policy",
-        href: "/privacy-policy",
+        title:
+          "Contact Us",
+
+        href:
+          "/contact",
       },
     ],
   },
 ];
 
+/* ============================================================
+   CONTACT DETAILS
+   ============================================================ */
+
 export const contactItems: ContactItem[] = [
   {
     icon: "📍",
-    title: "Address",
-    value: "Mehsana, Gujarat, India",
-    href: "#",
+
+    title:
+      "Location",
+
+    value:
+      "Mehsana, Gujarat, India",
+
+    href:
+      "/contact",
   },
+
   {
     icon: "📞",
-    title: "Phone",
-    value: "+91 9106360907",
-    href: "tel:+919106360907",
+
+    title:
+      "Phone",
+
+    value:
+      "+91 9106360907",
+
+    href:
+      "tel:+919106360907",
   },
+
   {
     icon: "✉️",
-    title: "Email",
-    value: "info@ngedrill.com",
-    href: "mailto:info@ngedrill.com",
+
+    title:
+      "Email",
+
+    value:
+      "info@ngedrill.com",
+
+    href:
+      "mailto:info@ngedrill.com",
   },
 ];
 
+/* ============================================================
+   SOCIAL LINKS
+   ============================================================ */
+
 export const socialLinks: SocialLink[] = [
   {
-    name: "Instagram",
-    href: "https://instagram.com/",
+    name:
+      "Instagram",
+
+    href:
+      "https://www.instagram.com/ngedrill1",
   },
+
   {
-    name: "Facebook",
-    href: "https://facebook.com/",
+    name:
+      "Facebook",
+
+    href:
+      "https://www.facebook.com/",
   },
+
   {
-    name: "YouTube",
-    href: "https://youtube.com/",
+    name:
+      "YouTube",
+
+    href:
+      "https://youtube.com/@ngedrillsolpvtltd",
   },
 ];

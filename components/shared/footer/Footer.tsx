@@ -1,5 +1,3 @@
-"use client";
-
 import FooterBrand from "./FooterBrand";
 import FooterLinks from "./FooterLinks";
 import FooterContact from "./FooterContact";
@@ -7,27 +5,31 @@ import FooterContact from "./FooterContact";
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#050608]">
+
       <div className="mx-auto max-w-7xl px-4 pb-36 pt-12 sm:px-6 sm:py-16 lg:py-20">
 
         {/* Top Section */}
 
         <div className="grid gap-10 sm:gap-16 lg:grid-cols-[1.1fr_2fr]">
 
-          {/* Left */}
+          {/* Brand */}
 
           <FooterBrand />
 
-          {/* Right */}
+          {/* Navigation + Contact */}
 
           <div className="space-y-10 sm:space-y-14">
 
             <FooterLinks />
 
             <div className="border-t border-white/10 pt-10">
+
               <FooterContact />
+
             </div>
 
           </div>
+
         </div>
 
         {/* Bottom */}
@@ -49,6 +51,7 @@ export default function Footer() {
         </div>
 
       </div>
+
     </footer>
   );
 }

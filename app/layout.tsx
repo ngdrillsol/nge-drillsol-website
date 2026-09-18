@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/shared/footer";
 import FloatingContact from "@/components/shared/FloatingContact";
 
 import "./globals.css";
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.ngedrill.com"),
 
   title: {
-    default: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+    default:
+      "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
     template: "%s | NGE Drillsol",
   },
 
@@ -45,6 +47,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -59,14 +62,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.ngedrill.com",
     siteName: "NGE Drillsol",
-    title: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+
+    title:
+      "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+
     description:
       "Manufacturer and exporter of water well, DTH, rotary, piling, workover and core drilling rigs for global drilling projects.",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+
+    title:
+      "Water Well Drilling Rig Manufacturer in India | NGE Drillsol",
+
     description:
       "Manufacturer and exporter of water well, DTH, rotary, piling, workover and core drilling rigs for global drilling projects.",
   },
@@ -83,17 +92,24 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-screen bg-background text-foreground">
+
         {/* Global Navbar */}
         <Navbar />
 
         {/* Website Content */}
         {children}
 
+        {/* Global Internal Linking / SEO Footer */}
+        <Footer />
+
         {/* Global WhatsApp and Call Buttons */}
         <FloatingContact />
 
         {/* Google Ads + Google Analytics queue */}
-        <Script id="google-tag-init" strategy="afterInteractive">
+        <Script
+          id="google-tag-init"
+          strategy="afterInteractive"
+        >
           {`
             window.dataLayer = window.dataLayer || [];
 
@@ -115,6 +131,7 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-0R3VLNNSW6"
           strategy="lazyOnload"
         />
+
       </body>
     </html>
   );
