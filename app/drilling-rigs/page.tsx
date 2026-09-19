@@ -3,21 +3,14 @@ import type { Metadata } from "next";
 import DrillingRigsPage from "@/components/drilling-rigs/DrillingRigsPage";
 
 /* ============================================================
-   SEO METADATA
+   DRILLING RIGS PAGE SEO
    ============================================================ */
 
 export const metadata: Metadata = {
-  /*
-   * Root layout automatically adds:
-   * "| NGE Drillsol"
-   *
-   * Final title:
-   * Drilling Rigs Manufacturer | Water Well, DTH & Rotary | NGE Drillsol
-   */
   title: "Drilling Rigs Manufacturer | Water Well, DTH & Rotary",
 
   description:
-    "Explore drilling rigs manufactured by NGE Drillsol for water well, DTH, mud rotary, piling, core and workover applications. Discover truck, trailer and tractor mounted drilling rigs for projects worldwide.",
+    "Explore NGE Drillsol drilling rigs for water well drilling, DTH drilling, rotary drilling, piling, core drilling and workover applications. Truck, trailer and tractor mounted drilling rig configurations are available for different project requirements.",
 
   alternates: {
     canonical: "/drilling-rigs",
@@ -30,97 +23,67 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "/drilling-rigs",
+
+    url: "https://www.ngedrill.com/drilling-rigs",
+
     siteName: "NGE Drillsol",
+
     title:
-      "Drilling Rigs Manufacturer | Water Well, DTH & Rotary | NGE Drillsol",
+      "Drilling Rigs Manufacturer | Water Well, DTH & Rotary",
+
     description:
-      "Explore NGE Drillsol water well, DTH, rotary, piling, core and workover drilling rigs engineered for professional drilling projects worldwide.",
+      "Explore water well, DTH, rotary, piling, core drilling and workover rigs manufactured by NGE Drillsol.",
   },
 
   twitter: {
     card: "summary_large_image",
+
     title:
-      "Drilling Rigs Manufacturer | Water Well, DTH & Rotary | NGE Drillsol",
+      "Drilling Rigs Manufacturer | Water Well, DTH & Rotary",
+
     description:
-      "Explore water well, DTH, rotary, piling, core and workover drilling rigs manufactured by NGE Drillsol.",
+      "Explore NGE Drillsol water well, DTH, rotary, piling, core and workover drilling rigs.",
   },
 };
 
 /* ============================================================
-   STRUCTURED DATA
+   COLLECTION PAGE STRUCTURED DATA
    ============================================================ */
 
 const drillingRigsSchema = {
   "@context": "https://schema.org",
+
   "@type": "CollectionPage",
 
-  name: "Drilling Rigs",
+  "@id": "https://www.ngedrill.com/drilling-rigs#webpage",
 
   url: "https://www.ngedrill.com/drilling-rigs",
 
+  name: "Drilling Rigs Manufacturer | Water Well, DTH & Rotary",
+
   description:
-    "Drilling rigs manufactured by NGE Drillsol for water well, DTH, rotary, piling, core and workover drilling applications.",
+    "Drilling rig range from NGE Drillsol covering water well drilling, DTH drilling, rotary drilling, piling, core drilling and workover applications.",
 
   isPartOf: {
-    "@type": "WebSite",
-    name: "NGE Drillsol",
-    url: "https://www.ngedrill.com",
+    "@id": "https://www.ngedrill.com/#website",
   },
 
   about: {
-    "@type": "Organization",
-    name: "NGE Drillsol Pvt. Ltd.",
-    url: "https://www.ngedrill.com",
+    "@id": "https://www.ngedrill.com/#organization",
   },
 
-  hasPart: [
-    {
-      "@type": "CollectionPage",
-      name: "Water Well Drilling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/water-well-drilling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "DTH Drilling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/dth-drilling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "Rotary Drilling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/rotary-drilling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "Tractor Mounted Drilling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/tractor-mounted-drilling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "Piling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/piling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "Core Drilling Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/core-drilling-rigs",
-    },
-    {
-      "@type": "CollectionPage",
-      name: "Workover Rigs",
-      url: "https://www.ngedrill.com/drilling-rigs/workover-rigs",
-    },
-  ],
+  inLanguage: "en",
 };
 
 /* ============================================================
    PAGE
    ============================================================ */
 
-export default function Page() {
+export default function DrillingRigs() {
   return (
     <>
       {/* SEO / GEO Structured Data */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -128,8 +91,10 @@ export default function Page() {
         }}
       />
 
-      {/* Existing page design */}
-      <DrillingRigsPage />
+      {/* Existing Drilling Rigs Page */}
+
+      <DrillingRigsPage /> 
+  
     </>
   );
 }
