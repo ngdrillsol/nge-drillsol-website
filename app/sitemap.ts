@@ -27,6 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/markets",
 
     "/resources",
+
+    "/privacy-policy",
+    "/terms-of-use",
+    "/sitemap",
   ];
 
   /*

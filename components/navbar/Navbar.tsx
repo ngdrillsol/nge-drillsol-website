@@ -9,6 +9,8 @@ type DropdownItem = {
   description?: string;
 };
 
+const GST_NUMBER = "24AAGCN4440G1ZP";
+
 const drillingRigCategories: DropdownItem[] = [
   {
     label: "Water Well Drilling Rigs",
@@ -47,6 +49,33 @@ const drillingRigCategories: DropdownItem[] = [
   },
 ];
 
+const navigationLinks = [
+  { label: "Solutions", href: "/solutions" },
+  { label: "Industries", href: "/industries" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Markets", href: "/markets" },
+  { label: "Resources", href: "/resources" },
+  { label: "About", href: "/about" },
+];
+
+function GstBadge() {
+  return (
+    <div
+      aria-label={`GSTIN: ${GST_NUMBER}`}
+      className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-yellow-400/40 bg-yellow-400/5 px-2 py-0.5 text-[10px] leading-4"
+    >
+      <span className="font-semibold text-yellow-400">
+        GSTIN:
+      </span>
+
+      <span className="font-semibold text-yellow-100">
+        {GST_NUMBER}
+      </span>
+    </div>
+  );
+}
+
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
@@ -58,6 +87,7 @@ function ChevronDown({ open }: { open: boolean }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
       className={`transition-transform duration-150 ${
         open ? "rotate-180" : ""
       }`}
@@ -78,6 +108,7 @@ function ArrowUpRight() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
     >
       <path d="M7 17 17 7" />
       <path d="M7 7h10v10" />
@@ -87,7 +118,7 @@ function ArrowUpRight() {
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
-    <div className="relative h-5 w-6">
+    <div className="relative h-5 w-6" aria-hidden="true">
       <span
         className={`absolute left-0 top-1 h-0.5 w-6 bg-current transition-transform duration-150 ${
           open ? "translate-y-2 rotate-45" : ""
@@ -115,12 +146,14 @@ function DesktopDropdown({
   open,
   onToggle,
   allHref,
+  onNavigate,
 }: {
   label: string;
   items: DropdownItem[];
   open: boolean;
   onToggle: () => void;
   allHref: string;
+  onNavigate: () => void;
 }) {
   return (
     <div className="relative">
@@ -145,6 +178,7 @@ function DesktopDropdown({
           <Link
             key={item.href}
             href={item.href}
+            onClick={onNavigate}
             className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors duration-100 hover:bg-white/[0.06]"
           >
             <div>
@@ -166,6 +200,7 @@ function DesktopDropdown({
         <div className="mt-1 border-t border-white/10 pt-2">
           <Link
             href={allHref}
+            onClick={onNavigate}
             className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-yellow-400 hover:bg-yellow-400/10"
           >
             <span>Explore All {label}</span>
@@ -180,14 +215,17 @@ function DesktopDropdown({
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     let ticking = false;
+    let frameId = 0;
 
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
+        frameId = window.requestAnimationFrame(() => {
           setScrolled(window.scrollY > 20);
           ticking = false;
         });
@@ -204,6 +242,7 @@ export default function Navbar() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.cancelAnimationFrame(frameId);
     };
   }, []);
 
@@ -230,45 +269,47 @@ export default function Navbar() {
         className="mx-auto flex h-[78px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-8 lg:px-10 xl:px-12"
         aria-label="Main navigation"
       >
-        {/* LOGO */}
+        {/* LOGO, TAGLINE AND GST NUMBER */}
 
-        <Link
-          href="/"
-          onClick={closeAll}
-          className="shrink-0"
-          aria-label="NGE DRILLSOL Home"
-        >
-          <div className="leading-none">
-            <div className="flex items-baseline">
-              <span className="text-[23px] font-black tracking-[-0.06em] text-white sm:text-[26px]">
-                NGE
-              </span>
-
-              <span className="ml-1 text-[16px] font-bold tracking-[0.06em] text-yellow-400 sm:ml-1.5 sm:text-[19px] sm:tracking-[0.08em]">
-                DRILLSOL
-              </span>
-            </div>
-
-            <div className="mt-1 hidden text-[7px] font-medium uppercase tracking-[0.3em] text-slate-500 min-[360px]:block">
-              Drilling • Engineering • Solutions
-            </div>
-          </div>
-        </Link>
-
-        {/* DESKTOP */}
-
-        <div className="hidden items-center xl:flex">
-
-          {/* HOME */}
-
+        <div className="shrink-0">
           <Link
             href="/"
+            onClick={closeAll}
+            className="block"
+            aria-label="NGE DRILLSOL Home"
+          >
+            <div className="leading-none">
+              <div className="flex items-baseline">
+                <span className="text-[23px] font-black tracking-[-0.06em] text-white sm:text-[26px]">
+                  NGE
+                </span>
+
+                <span className="ml-1 text-[16px] font-bold tracking-[0.06em] text-yellow-400 sm:ml-1.5 sm:text-[19px] sm:tracking-[0.08em]">
+                  DRILLSOL
+                </span>
+              </div>
+
+              <div className="mt-1 hidden text-[7px] font-medium uppercase tracking-[0.3em] text-slate-500 min-[360px]:block">
+                Drilling • Engineering • Solutions
+              </div>
+            </div>
+          </Link>
+
+          <div className="mt-1">
+            <GstBadge />
+          </div>
+        </div>
+
+        {/* DESKTOP NAVIGATION */}
+
+        <div className="hidden items-center min-[1440px]:flex">
+          <Link
+            href="/"
+            onClick={closeAll}
             className="rounded-full px-3 py-2 text-[13px] font-medium text-white hover:bg-white/5"
           >
             Home
           </Link>
-
-          {/* DRILLING RIGS - DROPDOWN */}
 
           <DesktopDropdown
             label="Drilling Rigs"
@@ -276,78 +317,28 @@ export default function Navbar() {
             open={activeDropdown === "drilling"}
             onToggle={() => toggleDropdown("drilling")}
             allHref="/drilling-rigs"
+            onNavigate={closeAll}
           />
 
-          {/* SOLUTIONS */}
-
-          <Link
-            href="/solutions"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Solutions
-          </Link>
-
-          {/* INDUSTRIES */}
-
-          <Link
-            href="/industries"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Industries
-          </Link>
-
-          {/* SERVICES */}
-
-          <Link
-            href="/services"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Services
-          </Link>
-
-          {/* PROJECTS */}
-
-          <Link
-            href="/projects"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Projects
-          </Link>
-
-          {/* MARKETS - DIRECT LINK */}
-
-          <Link
-            href="/markets"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Markets
-          </Link>
-
-          {/* RESOURCES */}
-
-          <Link
-            href="/resources"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            Resources
-          </Link>
-
-          {/* ABOUT */}
-
-          <Link
-            href="/about"
-            className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
-          >
-            About
-          </Link>
+          {navigationLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={closeAll}
+              className="rounded-full px-3 py-2 text-[13px] font-medium text-slate-200 hover:bg-white/5 hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
-        {/* CTA */}
+        {/* DESKTOP QUOTE BUTTON */}
 
-        <div className="hidden xl:block">
+        <div className="hidden shrink-0 items-center min-[1440px]:flex">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-3 text-[13px] font-bold text-black transition-colors duration-100 hover:bg-yellow-300"
+            onClick={closeAll}
+            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-yellow-400 px-5 py-3 text-[13px] font-bold text-black transition-colors duration-100 hover:bg-yellow-300"
           >
             Get a Quote
 
@@ -357,14 +348,15 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* MOBILE BUTTON */}
+        {/* MOBILE MENU BUTTON */}
 
         <button
           type="button"
           onClick={() => setMobileOpen((value) => !value)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white xl:hidden"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white min-[1440px]:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           <MenuIcon open={mobileOpen} />
         </button>
@@ -373,11 +365,11 @@ export default function Navbar() {
       {/* MOBILE MENU */}
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[78px] overflow-y-auto overscroll-contain bg-[#05070b] xl:hidden">
+        <div
+          id="mobile-navigation"
+          className="fixed inset-x-0 bottom-0 top-[78px] overflow-y-auto overscroll-contain bg-[#05070b] min-[1440px]:hidden"
+        >
           <div className="mx-auto max-w-2xl px-5 py-5 sm:px-8">
-
-            {/* HOME */}
-
             <Link
               href="/"
               onClick={closeAll}
@@ -385,8 +377,6 @@ export default function Navbar() {
             >
               Home
             </Link>
-
-            {/* DRILLING RIGS - DROPDOWN */}
 
             <MobileSection
               title="Drilling Rigs"
@@ -397,77 +387,16 @@ export default function Navbar() {
               onNavigate={closeAll}
             />
 
-            {/* SOLUTIONS */}
-
-            <Link
-              href="/solutions"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Solutions
-            </Link>
-
-            {/* INDUSTRIES */}
-
-            <Link
-              href="/industries"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Industries
-            </Link>
-
-            {/* SERVICES */}
-
-            <Link
-              href="/services"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Services
-            </Link>
-
-            {/* PROJECTS */}
-
-            <Link
-              href="/projects"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Projects
-            </Link>
-
-            {/* MARKETS - DIRECT LINK */}
-
-            <Link
-              href="/markets"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Markets
-            </Link>
-
-            {/* RESOURCES */}
-
-            <Link
-              href="/resources"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              Resources
-            </Link>
-
-            {/* ABOUT */}
-
-            <Link
-              href="/about"
-              onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
-            >
-              About
-            </Link>
-
-            {/* CTA */}
+            {navigationLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeAll}
+                className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
+              >
+                {item.label}
+              </Link>
+            ))}
 
             <div className="mt-5 border-t border-white/10 pt-5">
               <Link
@@ -506,10 +435,10 @@ function MobileSection({
       <button
         type="button"
         onClick={onToggle}
+        aria-expanded={open}
         className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-base font-semibold text-white hover:bg-white/5"
       >
         {title}
-
         <ChevronDown open={open} />
       </button>
 

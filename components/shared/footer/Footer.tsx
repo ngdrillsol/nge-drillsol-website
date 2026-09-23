@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FooterBrand from "./FooterBrand";
 import FooterLinks from "./FooterLinks";
 import FooterContact from "./FooterContact";
@@ -47,6 +48,25 @@ export default function Footer() {
             </p>
 
           </div>
+
+          <nav aria-label="Legal information and sitemap" className="mt-6">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              {[
+                { href: "/privacy-policy", label: "Privacy Policy" },
+                { href: "/terms-of-use", label: "Terms of Use" },
+                { href: "/sitemap", label: "Sitemap" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="rounded-sm text-sm text-slate-400 transition-colors hover:text-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
         </div>
 
