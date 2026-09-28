@@ -6,7 +6,7 @@ export const marketRegions: MarketRegion[] = [
     title: "Africa",
     description:
       "Country-specific drilling solutions based on geological conditions, drilling requirements and applications.",
-    countries: 5,
+    countries: 6,
     color: "#EAB308",
   },
 
@@ -350,5 +350,73 @@ export const countryMarkets: CountryMarket[] = [
     image: "/images/markets/tanzania.jpg",
 
     href: "/markets/africa/tanzania",
+  },
+
+    {
+    id: "tunisia",
+    country: "Tunisia",
+    region: "Africa",
+
+    geology: [
+      "Calcaire",
+      "Grès",
+      "Argile",
+      "Sable",
+      "Roche dure",
+    ],
+
+    geologyOverview: [
+      "La Tunisie présente des conditions géologiques variées comprenant des formations calcaires, du grès, de l'argile, du sable et d'autres formations sédimentaires, avec des zones de roche plus dure dans certaines régions.",
+      "Les conditions de forage des eaux souterraines peuvent varier de formations meubles et non consolidées à des formations calcaires et rocheuses plus dures. Le choix de la machine et de la méthode de forage doit donc tenir compte de la géologie, de la profondeur et du diamètre du puits.",
+    ],
+
+    applications: [
+      "Puits d'eau",
+      "Agriculture",
+      "Irrigation",
+      "Développement des eaux souterraines",
+    ],
+
+    challenges: [
+      "Formations sédimentaires variables",
+      "Zones de sable et d'argile meubles",
+      "Formations calcaires dures",
+      "Changements de formation avec la profondeur",
+    ],
+
+    rigRequirements: [
+      "Capacité rotary pour le forage de puits d'eau",
+      "Circulation de boue pour les formations meubles",
+      "Capacité DTH pour le calcaire dur et la roche",
+      "Couple et force de retrait adaptés aux forages plus profonds",
+    ],
+
+    drillingMethods: [
+      "Mud Rotary",
+      "Rotary",
+      "DTH",
+    ],
+
+    drillingMethodReasons: [
+      "Le forage Mud Rotary est adapté au sable, à l'argile et aux autres formations non consolidées où la circulation de boue et la stabilité du trou sont importantes.",
+      "Le forage Rotary convient à de nombreuses formations sédimentaires et aux projets de forage de puits d'eau.",
+      "Le forage DTH peut être utilisé lorsque des formations calcaires dures ou des roches compétentes sont rencontrées.",
+    ],
+
+    recommendedRigs: [
+      "NGDR1500",
+      "NGDR2000",
+      "NGDTH600R",
+    ],
+
+    rigReasons: [
+      "La NGDR1500 offre une plateforme rotary adaptée aux projets de puits d'eau de profondeur moyenne à importante.",
+      "La NGDR2000 offre une capacité supérieure pour les projets d'eaux souterraines plus profonds et les formations mixtes exigeantes.",
+      "La NGDTH600R offre une capacité DTH adaptée au forage dans le calcaire dur et d'autres formations rocheuses compétentes.",
+    ],
+
+    image: "/images/markets/tunisia.jpg",
+
+    href: "/markets/africa/tunisia",
   },
 ];

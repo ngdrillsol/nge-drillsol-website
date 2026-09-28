@@ -2,14 +2,13 @@ import type { MetadataRoute } from "next";
 
 import { getAllRigs } from "@/components/drilling-rigs/rig.data";
 import { rigCategories } from "@/components/drilling-rigs/drilling-rigs.data";
+import { countryMarkets } from "@/components/markets/markets.data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.ngedrill.com";
 
   /*
-   * Core pages that we know should be indexed.
-   * We will add deeper Solutions / Industries / Markets pages
-   * after verifying every route actually exists.
+   * Core pages that should be indexed.
    */
   const staticPaths = [
     "",
@@ -34,20 +33,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   /*
-   * Automatically use the REAL drilling-rig category URLs.
+   * Automatically use the real drilling-rig category URLs.
    */
   const categoryPaths = rigCategories.map(
     (category) => category.href
   );
 
   /*
-   * Automatically use the REAL product slugs from rig.data.ts.
-   *
-   * Example:
-   * ngdth600 -> /drilling-rigs/ngdth600
+   * Automatically use the real product slugs from rig.data.ts.
    */
   const rigPaths = getAllRigs().map(
     (rig) => `/drilling-rigs/${rig.slug}`
+  );
+
+  /*
+   * Automatically use all real country market URLs.
+   *
+   * Examples:
+   * /markets/africa/kenya
+   * /markets/africa/morocco
+   * /markets/africa/tunisia
+   */
+  const marketPaths = countryMarkets.map(
+    (market) => market.href
   );
 
   /*
@@ -58,6 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...staticPaths,
       ...categoryPaths,
       ...rigPaths,
+      ...marketPaths,
     ])
   );
 
