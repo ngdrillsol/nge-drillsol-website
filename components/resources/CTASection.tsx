@@ -25,14 +25,14 @@ export default function CTASection() {
         </span>
 
         <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:mt-8 sm:text-4xl lg:text-5xl xl:text-6xl">
-          Let's Solve Your
+          Let&apos;s Solve Your
           <span className="block text-yellow-400">
             Drilling Challenge
           </span>
         </h2>
 
         <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-300">
-          Whether you're selecting a drilling rig, evaluating geological
+          Whether you&apos;re selecting a drilling rig, evaluating geological
           conditions or planning an upcoming project, our engineering
           team is ready to help you choose the most suitable drilling
           solution.

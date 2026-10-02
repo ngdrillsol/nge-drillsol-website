@@ -101,7 +101,7 @@ export default function ServiceWorkflow() {
         </h3>
 
         <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-9 text-slate-300">
-          We don't simply deliver a drilling rig.
+          We don&apos;t simply deliver a drilling rig.
           We guide your project through engineering consultation,
           equipment selection, customization, manufacturing,
           commissioning and long-term technical support.

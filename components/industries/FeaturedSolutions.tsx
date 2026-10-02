@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Droplets,
-  Hammer,
   Building2,
   Pickaxe,
   Sun,
@@ -90,9 +89,9 @@ export default function FeaturedSolutions() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-          We don't recommend the same drilling rig for every application.
+          We don&apos;t recommend the same drilling rig for every application.
           Our engineering team selects the right drilling method and
-          equipment based on your industry's requirements.
+          equipment based on your industry&apos;s requirements.
         </p>
 
       </div>

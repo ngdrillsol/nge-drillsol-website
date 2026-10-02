@@ -125,7 +125,7 @@ export default function FeaturedArticles() {
         </h3>
 
         <p className="mx-auto mt-6 max-w-4xl text-lg leading-9 text-slate-300">
-          We're building one of the industry's most comprehensive drilling
+          We&apos;re building one of the industry&apos;s most comprehensive drilling
           knowledge libraries, covering geology, drilling methods,
           equipment selection, project case studies and practical field
           engineering for professionals worldwide.

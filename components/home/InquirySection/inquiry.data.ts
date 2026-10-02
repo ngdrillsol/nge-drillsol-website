@@ -1,4 +1,5 @@
 import { InquiryAction } from "./inquiry.types";
+import { getWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 
 export const inquiryActions: InquiryAction[] = [
   {
@@ -11,7 +12,7 @@ export const inquiryActions: InquiryAction[] = [
   {
     title: "WhatsApp",
     subtitle: "Chat directly with our sales engineers.",
-    href: "https://wa.me/+91 9106360907",
+    href: getWhatsAppEnquiryUrl("I am enquiring from your homepage about a drilling project."),
     icon: "💬",
   },
   {

@@ -24,7 +24,7 @@ export default function CTASection() {
         </span>
 
         <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:mt-8 sm:text-4xl lg:text-5xl xl:text-6xl">
-          Let's Build the Right
+          Let&apos;s Build the Right
           <span className="block text-yellow-400">
             Drilling Solution Together
           </span>
@@ -32,7 +32,7 @@ export default function CTASection() {
 
         <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-300">
           Share your project requirements with our engineering team.
-          We'll recommend the most suitable drilling rig, drilling
+          We&apos;ll recommend the most suitable drilling rig, drilling
           method and complete drilling solution based on your geology,
           application and operational objectives.
         </p>

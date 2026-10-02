@@ -8,7 +8,6 @@ import {
   Fuel,
   Wrench,
   CheckCircle2,
-  ChevronRight,
 } from "lucide-react";
 
 import type { RigData } from "./rig.types";

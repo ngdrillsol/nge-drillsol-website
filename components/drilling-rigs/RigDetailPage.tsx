@@ -95,7 +95,7 @@ export default function RigDetailPage({
   };
 
   return (
-    <main className="min-h-screen bg-[#05070B] text-white">
+    <main className="min-h-screen bg-[#05070B] pt-[78px] text-white">
 
       {/* =====================================================
           SEO / GEO STRUCTURED DATA

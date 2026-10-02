@@ -45,7 +45,7 @@ export default function IndustriesHero() {
             From groundwater development and agriculture to mining,
             renewable energy, infrastructure and oil & gas,
             NGE DRILLSOL provides drilling solutions engineered
-            for your industry's unique challenges.
+            for your industry&apos;s unique challenges.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-5">

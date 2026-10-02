@@ -16,7 +16,7 @@ export default function CTASection() {
         {/* Badge */}
         <div className="mb-8 inline-flex rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2">
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-            Let's Build Your Project
+            Let&apos;s Build Your Project
           </span>
         </div>
 

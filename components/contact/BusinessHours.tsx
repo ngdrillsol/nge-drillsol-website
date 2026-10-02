@@ -32,7 +32,7 @@ export default function BusinessHours() {
 
         <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
 
-          We're Ready
+          We&apos;re Ready
 
           <span className="block text-yellow-400">
 
@@ -170,7 +170,7 @@ export default function BusinessHours() {
 
               time zones. If you contact us outside business hours,
 
-              we'll respond as soon as our team is available.
+              we&apos;ll respond as soon as our team is available.
 
             </p>
 

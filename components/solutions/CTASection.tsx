@@ -20,7 +20,7 @@ export default function CTASection() {
       <div className="relative z-10 mx-auto max-w-5xl text-center">
 
         <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-yellow-400">
-          Let's Engineer Your Project
+          Let&apos;s Engineer Your Project
         </span>
 
         <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:mt-8 sm:text-4xl lg:text-5xl xl:text-6xl">

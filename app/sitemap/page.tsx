@@ -7,7 +7,7 @@ type SiteLink = { href: string; label: string };
 type SiteGroup = { id: string; title: string; description: string; links: SiteLink[] };
 
 export const metadata: Metadata = {
-  title: "Sitemap | NGE Drillsol",
+  title: "Sitemap",
   description:
     "Browse NGE Drillsol pages, drilling rig categories and models, solutions, industries, services, projects, markets and company information.",
   alternates: { canonical: "https://www.ngedrill.com/sitemap" },

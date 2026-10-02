@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | NGE Drillsol",
+  title: "Terms of Use",
   description: "Terms for using the NGE Drillsol website, product information, technical content and enquiry services.",
   alternates: { canonical: "https://www.ngedrill.com/terms-of-use" },
 };

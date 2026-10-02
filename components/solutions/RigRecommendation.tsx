@@ -37,7 +37,7 @@ export default function RigRecommendation() {
 
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-300">
             Share your project requirements with our engineering team.
-            We'll recommend the most suitable drilling rig, drilling
+            We&apos;ll recommend the most suitable drilling rig, drilling
             method and accessories based on your application.
           </p>
 

@@ -103,9 +103,9 @@ export default function EngineeringChallenges() {
 
         <p className="text-center text-2xl font-semibold leading-10 text-white">
 
-          "Every successful drilling project begins with understanding
+          &quot;Every successful drilling project begins with understanding
           the ground beneath it. Our engineering team develops solutions
-          based on geology, application and project objectives—not guesswork."
+          based on geology, application and project objectives—not guesswork.&quot;
 
         </p>
 

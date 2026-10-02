@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -157,7 +158,10 @@ export default function RelatedRigs({
 
                   <div className="relative aspect-[4/3] overflow-hidden bg-[#0D1117]">
 
-                    <img
+                    <Image
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 420px"
+                      unoptimized={!relatedRig.heroImage.startsWith("/")}
                       src={relatedRig.heroImage}
                       alt={`${productName} drilling rig by NGE Drillsol`}
                       className="h-full w-full object-contain p-6 transition duration-700 group-hover:scale-105"

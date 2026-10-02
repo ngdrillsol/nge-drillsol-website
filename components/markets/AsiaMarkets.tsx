@@ -34,7 +34,7 @@ export default function AsiaMarkets() {
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
           From agricultural irrigation and groundwater development to
           renewable energy and infrastructure projects, our engineering
-          team recommends drilling solutions suited to Asia's diverse
+          team recommends drilling solutions suited to Asia&apos;s diverse
           geological conditions.
         </p>
 

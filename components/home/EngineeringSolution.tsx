@@ -1,14 +1,10 @@
 
 import Link from "next/link";
 import React from "react";
+import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 
 export default function EngineeringSolution() {
-  const whatsappMessage = encodeURIComponent(
-    "Hello NGE Drillsol, I would like to discuss my drilling project with your engineers."
-  );
-
-  const whatsappUrl =
-    `https://wa.me/919106360907?text=${whatsappMessage}`;
+  const whatsappUrl = getPageWhatsAppEnquiryUrl("/");
 
   return (
     <section

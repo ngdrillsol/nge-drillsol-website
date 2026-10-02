@@ -45,7 +45,7 @@ export default function SolutionCategories() {
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
           Whether you know your geology, your application, or simply need
-          expert guidance, choose the path below and we'll help you find
+          expert guidance, choose the path below and we&apos;ll help you find
           the right drilling solution.
         </p>
 

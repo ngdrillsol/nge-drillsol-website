@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -71,7 +72,7 @@ export default function CTASection() {
           </Link>
 
           <Link
-            href="https://wa.me/919106360907"
+            href={getPageWhatsAppEnquiryUrl("/contact")}
             target="_blank"
             className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white transition hover:border-yellow-500/30"
           >

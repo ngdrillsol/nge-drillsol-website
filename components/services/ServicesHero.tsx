@@ -45,7 +45,7 @@ export default function ServicesHero() {
             From engineering consultation and rig customization to
             installation, commissioning and lifetime technical support,
             NGE DRILLSOL delivers complete drilling solutions tailored
-            to your project's requirements.
+            to your project&apos;s requirements.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-5">

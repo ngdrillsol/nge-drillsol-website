@@ -26,7 +26,7 @@ export default function InquiryHeader() {
         transition={{ delay: 0.1 }}
         className="mt-8 text-4xl font-bold leading-tight text-white md:text-6xl"
       >
-        Let's Build the Right
+        Let&apos;s Build the Right
         <br />
         Drilling Solution
       </motion.h2>

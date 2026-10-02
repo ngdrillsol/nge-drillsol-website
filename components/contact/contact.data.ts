@@ -1,3 +1,4 @@
+import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 import {
   BusinessHour,
   ContactCard,
@@ -22,7 +23,7 @@ export const contactCards: ContactCard[] = [
     title: "WhatsApp",
     value: "+91 91063 60907",
     description: "Quick responses for international customers.",
-    href: "https://wa.me/919106360907",
+    href: getPageWhatsAppEnquiryUrl("/contact"),
   },
   {
     title: "Head Office",

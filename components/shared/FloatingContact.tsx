@@ -1,11 +1,16 @@
 "use client";
 
 import { MessageCircle, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 
 export default function FloatingContact() {
+  const pathname = usePathname();
     const trackWhatsAppConversion = () => {
     if (typeof window !== "undefined") {
-      (window as any).gtag?.("event", "conversion", {
+      (window as Window & {
+        gtag?: (command: "event", eventName: "conversion", parameters: { send_to: string }) => void;
+      }).gtag?.("event", "conversion", {
         send_to: "AW-16962622922/f5vZCK-o8-4cEMqrtJg_",
       });
     }
@@ -16,7 +21,7 @@ export default function FloatingContact() {
       {/* WhatsApp */}
 
      <a
-  href="https://wa.me/919106360907"
+  href={getPageWhatsAppEnquiryUrl(pathname)}
   target="_blank"
   rel="noopener noreferrer"
   onClick={trackWhatsAppConversion}

@@ -119,7 +119,7 @@ export default function WhyChooseNGEServices() {
         </h3>
 
         <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-9 text-slate-300">
-          Our relationship with customers doesn't end when a drilling rig
+          Our relationship with customers doesn&apos;t end when a drilling rig
           leaves the factory. From installation and commissioning to spare
           parts, maintenance and technical assistance, NGE DRILLSOL remains
           your engineering partner throughout the life of your equipment.

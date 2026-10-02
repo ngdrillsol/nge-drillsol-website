@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -36,7 +37,7 @@ export default function ContactHero() {
             transition={{ duration: 0.6 }}
             className="mt-6 text-4xl font-bold leading-tight text-white sm:mt-8 sm:text-5xl xl:text-7xl"
           >
-            Let's Build Your
+            Let&apos;s Build Your
             <span className="block text-yellow-400">
               Next Drilling
             </span>
@@ -46,7 +47,7 @@ export default function ContactHero() {
           </motion.h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-9 text-slate-300">
-            Whether you're planning a water well drilling project,
+            Whether you&apos;re planning a water well drilling project,
             mining operation, piling work or require customized
             engineering support, our team is ready to help you
             choose the right solution.
@@ -64,7 +65,7 @@ export default function ContactHero() {
             </Link>
 
             <Link
-              href="https://wa.me/919106360907"
+              href={getPageWhatsAppEnquiryUrl("/contact")}
               target="_blank"
               className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white transition hover:border-yellow-500/30"
             >

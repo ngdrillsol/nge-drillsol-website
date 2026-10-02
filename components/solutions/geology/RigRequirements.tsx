@@ -11,12 +11,6 @@ import {
 
 import type { GeologyData } from "./geology.types";
 
-interface RigRequirementItem {
-  parameter: string;
-  requirement: string;
-  reason: string;
-}
-
 interface RigRequirementsProps {
   geology: GeologyData;
 }

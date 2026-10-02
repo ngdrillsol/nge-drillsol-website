@@ -30,8 +30,8 @@ I am interested in the ${rig.model} (${rig.name}).
 Please share the technical details, configuration and quotation.
 
 Project requirements:
-• Required drilling depth:
-• Bore diameter:
+• Required drilling depth (m or ft):
+• Bore diameter (mm or inches):
 • Formation:
 • Drilling method:
 • Project location:
@@ -119,8 +119,8 @@ Thank you.`
           <div className="mt-9 grid gap-4 sm:grid-cols-2">
 
             {[
-              "Required drilling depth",
-              "Target bore diameter",
+              "Required drilling depth (m or ft)",
+              "Target bore diameter (mm or inches)",
               "Formation / ground condition",
               "Drilling method",
               "Project location",

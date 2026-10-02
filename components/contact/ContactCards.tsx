@@ -40,7 +40,7 @@ export default function ContactCards() {
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
           Choose the most convenient way to connect with our engineering
-          and sales team. We're here to help with technical guidance,
+          and sales team. We&apos;re here to help with technical guidance,
           quotations and project discussions.
         </p>
 

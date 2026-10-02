@@ -1,0 +1,241 @@
+// Dependency-light component contract tests; no browser or WhatsApp requests.
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const Module = require('node:module');
+const root = path.resolve(__dirname, '..');
+const toolRoot = process.env.NGE_TEST_TOOL_MODULES;
+const toolRequire = toolRoot ? Module.createRequire(path.join(toolRoot, 'package.json')) : require;
+const ts = toolRequire('typescript');
+let pathname = '/';
+const cache = new Map();
+function load(relative) {
+  let filename = path.resolve(root, relative);
+  if (!fs.existsSync(filename) || !fs.statSync(filename).isFile()) filename += fs.existsSync(filename + '.ts') ? '.ts' : '.tsx';
+  if (cache.has(filename)) return cache.get(filename).exports;
+  const source = fs.readFileSync(filename, 'utf8');
+  const compiled = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2020 },
+    fileName: filename,
+    reportDiagnostics: true,
+  });
+  assert.deepEqual(compiled.diagnostics.filter(d => d.category === ts.DiagnosticCategory.Error), [], filename);
+  const instance = new Module(filename, module);
+  instance.filename = filename;
+  instance.paths = module.paths;
+  instance.require = (name) => {
+    if (name === 'next/navigation') return { usePathname: () => pathname };
+    if (name === 'next/link') return { __esModule: true, default: 'a' };
+    if (name === 'framer-motion') return { motion: new Proxy({}, { get: (_, tag) => tag }) };
+    if (name.startsWith('@/')) return load(name.slice(2));
+    if (name.startsWith('.')) return load(path.relative(root, path.resolve(path.dirname(filename), name)));
+    return toolRequire(name);
+  };
+  cache.set(filename, instance);
+  instance._compile(compiled.outputText, filename);
+  return instance.exports;
+}
+function elements(node) {
+  if (!node || typeof node !== 'object') return [];
+  if (Array.isArray(node)) return node.flatMap(elements);
+  return [node, ...elements(node.props?.children)];
+}
+function whatsappLinks(tree) {
+  return elements(tree).filter(el => typeof el.props?.href === 'string' && el.props.href.startsWith('https://wa.me/'));
+}
+function message(href) {
+  const url = new URL(href);
+  assert.equal(url.origin, 'https://wa.me');
+  assert.equal(url.pathname, '/919106360907');
+  assert.deepEqual([...url.searchParams.keys()], ['text']);
+  return url.searchParams.get('text');
+}
+function requirements(text) {
+  assert.match(text, /depth.*\(m or ft\)/i);
+  assert.match(text, /diameter.*\(mm or inches\)/i);
+}
+
+test('floating WhatsApp follows homepage, contact, water-well and product routes without guessing model names', () => {
+  const FloatingContact = load('components/shared/FloatingContact.tsx').default;
+  for (const [route, context] of [
+    ['/', /homepage/i], ['/contact', /contact page/i],
+    ['/drilling-rigs/water-well-drilling-rigs', /water well drilling/i],
+    ['/drilling-rigs/ngdr3000', /\/drilling-rigs\/ngdr3000/],
+    ['/drilling-rigs/ngdth600', /\/drilling-rigs\/ngdth600/],
+    ['/about', /drilling project/i], [null, /drilling project/i],
+  ]) {
+    pathname = route;
+    const link = whatsappLinks(FloatingContact())[0];
+    const text = message(link.props.href);
+    assert.match(text, context);
+    requirements(text);
+    assert.equal(typeof link.props.onClick, 'function');
+    assert.equal(link.props.rel, 'noopener noreferrer');
+  }
+});
+
+test('contact CTAs and card share contact context with explicit unit prompts', () => {
+  for (const file of ['ContactHero', 'CTASection']) {
+    const tree = load(`components/contact/${file}.tsx`).default();
+    for (const link of whatsappLinks(tree)) {
+      const text = message(link.props.href);
+      assert.match(text, /contact page/i);
+      requirements(text);
+    }
+    assert.equal(whatsappLinks(tree).length, 1);
+  }
+  const card = load('components/contact/contact.data.ts').contactCards.find(c => c.title === 'WhatsApp');
+  const text = message(card.href);
+  assert.match(text, /contact page/i);
+  requirements(text);
+});
+
+test('each enquiry field has a persistent associated label', () => {
+  const nodes = elements(load('components/contact/InquiryForm.tsx').default());
+  const fields = nodes.filter(el => ['input', 'select', 'textarea'].includes(el.type));
+  assert.equal(fields.length, 9);
+  assert.equal(new Set(fields.map(el => el.props.id)).size, fields.length);
+  for (const field of fields) {
+    assert.ok(field.props.id, `${field.props.name} needs an id`);
+    const label = nodes.find(el => el.type === 'label' && el.props.htmlFor === field.props.id);
+    assert.ok(label, `${field.props.name} needs a label`);
+    assert.ok(typeof label.props.children === 'string' && label.props.children.trim());
+  }
+});
+
+test('contact form explains that the enquiry must be sent in WhatsApp', () => {
+  const fields = elements(load('components/contact/InquiryForm.tsx').default());
+  const button = fields.find(el => el.props?.type === 'submit');
+  assert.ok(button.props.children.includes('Continue to WhatsApp'));
+  assert.ok(fields.some(el => typeof el.props?.children === 'string' &&
+    el.props.children.includes('Review your enquiry in WhatsApp, then tap Send.')));
+});
+
+test('measurement fields require a value with explicit supported units', () => {
+  const fields = elements(load('components/contact/InquiryForm.tsx').default());
+  for (const [name, valid, invalid] of [
+    ['depth', ['300 ft', '100m', '12.5 M'], ['300', '100 mm', '-10 m', 'abc']],
+    ['boreDiameter', ['6 inches', '150 mm', '6.5 IN'], ['6', '150 m', '-6 inches', 'abc']],
+  ]) {
+    const field = fields.find(el => el.props?.name === name);
+    assert.ok(field.props.pattern, `${name} needs browser validation`);
+    const pattern = new RegExp(`^(?:${field.props.pattern})$`, 'v');
+    for (const value of valid) assert.ok(pattern.test(value), `${name}: ${value}`);
+    for (const value of invalid) assert.ok(!pattern.test(value), `${name}: ${value}`);
+    assert.ok(field.props.title);
+  }
+});
+
+test('rig detail content reserves space for the fixed navigation', () => {
+  const rig = load('components/drilling-rigs/rig.data.ts').getAllRigs()[0];
+  const tree = load('components/drilling-rigs/RigDetailPage.tsx').default({ rig });
+  assert.ok(tree.props.className.includes('pt-[78px]'));
+});
+
+test('rig hero uses a responsive image with eager loading', () => {
+  const rig = load('components/drilling-rigs/rig.data.ts').getAllRigs()[0];
+  const nodes = elements(load('components/drilling-rigs/RigHero.tsx').default({ rig }));
+  const image = nodes.find(el => el.props?.src === rig.heroImage);
+  assert.notEqual(image.type, 'img');
+  assert.equal(image.props.fill, true);
+  assert.ok(image.props.sizes);
+  assert.equal(image.props.loading, 'eager');
+});
+
+test('utility page titles leave branding to the shared title template', () => {
+  for (const [route, title] of [
+    ['privacy-policy', 'Privacy Policy'], ['terms-of-use', 'Terms of Use'], ['sitemap', 'Sitemap'],
+  ]) assert.equal(load(`app/${route}/page.tsx`).metadata.title, title);
+});
+
+test('related rig cards declare responsive image sizing', () => {
+  const rigs = load('components/drilling-rigs/rig.data.ts').getAllRigs();
+  const rig = rigs.find(item => item.relatedRigs?.length);
+  assert.ok(rig);
+  const nodes = elements(load('components/drilling-rigs/RelatedRigs.tsx').default({ rig }));
+  const images = nodes.filter(el => el.props?.src);
+  assert.ok(images.length);
+  for (const image of images) {
+    assert.notEqual(image.type, 'img');
+    assert.equal(image.props.fill, true);
+    assert.ok(image.props.sizes);
+  }
+});
+
+test('contact page declares its own enquiry metadata', () => {
+  const metadata = load('app/contact/page.tsx').metadata;
+  assert.ok(metadata, 'Contact metadata is missing');
+  assert.equal(metadata.title.absolute, 'Contact NGE Drillsol');
+  assert.equal(metadata.alternates.canonical, '/contact');
+  assert.match(metadata.description, /project requirements/);
+});
+
+test('contact form prompts and submitted message retain explicit measurement units', () => {
+  const tree = load('components/contact/InquiryForm.tsx').default();
+  const fields = elements(tree);
+  assert.match(fields.find(el => el.props?.name === 'depth').props.placeholder, /\(m or ft\)/);
+  assert.match(fields.find(el => el.props?.name === 'boreDiameter').props.placeholder, /\(mm or inches\)/);
+  const form = fields.find(el => typeof el.props?.onSubmit === 'function');
+  const OriginalFormData = global.FormData;
+  const originalWindow = global.window;
+  const calls = [];
+  const values = { name: ' A & B ', email: 'test@example.invalid', phone: '+123', country: 'Test', application: 'Water Well Drilling', depth: '300 ft', boreDiameter: '6 inches', requirements: 'Rock & clay? #1\n第二行' };
+  global.FormData = class { get(key) { return values[key] ?? ''; } };
+  global.window = { open: (...args) => calls.push(args) };
+  try {
+    let prevented = false;
+    form.props.onSubmit({ preventDefault() { prevented = true; }, currentTarget: { checkValidity: () => true } });
+    assert.equal(prevented, true);
+    assert.equal(calls.length, 1);
+    const text = message(calls[0][0]);
+    requirements(text);
+    assert.match(text, /depth \(m or ft\): 300 ft/i);
+    assert.match(text, /diameter \(mm or inches\): 6 inches/i);
+    assert.ok(text.includes(values.requirements));
+    assert.ok(text.includes('Name: A & B'));
+    assert.ok(text.includes('Preferred Rig: Not specified'));
+    assert.deepEqual(calls[0].slice(1), ['_blank', 'noopener,noreferrer']);
+    let reported = false;
+    form.props.onSubmit({ preventDefault() {}, currentTarget: { checkValidity: () => false, reportValidity() { reported = true; } } });
+    assert.equal(reported, true);
+    assert.equal(calls.length, 1);
+  } finally { global.FormData = OriginalFormData; global.window = originalWindow; }
+});
+
+test('homepage engineering CTA supplies homepage context and units', () => {
+  const links = whatsappLinks(load('components/home/EngineeringSolution.tsx').default());
+  assert.equal(links.length, 1);
+  const text = message(links[0].props.href);
+  assert.match(text, /homepage/i);
+  requirements(text);
+});
+
+test('all source rig models retain exact dynamic WhatsApp references and inquiry units', () => {
+  const rigs = load('components/drilling-rigs/rig.data.ts').getAllRigs();
+  assert.ok(rigs.length > 0);
+  const Hero = load('components/drilling-rigs/RigHero.tsx').default;
+  const Inquiry = load('components/drilling-rigs/RigInquiryCTA.tsx').default;
+  for (const rig of rigs) {
+    for (const Component of [Hero, Inquiry]) {
+      const links = whatsappLinks(Component({ rig }));
+      assert.equal(links.length, 1);
+      const text = message(links[0].props.href);
+      assert.ok(text.includes(rig.model), rig.slug);
+      if (Component === Inquiry) {
+        assert.ok(text.includes(rig.name), rig.slug);
+        requirements(text);
+      }
+    }
+    const visible = elements(Inquiry({ rig })).map(el => el.props?.children).filter(v => typeof v === 'string').join('\n');
+    requirements(visible);
+  }
+  console.log(`Verified dynamic WhatsApp references for ${rigs.length} source rigs.`);
+});
+
+test('homepage enquiry action has the approved destination and contextual editable requirements', () => {
+  const action = load('components/home/InquirySection/inquiry.data.ts').inquiryActions.find(a => a.title === 'WhatsApp');
+  const text = message(action.href);
+  assert.match(text, /homepage/i);
+  requirements(text);
+});

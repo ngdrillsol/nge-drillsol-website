@@ -25,8 +25,8 @@ Email: ${value("email")}
 Phone / WhatsApp: ${value("phone")}
 Country: ${value("country")}
 Application: ${value("application")}
-Required Drilling Depth: ${value("depth")}
-Bore Diameter: ${value("boreDiameter")}
+Required Drilling Depth (m or ft): ${value("depth")}
+Bore Diameter (mm or inches): ${value("boreDiameter")}
 Preferred Rig: ${value("preferredRig") || "Not specified"}
 
 Project Requirements:
@@ -78,97 +78,155 @@ ${value("requirements")}`;
 
         <div className="grid gap-6 md:grid-cols-2">
 
-          <input
-            type="text"
-            name="name"
-            required
-            autoComplete="name"
-            placeholder="Full Name"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-name" className="block text-sm font-medium text-slate-200">
+              Full name (required)
+            </label>
+            <input
+              type="text"
+              id="enquiry-name"
+              name="name"
+              required
+              autoComplete="name"
+              placeholder="Full Name"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            required
-            autoComplete="email"
-            placeholder="Email Address"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-email" className="block text-sm font-medium text-slate-200">
+              Email address (required)
+            </label>
+            <input
+              type="email"
+              id="enquiry-email"
+              name="email"
+              required
+              autoComplete="email"
+              placeholder="Email Address"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-          <input
-            type="tel"
-            name="phone"
-            required
-            autoComplete="tel"
-            placeholder="Phone / WhatsApp"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-phone" className="block text-sm font-medium text-slate-200">
+              Phone / WhatsApp (required)
+            </label>
+            <input
+              type="tel"
+              id="enquiry-phone"
+              name="phone"
+              required
+              autoComplete="tel"
+              placeholder="Phone / WhatsApp"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-          <input
-            type="text"
-            name="country"
-            required
-            autoComplete="country-name"
-            placeholder="Country"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-country" className="block text-sm font-medium text-slate-200">
+              Country (required)
+            </label>
+            <input
+              type="text"
+              id="enquiry-country"
+              name="country"
+              required
+              autoComplete="country-name"
+              placeholder="Country"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-          <select
-            name="application"
-            required
-            defaultValue=""
-            className="rounded-2xl border border-white/10 bg-[#111111] px-5 py-4 text-white outline-none focus:border-yellow-500"
-          >
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-application" className="block text-sm font-medium text-slate-200">
+              Application (required)
+            </label>
+            <select
+              id="enquiry-application"
+              name="application"
+              required
+              defaultValue=""
+              className="w-full rounded-2xl border border-white/10 bg-[#111111] px-5 py-4 text-white outline-none focus:border-yellow-500"
+            >
+  
+              <option value="" disabled>Application</option>
+  
+              <option>Water Well Drilling</option>
+  
+              <option>DTH Drilling</option>
+  
+              <option>Rotary Drilling</option>
+  
+              <option>Piling</option>
+  
+              <option>Core Drilling</option>
+  
+              <option>Workover Rig</option>
+  
+            </select>
+          </div>
 
-            <option value="" disabled>Application</option>
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-depth" className="block text-sm font-medium text-slate-200">
+              Required drilling depth — m or ft (required)
+            </label>
+            <input
+              type="text"
+              id="enquiry-depth"
+              name="depth"
+              pattern="[ ]*[0-9]+(?:[.][0-9]+)?[ ]*(?:[mM]|[fF][tT])[ ]*"
+              title="Include the unit: for example, 100 m or 300 ft."
+              required
+              placeholder="Required Drilling Depth (m or ft)"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-            <option>Water Well Drilling</option>
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-boreDiameter" className="block text-sm font-medium text-slate-200">
+              Bore diameter — mm or inches (required)
+            </label>
+            <input
+              type="text"
+              id="enquiry-boreDiameter"
+              name="boreDiameter"
+              pattern="[ ]*[0-9]+(?:[.][0-9]+)?[ ]*(?:[mM][mM]|[iI][nN](?:[cC][hH](?:[eE][sS])?)?)[ ]*"
+              title="Include the unit: for example, 150 mm or 6 inches."
+              required
+              placeholder="Bore Diameter (mm or inches)"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
-            <option>DTH Drilling</option>
-
-            <option>Rotary Drilling</option>
-
-            <option>Piling</option>
-
-            <option>Core Drilling</option>
-
-            <option>Workover Rig</option>
-
-          </select>
-
-          <input
-            type="text"
-            name="depth"
-            required
-            placeholder="Required Drilling Depth"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
-
-          <input
-            type="text"
-            name="boreDiameter"
-            required
-            placeholder="Bore Diameter"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
-
-          <input
-            type="text"
-            name="preferredRig"
-            placeholder="Preferred Rig (Optional)"
-            className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-          />
+          <div className="min-w-0 space-y-2">
+            <label htmlFor="enquiry-preferredRig" className="block text-sm font-medium text-slate-200">
+              Preferred rig (optional)
+            </label>
+            <input
+              type="text"
+              id="enquiry-preferredRig"
+              name="preferredRig"
+              placeholder="Preferred Rig (Optional)"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+            />
+          </div>
 
         </div>
 
-        <textarea
-          name="requirements"
-          required
-          rows={6}
-          placeholder="Describe your project requirements..."
-          className="mt-6 w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
-        />
+        <div className="mt-6 space-y-2">
+          <label htmlFor="enquiry-requirements" className="block text-sm font-medium text-slate-200">
+            Project requirements (required)
+          </label>
+          <textarea
+            id="enquiry-requirements"
+            name="requirements"
+            required
+            rows={6}
+            placeholder="Describe your project requirements..."
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none focus:border-yellow-500"
+          />
+        </div>
 
         <button
           type="submit"
@@ -176,8 +234,11 @@ ${value("requirements")}`;
         >
           <Send size={18} />
 
-          Submit Engineering Inquiry
+          Continue to WhatsApp
         </button>
+        <p className="mt-3 text-sm text-slate-300">
+          Review your enquiry in WhatsApp, then tap Send.
+        </p>
 
       </motion.form>
 

@@ -31,7 +31,7 @@ export default function CTASection() {
         </h2>
 
         <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-300">
-          Whether you're planning a water well, renewable energy,
+          Whether you&apos;re planning a water well, renewable energy,
           infrastructure, mining or industrial drilling project,
           our engineering team is ready to recommend the right
           drilling solution for your site.

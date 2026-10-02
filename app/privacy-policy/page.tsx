@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | NGE Drillsol",
+  title: "Privacy Policy",
   description: "How NGE Drillsol handles website information, sales enquiries and privacy requests.",
   robots: { index: true, follow: true },
 };

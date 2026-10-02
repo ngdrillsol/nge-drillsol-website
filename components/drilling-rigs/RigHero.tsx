@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -284,7 +285,12 @@ export default function RigHero({ rig }: RigHeroProps) {
 
               <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-[#0A0D12]">
 
-                <img
+                <Image
+                  fill
+                  sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 50vw, 640px"
+                  loading="eager"
+                  fetchPriority="high"
+                  unoptimized={!rig.heroImage.startsWith("/")}
                   src={rig.heroImage}
                   alt={`${productName} drilling rig by NGE Drillsol`}
                   className="h-full w-full object-contain transition duration-700 hover:scale-[1.03]"

@@ -35,7 +35,7 @@ export default function EngineeringHighlights({
           Every milestone during execution contributes to project success.
           From geological logging to pump testing, these engineering
           activities ensured reliable groundwater infrastructure for one
-          of the world's largest renewable energy developments.
+          of the world&apos;s largest renewable energy developments.
         </p>
       </motion.div>
 
