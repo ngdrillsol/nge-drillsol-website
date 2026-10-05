@@ -196,7 +196,14 @@ export async function generateMetadata({
       rig.name
     );
 
+    const modelDescriptions: Record<string, string> = {
+      ngdr3000:
+        "Explore the NGE Drillsol NGDR3000. View published specifications, compare related rigs and send your project requirements for technical review.",
+      ngdr2000:
+        "Review the NGE Drillsol NGDR2000 specifications, mounting information and related models. Contact the team to discuss your drilling project.",
+    };
     const description =
+      modelDescriptions[slug] ||
       rig.tagline ||
       `${rig.model} ${rig.name} engineered by NGE Drillsol for professional drilling applications and global water well projects.`;
 

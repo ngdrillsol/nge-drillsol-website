@@ -233,6 +233,52 @@ test('all source rig models retain exact dynamic WhatsApp references and inquiry
   console.log(`Verified dynamic WhatsApp references for ${rigs.length} source rigs.`);
 });
 
+test('model performance and FAQ introductions preserve word spacing', () => {
+  const React = toolRequire('react');
+  const { renderToStaticMarkup } = toolRequire('react-dom/server');
+  const rigs = load('components/drilling-rigs/rig.data.ts').getAllRigs();
+  for (const rig of rigs) {
+    for (const [file, word] of [['RigPerformance', 'configuration'], ['RigFAQ', 'drilling rig']]) {
+      if (file === 'RigPerformance' && !rig.performance?.length) continue;
+      if (file === 'RigFAQ' && !rig.faqs?.length) continue;
+      const Component = load(`components/drilling-rigs/${file}.tsx`).default;
+      const html = renderToStaticMarkup(React.createElement(Component, { rig }));
+      assert.ok(html.includes(`${rig.model} ${word}`), `${rig.model}: missing space before ${word}`);
+      assert.ok(!html.includes(`${rig.model}${word}`));
+    }
+  }
+});
+
+test('rig hero and listing WhatsApp CTAs include contextual project fields', () => {
+  const rigs = load('components/drilling-rigs/rig.data.ts').getAllRigs();
+  const Hero = load('components/drilling-rigs/RigHero.tsx').default;
+  const listing = load('components/drilling-rigs/CTASection.tsx').default;
+  for (const rig of rigs) {
+    const text = message(whatsappLinks(Hero({ rig }))[0].props.href);
+    assert.ok(text.includes(rig.model));
+    requirements(text);
+    for (const field of ['Application:', 'Formation / ground conditions:', 'Drilling method:', 'Project location:']) assert.ok(text.includes(field));
+  }
+  const text = message(whatsappLinks(listing())[0].props.href);
+  assert.match(text, /select a drilling rig/);
+  requirements(text);
+  assert.ok(text.includes('Drilling method:'));
+});
+
+test('sampled model metadata uses the approved page-specific descriptions', async () => {
+  const { generateMetadata } = load('app/drilling-rigs/[slug]/page.tsx');
+  for (const [slug, expected] of [
+    ['ngdr3000', 'Explore the NGE Drillsol NGDR3000. View published specifications, compare related rigs and send your project requirements for technical review.'],
+    ['ngdr2000', 'Review the NGE Drillsol NGDR2000 specifications, mounting information and related models. Contact the team to discuss your drilling project.'],
+  ]) {
+    const metadata = await generateMetadata({ params: Promise.resolve({ slug }) });
+    assert.equal(metadata.description, expected);
+    assert.equal(metadata.openGraph.description, expected);
+    assert.equal(metadata.twitter.description, expected);
+    assert.equal(metadata.alternates.canonical, `/drilling-rigs/${slug}`);
+  }
+});
+
 test('homepage enquiry action has the approved destination and contextual editable requirements', () => {
   const action = load('components/home/InquirySection/inquiry.data.ts').inquiryActions.find(a => a.title === 'WhatsApp');
   const text = message(action.href);

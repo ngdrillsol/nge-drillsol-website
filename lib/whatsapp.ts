@@ -7,6 +7,7 @@ Application:
 Required drilling depth (m or ft):
 Bore diameter (mm or inches):
 Formation / ground conditions:
+Drilling method:
 Project location:
 
 Please include the unit with each measurement.`;

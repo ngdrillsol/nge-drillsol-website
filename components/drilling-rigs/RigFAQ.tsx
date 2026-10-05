@@ -96,7 +96,7 @@ export default function RigFAQ({
         </div>
 
         <p className="max-w-2xl text-lg leading-8 text-slate-400 lg:justify-self-end">
-          Answers to common questions about the {rig.model}
+          Answers to common questions about the {rig.model}{" "}
           drilling rig, including its drilling capacity,
           applications, configuration and project suitability.
         </p>

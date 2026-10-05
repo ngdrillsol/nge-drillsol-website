@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import type { RigData } from "./rig.types";
+import { getWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 
 interface RigHeroProps {
   rig: RigData;
@@ -225,9 +226,9 @@ export default function RigHero({ rig }: RigHeroProps) {
               </Link>
 
               <Link
-                href={`https://wa.me/919106360907?text=${encodeURIComponent(
-                  `Hello NGE Drillsol, I am interested in the ${rig.model} drilling rig. Please share technical details and quotation.`
-                )}`}
+                href={getWhatsAppEnquiryUrl(
+                  `I am enquiring about the ${rig.model} drilling rig. Please share technical details and quotation.`
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-7 py-4 font-semibold text-white transition hover:border-yellow-500/30 hover:bg-white/10"

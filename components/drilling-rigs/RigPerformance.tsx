@@ -56,7 +56,7 @@ export default function RigPerformance({
         </h2>
 
         <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">
-          Key published performance figures for the {rig.model}
+          Key published performance figures for the {rig.model}{" "}
           configuration.
         </p>
 
