@@ -25,7 +25,7 @@ function load(relative) {
   instance.filename = filename;
   instance.paths = module.paths;
   instance.require = (name) => {
-    if (name === 'next/navigation') return { usePathname: () => pathname };
+    if (name === 'next/navigation') return { usePathname: () => pathname, notFound: toolRequire('next/navigation').notFound };
     if (name === 'next/link') return { __esModule: true, default: 'a' };
     if (name === 'framer-motion') return { motion: new Proxy({}, { get: (_, tag) => tag }) };
     if (name.startsWith('@/')) return load(name.slice(2));
@@ -276,6 +276,95 @@ test('sampled model metadata uses the approved page-specific descriptions', asyn
     assert.equal(metadata.openGraph.description, expected);
     assert.equal(metadata.twitter.description, expected);
     assert.equal(metadata.alternates.canonical, `/drilling-rigs/${slug}`);
+  }
+});
+
+
+test('static information pages declare page-specific metadata and self-canonicals', () => {
+  const cases = [["/industries", "Industries & Drilling Applications", "Explore NGE Drillsol industry pages and share your drilling application, ground conditions and project requirements for review."], ["/markets", "India & Export Markets", "Explore NGE Drillsol market information and contact the team with your country, project location and drilling equipment requirements."], ["/projects", "Drilling Project Overview", "Browse the NGE Drillsol project pages and contact the team to discuss the requirements of your own drilling project."], ["/projects/adani-green-hydrogen", "Green Hydrogen Project Overview", "Read the green hydrogen project overview on the NGE Drillsol website and contact the team to discuss your project requirements."], ["/resources", "Drilling Resources", "Browse NGE Drillsol drilling resources and contact the team with questions about equipment and project requirements."], ["/services", "Drilling Services & Support", "Explore NGE Drillsol service information and discuss your drilling project, equipment or support requirements with the team."]];
+  for (const [route, title, description] of cases) {
+    const metadata = load(`app${route}/page.tsx`).metadata;
+    assert.ok(metadata, `${route}: metadata missing`);
+    assert.equal(metadata.title, title, route);
+    assert.equal(metadata.description, description, route);
+    assert.equal(metadata.alternates.canonical, route, route);
+    assert.equal(metadata.openGraph.url, route, route);
+    assert.equal(metadata.openGraph.title, `${title} | NGE Drillsol`, route);
+    assert.equal(metadata.openGraph.description, description, route);
+    assert.equal(metadata.twitter.title, `${title} | NGE Drillsol`, route);
+    assert.equal(metadata.twitter.description, description, route);
+  }
+});
+
+
+test('privacy policy declares its own canonical without changing its title', () => {
+  const metadata = load('app/privacy-policy/page.tsx').metadata;
+  assert.equal(metadata.alternates?.canonical, '/privacy-policy');
+  assert.equal(metadata.title, 'Privacy Policy');
+});
+
+
+test('every industry gets route-specific metadata without new suitability claims', async () => {
+  const page = load('app/industries/[slug]/page.tsx');
+  assert.equal(typeof page.generateMetadata, 'function');
+  const industries = load('components/industries/industries.data.ts').industries;
+  for (const industry of industries) {
+    const metadata = await page.generateMetadata({ params: Promise.resolve({ slug: industry.id }) });
+    const route = `/industries/${industry.id}`;
+    assert.equal(metadata.title, `${industry.title} Drilling`);
+    assert.equal(metadata.alternates.canonical, route);
+    assert.equal(metadata.openGraph.url, route);
+    assert.equal(metadata.openGraph.description, metadata.description);
+    assert.equal(metadata.twitter.description, metadata.description);
+    assert.ok(metadata.description.includes(industry.title));
+    assert.ok(!metadata.title.includes('NGE Drillsol'));
+  }
+});
+
+
+test('every geology page gets its own canonical and descriptive metadata', async () => {
+  const page = load('app/solutions/geology/[slug]/page.tsx');
+  assert.equal(typeof page.generateMetadata, 'function');
+  const items = load('components/solutions/geology/geology.data.ts').geologyData;
+  for (const item of items) {
+    const metadata = await page.generateMetadata({ params: Promise.resolve({ slug: item.slug }) });
+    const route = `/solutions/geology/${item.slug}`;
+    assert.equal(metadata.title, `${item.name} Drilling Considerations`);
+    assert.equal(metadata.alternates.canonical, route);
+    assert.equal(metadata.openGraph.url, route);
+    assert.equal(metadata.openGraph.description, metadata.description);
+    assert.equal(metadata.twitter.description, metadata.description);
+    assert.ok(metadata.description.includes(item.name));
+  }
+});
+
+
+test('all service metadata uses the stable service URL and one shared brand suffix', async () => {
+  const { generateMetadata } = load('app/services/[slug]/page.tsx');
+  const items = load('components/services/services.data.ts').services;
+  for (const item of items) {
+    const slug = item.href.split('/').filter(Boolean).pop();
+    for (const input of [slug, slug.toUpperCase()]) {
+      const metadata = await generateMetadata({ params: Promise.resolve({ slug: input }) });
+      assert.equal(metadata.title, item.title);
+      assert.equal(metadata.description, item.description);
+      assert.equal(metadata.alternates.canonical, item.href);
+      assert.equal(metadata.openGraph.url, item.href);
+      assert.equal(metadata.openGraph.title, `${item.title} | NGE Drillsol`);
+      assert.equal(metadata.twitter.description, item.description);
+    }
+  }
+});
+
+
+test('unknown industry, geology and service slugs reject metadata with notFound', async () => {
+  for (const route of ['industries', 'solutions/geology', 'services']) {
+    const { generateMetadata } = load(`app/${route}/[slug]/page.tsx`);
+    await assert.rejects(
+      () => generateMetadata({ params: Promise.resolve({ slug: 'not-a-real-nge-page' }) }),
+      error => error.digest === 'NEXT_HTTP_ERROR_FALLBACK;404',
+      route,
+    );
   }
 });
 

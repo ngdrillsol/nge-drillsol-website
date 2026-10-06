@@ -50,17 +50,21 @@ export async function generateMetadata({
   const service = getServiceBySlug(slug);
 
   if (!service) {
-    return {
-      title: "Service | NGE DRILLSOL",
-      description:
-        "Engineering, drilling and technical services from NGE DRILLSOL.",
-    };
+    notFound();
   }
 
   return {
-    title: `${service.title} | NGE DRILLSOL`,
+    title: service.title,
 
     description: service.description,
+    alternates: { canonical: service.href },
+    openGraph: {
+      title: `${service.title} | NGE Drillsol`, description: service.description,
+      url: service.href, type: "website", siteName: "NGE Drillsol", locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image", title: `${service.title} | NGE Drillsol`, description: service.description,
+    },
 
     keywords: [
       service.title,

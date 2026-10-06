@@ -1,3 +1,26 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  "title": "Green Hydrogen Project Overview",
+  "description": "Read the green hydrogen project overview on the NGE Drillsol website and contact the team to discuss your project requirements.",
+  "alternates": {
+    "canonical": "/projects/adani-green-hydrogen"
+  },
+  "openGraph": {
+    "title": "Green Hydrogen Project Overview | NGE Drillsol",
+    "description": "Read the green hydrogen project overview on the NGE Drillsol website and contact the team to discuss your project requirements.",
+    "url": "/projects/adani-green-hydrogen",
+    "type": "website",
+    "siteName": "NGE Drillsol",
+    "locale": "en_US"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Green Hydrogen Project Overview | NGE Drillsol",
+    "description": "Read the green hydrogen project overview on the NGE Drillsol website and contact the team to discuss your project requirements."
+  }
+};
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import GeologyDetailPage from "@/components/solutions/geology/GeologyDetailPage";
@@ -7,6 +8,23 @@ interface GeologyPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: GeologyPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const geology = geologyData.find((item) => item.slug === slug);
+  if (!geology) notFound();
+
+  const title = `${geology.name} Drilling Considerations`;
+  const description = `Read about ${geology.name} drilling considerations and send your formation details and project requirements to NGE Drillsol for review.`;
+  const url = `/solutions/geology/${geology.slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title: `${title} | NGE Drillsol`, description, url, type: "website", siteName: "NGE Drillsol", locale: "en_US" },
+    twitter: { card: "summary_large_image", title: `${title} | NGE Drillsol`, description },
+  };
 }
 
 export default async function GeologyPage({
