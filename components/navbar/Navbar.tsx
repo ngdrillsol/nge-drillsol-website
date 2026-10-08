@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type DropdownItem = {
   label: string;
@@ -218,6 +218,42 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(
     null
   );
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileDialogRef = useRef<HTMLDialogElement>(null);
+  const mobileCloseRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const dialog = mobileDialogRef.current;
+    const trigger = mobileTriggerRef.current;
+    if (!dialog) return;
+
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    const desktop = window.matchMedia("(min-width: 1440px)");
+    const closeOnDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setMobileOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+
+    // Native modality keeps keyboard focus inside and the background inert.
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    mobileCloseRef.current?.focus({ preventScroll: true });
+
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      dialog.close();
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+      if (!desktop.matches) trigger?.focus({ preventScroll: true });
+    };
+  }, [mobileOpen]);
 
   useEffect(() => {
     let ticking = false;
@@ -351,71 +387,117 @@ export default function Navbar() {
         {/* MOBILE MENU BUTTON */}
 
         <button
+          ref={mobileTriggerRef}
           type="button"
           onClick={() => setMobileOpen((value) => !value)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white min-[1440px]:hidden"
+          className="flex h-12 min-w-12 shrink-0 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-400 min-[1440px]:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
+          aria-haspopup="dialog"
         >
           <MenuIcon open={mobileOpen} />
+          <span>Menu</span>
         </button>
       </nav>
 
       {/* MOBILE MENU */}
 
       {mobileOpen && (
-        <div
+        <dialog
+          ref={mobileDialogRef}
           id="mobile-navigation"
-          className="fixed inset-x-0 bottom-0 top-[78px] overflow-y-auto overscroll-contain bg-[#05070b] min-[1440px]:hidden"
+          aria-labelledby="mobile-navigation-title"
+          aria-modal={true}
+          onKeyDown={(event) => {
+            if (event.key !== "Tab" || event.ctrlKey || event.altKey || event.metaKey) return;
+            const controls = Array.from(
+              event.currentTarget.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+            ).filter((control) => control.getClientRects().length > 0);
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first && last) {
+              event.preventDefault();
+              last.focus();
+            } else if (!event.shiftKey && document.activeElement === last && first) {
+              event.preventDefault();
+              first.focus();
+            }
+          }}
+          onCancel={(event) => {
+            event.preventDefault();
+            closeAll();
+          }}
+          className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col overflow-hidden border-0 bg-[#05070b] p-0 text-white backdrop:bg-black/60 open:flex min-[1440px]:hidden"
         >
-          <div className="mx-auto max-w-2xl px-5 py-5 sm:px-8">
-            <Link
-              href="/"
+          <div className="mx-auto flex min-h-[78px] w-full max-w-2xl shrink-0 items-center justify-between gap-4 border-b border-white/10 px-5 pt-[env(safe-area-inset-top)] sm:px-8">
+            <h2 id="mobile-navigation-title" className="text-lg font-bold">
+              Menu
+            </h2>
+            <button
+              ref={mobileCloseRef}
+              type="button"
               onClick={closeAll}
-              className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
+              aria-label="Close menu"
+              className="flex h-12 min-w-12 items-center justify-center gap-2 rounded-lg border border-white/10 px-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-400"
             >
-              Home
-            </Link>
-
-            <MobileSection
-              title="Drilling Rigs"
-              items={drillingRigCategories}
-              open={activeDropdown === "mobile-drilling"}
-              onToggle={() => toggleDropdown("mobile-drilling")}
-              allHref="/drilling-rigs"
-              onNavigate={closeAll}
-            />
-
-            {navigationLinks.map((item) => (
+              <MenuIcon open />
+              <span>Close</span>
+            </button>
+          </div>
+          <nav
+            aria-label="Mobile navigation"
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+          >
+            <div className="mx-auto max-w-2xl px-5 py-3 sm:px-8">
               <Link
-                key={item.href}
-                href={item.href}
+                href="/"
                 onClick={closeAll}
                 className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
               >
-                {item.label}
+                Home
               </Link>
-            ))}
 
-            <div className="mt-5 border-t border-white/10 pt-5">
-              <Link
-                href="/contact"
-                onClick={closeAll}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-400 px-5 py-4 text-sm font-bold text-black hover:bg-yellow-300"
-              >
-                Get a Quote
-                <ArrowUpRight />
-              </Link>
+              <MobileSection
+                id="mobile-drilling-links"
+                title="Drilling Rigs"
+                items={drillingRigCategories}
+                open={activeDropdown === "mobile-drilling"}
+                onToggle={() => toggleDropdown("mobile-drilling")}
+                allHref="/drilling-rigs"
+                onNavigate={closeAll}
+              />
+
+              {navigationLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeAll}
+                  className="block rounded-xl px-4 py-3.5 text-base font-semibold text-white hover:bg-white/5"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
+          </nav>
+          <div className="shrink-0 border-t border-white/10 px-5 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-8">
+            <Link
+              href="/contact"
+              onClick={closeAll}
+              className="mx-auto flex min-h-12 w-full max-w-2xl items-center justify-center gap-2 rounded-xl bg-yellow-400 px-5 py-4 text-sm font-bold text-black hover:bg-yellow-300"
+            >
+              Get a Quote
+              <ArrowUpRight />
+            </Link>
           </div>
-        </div>
+        </dialog>
       )}
     </header>
   );
 }
 
 function MobileSection({
+  id,
   title,
   items,
   open,
@@ -423,6 +505,7 @@ function MobileSection({
   allHref,
   onNavigate,
 }: {
+  id: string;
   title: string;
   items: DropdownItem[];
   open: boolean;
@@ -436,34 +519,33 @@ function MobileSection({
         type="button"
         onClick={onToggle}
         aria-expanded={open}
+        aria-controls={id}
         className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-base font-semibold text-white hover:bg-white/5"
       >
         {title}
         <ChevronDown open={open} />
       </button>
 
-      {open && (
-        <div className="mb-2 pl-3">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onNavigate}
-              className="block rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-white/5 hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
-
+      <div id={id} hidden={!open} className="mb-2 pl-3">
+        {items.map((item) => (
           <Link
-            href={allHref}
+            key={item.href}
+            href={item.href}
             onClick={onNavigate}
-            className="block rounded-xl px-4 py-3 text-sm font-semibold text-yellow-400 hover:bg-yellow-400/10"
+            className="block rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-white/5 hover:text-white"
           >
-            Explore All {title} →
+            {item.label}
           </Link>
-        </div>
-      )}
+        ))}
+
+        <Link
+          href={allHref}
+          onClick={onNavigate}
+          className="block rounded-xl px-4 py-3 text-sm font-semibold text-yellow-400 hover:bg-yellow-400/10"
+        >
+          Explore All {title} →
+        </Link>
+      </div>
     </div>
   );
 }

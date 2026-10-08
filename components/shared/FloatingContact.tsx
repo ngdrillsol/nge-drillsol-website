@@ -1,12 +1,13 @@
 "use client";
 
-import { MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Phone } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getPageWhatsAppEnquiryUrl } from "@/lib/whatsapp";
 
 export default function FloatingContact() {
   const pathname = usePathname();
-    const trackWhatsAppConversion = () => {
+  const trackWhatsAppConversion = () => {
     if (typeof window !== "undefined") {
       (window as Window & {
         gtag?: (command: "event", eventName: "conversion", parameters: { send_to: string }) => void;
@@ -16,7 +17,32 @@ export default function FloatingContact() {
     }
   };
   return (
-    <div className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] z-[90] flex flex-col items-end gap-2 sm:bottom-6 sm:right-5 sm:gap-3">
+    <>
+      <nav
+        aria-label="Quick contact"
+        className="mobile-contact-bar fixed inset-x-0 bottom-0 z-[90] grid grid-cols-2 gap-2 border-t border-white/15 bg-[#05070b]/95 px-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 shadow-[0_-4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md sm:hidden"
+      >
+        <Link
+          href="/contact#inquiry-form"
+          className="inline-flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl bg-yellow-400 px-3 text-sm font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          Enquire
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
+        <a
+          href={getPageWhatsAppEnquiryUrl(pathname)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={trackWhatsAppConversion}
+          aria-label="Chat with NGE Drillsol on WhatsApp"
+          className="inline-flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl border border-green-400/40 bg-green-400/10 px-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          <MessageCircle size={20} className="text-green-400" aria-hidden="true" />
+          WhatsApp
+        </a>
+      </nav>
+
+    <div className="fixed bottom-6 right-5 z-[90] hidden flex-col items-end gap-3 sm:flex">
 
       {/* WhatsApp */}
 
@@ -126,5 +152,6 @@ export default function FloatingContact() {
       </a>
 
     </div>
+    </>
   );
 }

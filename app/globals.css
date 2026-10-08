@@ -246,3 +246,21 @@ canvas,
 svg {
   max-width: 100%;
 }
+
+/* Leave page content clear of the labelled phone contact bar. */
+@media (width < 40rem) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+
+  /* Do not cover form controls when a phone's software keyboard opens. */
+  body:has(input:focus, textarea:focus, select:focus) .mobile-contact-bar {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Hash links must land below the fixed 78px navigation. */
+html {
+  scroll-padding-top: 94px;
+}

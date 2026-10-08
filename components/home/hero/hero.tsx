@@ -24,14 +24,14 @@ export default function Hero() {
           "
         >
           {/* LEFT SIDE */}
-          <div className="relative z-30 max-w-2xl lg:max-w-[650px]">
+          <div className="relative z-30 flex max-w-2xl flex-col lg:max-w-[650px]">
             {/* Eyebrow */}
-            <div className="inline-flex max-w-full items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-400 sm:px-5 sm:text-sm sm:tracking-wider">
+            <div className="inline-flex max-w-full self-start items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-400 sm:px-5 sm:text-sm sm:tracking-wider">
               Drilling Rig Manufacturer • Made in India • Exporting Worldwide
             </div>
 
             {/* Main SEO H1 */}
-            <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-5xl md:text-6xl xl:text-7xl">
+            <h1 className="order-1 mt-6 text-[clamp(1.875rem,8.5vw,2.25rem)] font-bold leading-[1.1] tracking-tight text-white sm:mt-8 sm:text-5xl md:text-6xl xl:text-7xl">
               Water Well Drilling Rig
               <br />
 
@@ -40,26 +40,8 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Description */}
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:mt-8 sm:text-lg sm:leading-8 lg:text-lg lg:leading-8 xl:text-xl xl:leading-9">
-              NGE Drillsol designs and manufactures water well drilling rigs,
-              DTH drilling rigs, rotary drilling rigs, piling rigs, core
-              drilling rigs and workover rigs for contractors, EPC companies,
-              government projects and industrial drilling applications
-              worldwide.
-            </p>
-
-            {/* Direct-answer GEO paragraph */}
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-              Our drilling equipment is selected according to required drilling
-              depth, bore diameter, geological formation, drilling method and
-              site conditions. NGE Drillsol provides machines and engineering
-              support for both standard and project-specific drilling
-              requirements.
-            </p>
-
             {/* BUTTONS */}
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-5">
+            <div className="order-2 mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-5 lg:order-4">
               <Link
                 href="/drilling-rigs"
                 className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-xl bg-gradient-to-b from-blue-500 to-blue-700 px-6 py-4 text-center text-sm font-semibold text-white shadow-[0_18px_40px_rgba(37,99,235,.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_24px_55px_rgba(37,99,235,.55)] sm:w-auto sm:px-8 sm:text-base"
@@ -77,35 +59,53 @@ export default function Hero() {
               </a>
             </div>
 
+            {/* Keep the full introduction below the phone's primary actions. */}
+            <p className="order-3 mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:mt-8 sm:text-lg sm:leading-8 lg:order-2 lg:text-lg lg:leading-8 xl:text-xl xl:leading-9">
+              NGE Drillsol designs and manufactures water well drilling rigs,
+              DTH drilling rigs, rotary drilling rigs, piling rigs, core
+              drilling rigs and workover rigs for contractors, EPC companies,
+              government projects and industrial drilling applications
+              worldwide.
+            </p>
+
+            {/* Direct-answer GEO paragraph */}
+            <p className="order-4 mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base lg:order-3">
+              Our drilling equipment is selected according to required drilling
+              depth, bore diameter, geological formation, drilling method and
+              site conditions. NGE Drillsol provides machines and engineering
+              support for both standard and project-specific drilling
+              requirements.
+            </p>
+
             {/* Important Internal Links */}
             <nav
               aria-label="Featured drilling equipment"
-              className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm"
+              className="order-5 mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm"
             >
               <Link
                 href="/drilling-rigs/water-well-drilling-rigs"
-                className="text-slate-300 transition hover:text-blue-400"
+                className="inline-flex min-h-11 items-center rounded-lg border border-white/10 px-3 text-slate-300 transition hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 lg:border-0 lg:px-0"
               >
                 Water Well Drilling Rigs
               </Link>
 
               <Link
                 href="/drilling-rigs/dth-drilling-rigs"
-                className="text-slate-300 transition hover:text-blue-400"
+                className="inline-flex min-h-11 items-center rounded-lg border border-white/10 px-3 text-slate-300 transition hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 lg:border-0 lg:px-0"
               >
                 DTH Drilling Rigs
               </Link>
 
               <Link
                 href="/drilling-rigs/rotary-drilling-rigs"
-                className="text-slate-300 transition hover:text-blue-400"
+                className="inline-flex min-h-11 items-center rounded-lg border border-white/10 px-3 text-slate-300 transition hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 lg:border-0 lg:px-0"
               >
                 Rotary Drilling Rigs
               </Link>
             </nav>
 
             {/* Flagship Machines */}
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-slate-400">
+            <div className="order-6 mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-slate-400">
               <span>Flagship deep drilling rigs:</span>
 
               <Link
@@ -124,7 +124,7 @@ export default function Hero() {
             </div>
 
             {/* Trust Numbers */}
-            <div className="mt-10 grid grid-cols-3 gap-4 sm:mt-12 sm:flex sm:flex-wrap sm:gap-10">
+            <div className="order-7 mt-10 grid grid-cols-3 gap-4 sm:mt-12 sm:flex sm:flex-wrap sm:gap-10">
               <div>
                 <p className="text-2xl font-bold text-white sm:text-3xl">
                   35+
